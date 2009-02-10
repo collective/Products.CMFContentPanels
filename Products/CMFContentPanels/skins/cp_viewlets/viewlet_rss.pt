@@ -1,0 +1,64 @@
+<tal:block metal:define-macro="portlet_viewletconf">
+     <div class="field">
+         <label i18n:translate="label_viewlet_title"
+                i18n:domain="contentpanels" >title (optional):</label>
+         <input name="title" size="10"
+                tal:attributes="value viewletOptions/title | nothing;"/>
+     </div>
+
+     <div class="field">
+
+         <label i18n:translate="label_rss_url"
+                i18n:domain="contentpanels">RSS URL:</label>
+
+         <input name="rssUrl" style="width: 100%"
+                tal:attributes="value viewletOptions/rssUrl | string:;"/>
+
+     </div>
+
+     <div class="field">
+         <label i18n:translate="label_list_count"
+                i18n:domain="contentpanels" >max number to list:</label>
+         <input name="itemCount" size="10"
+                tal:attributes="value viewletOptions/itemCount | python:5;"/>
+     </div>
+
+</tal:block>
+
+<dl metal:define-macro="portlet"
+    class="portlet"
+    tal:define="rssUrl viewletOptions/rssUrl | string:;
+                 itemCount viewletOptions/itemCount | python:5;
+                 itemCount python:int(itemCount);
+                 dummy python:request.set('rssUrl', rssUrl);
+                 dummy python:request.set('itemCount', itemCount);
+                 rssResult python:rssUrl and context.getRSSResult(rssUrl) or []"
+    tal:condition="rssResult">
+
+    <tal:block tal:define="feed python:dict(rssResult['feed']);
+                             entries python:[ dict(item) for item in rssResult['entries'] ][:itemCount]"
+         tal:condition="entries">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <a tal:content="viewletOptions/title | feed/title"
+           tal:attributes="href feed/link">link</a>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem"
+        tal:repeat="entry entries"
+        tal:attributes="class python:test(repeat['entry'].odd(), 'portletItem even', 'portletItem')">
+          
+        <a tal:content="structure entry/title"
+           tal:attributes="title entry/summary | nothing;
+                           href entry/link">entry</a>
+        <span tal:content="python:entry['modified'].split('T')[0]"
+              tal:on-error="string:"
+              class="discreet"> </span>
+    </dd>
+
+    </tal:block>
+
+</dl>
+

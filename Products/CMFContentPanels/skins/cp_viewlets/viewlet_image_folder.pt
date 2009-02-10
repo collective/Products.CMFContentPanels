@@ -1,0 +1,63 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+<body>
+
+<div metal:define-macro="portlet_viewletconf">
+
+<div class="field">
+   
+     <div metal:use-macro="here/content_list_macros/macros/content_list_viewletconf" />
+</div>
+
+</div>
+
+<dl metal:define-macro="portlet"
+    class="portlet"
+    tal:define="theFolder python:test(here.isPrincipiaFolderish, here, here.aq_parent);
+                 itemCount viewletOptions/itemCount | python:5;
+                 itemCount python:int(itemCount);
+                results python: [item for item in theFolder.folderlistingFolderContents()][:itemCount];" >
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <a tal:attributes="href string:$here_url"
+           tal:content="viewletOptions/viewlet_title | default">
+            <span tal:content="here/pretty_title_or_id" >title</span>
+        </a>
+        <span class="portletTopRight"></span>
+    </dt>
+
+
+    <dd class="portletItem lastItem"
+        tal:condition="results">
+    <tal:block tal:repeat="item results">
+    <span tal:condition="python:item.getPortalTypeName()=='Image'">
+          <tal:block tal:define="url item/absolute_url;
+                                 thumb_url python:test(item.meta_type=='ATImage', url+'/image_thumb', url)">
+             <fieldset style="display:inline; margin:0.5em; padding:0.5em">
+                   <legend style="background-color:transparent" tal:content="item/pretty_title_or_id">Title</legend>
+                   <a tal:attributes="href string:$url/image_view_fullscreen"><img src="#" alt="#" tal:attributes="src thumb_url; alt item/pretty_title_or_id" /></a>
+
+                    <tal:comment replace="nothing">I18NDUDE IS UNHAPPY WITH THE NEXT DIV</tal:comment>
+                   <div class="discreet" tal:define="d1 python:item.Description().replace('\n','<br/>');
+                                    d2 python:d1.replace('@','&#64');"
+                        tal:content="structure d2">Description</div>
+             </fieldset>
+          </tal:block>
+    </span>
+    </tal:block>
+    </dd>
+
+    <dd class="portletItem"
+        i18n:domain="contentpanels"
+        tal:condition="not: results"
+        i18n:translate="no_items_yet">
+          No items yet.
+    </dd>
+
+</dl>
+
+</body>
+
+</html>

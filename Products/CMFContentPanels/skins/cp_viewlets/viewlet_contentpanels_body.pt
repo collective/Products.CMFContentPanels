@@ -1,0 +1,16 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+
+<body>
+
+<metal:portlet metal:define-macro="portlet">
+
+          <tal:block metal:use-macro="here/contentpanels_view/macros/body" />
+
+</metal:portlet>
+
+</body>
+
+</html>
+

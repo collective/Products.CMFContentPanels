@@ -1,0 +1,30 @@
+
+<div metal:define-macro="viewlet_viewletconf">
+
+  <div class="field"
+       i18n:domain="contentpanels">
+
+     <label i18n:translate="zpt_macro_path">Zope Page template macro path</label>
+     <br />
+     <input type="text" name="macro_path" size="50"
+            tal:attributes="value viewletOptions/macro_path | string:"/>
+
+  </div>
+
+  <tal:addon-config tal:condition="viewletOptions/macro_path | nothing">
+    <tal:condition tal:define="conf_path string:${viewletOptions/macro_path}_viewletconf;"
+                   tal:condition="python:exists(conf_path)">
+     <div metal:use-macro="python:path(conf_path)" />
+    </tal:condition>
+  </tal:addon-config>
+
+</div>
+
+<tal:block metal:define-macro="viewlet"
+           tal:condition="viewletOptions/macro_path | nothing">
+
+  <div metal:use-macro="python:path(viewletOptions['macro_path'])">
+  </div>
+
+</tal:block>
+

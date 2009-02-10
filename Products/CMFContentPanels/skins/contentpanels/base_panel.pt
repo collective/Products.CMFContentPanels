@@ -1,0 +1,46 @@
+<metal:block define-macro="panel"
+             tal:define="global portal_contentpanels nocall:portal_contentpanels | here/portal_contentpanels;
+                         global viewlet_actions_dict viewlet_actions_dict | portal_contentpanels/listFilteredActionsFor;
+                         panelObjectViewlet panel/panelObjectViewlet;
+                         viewletAction python:portal_contentpanels.getViewletAction(panelObjectViewlet);
+                         viewletPath viewletAction/url;
+                         panelSkin panel/panelSkin;
+                         viewletCategory viewletAction/category;
+                         viewletOptions panel/viewletOptions | python: {};
+                         usemacro python:viewletPath.find('/macros/') != -1;
+                         panelObjectPath panel/panelObjectPath;
+                         contentpanels nocall:contentpanels_in | nocall:here;">
+
+    <tal:block tal:condition="python:viewletCategory.startswith('GN:')">
+        <metal:use-macro use-macro="here/base_panel/macros/viewlet"/>
+    </tal:block>
+
+    <tal:block tal:condition="not: python:viewletCategory.startswith('GN:')">
+        <tal:block tal:define="panelObject nocall:panel/panelObject | python:contentpanels.getPanelObject(panelObjectPath);
+                               here nocall:panelObject;
+                               context nocall:panelObject;
+                               here_url panelObject/absolute_url; ">
+            <metal:use-macro use-macro="here/base_panel/macros/viewlet"/>
+        </tal:block>
+    </tal:block>
+
+</metal:block>
+
+
+<div metal:define-macro="viewlet" class="portlet-wrap"
+     tal:define="panelTitle viewletOptions/viewlet_title | nothing;
+                 rowspacing rowspacing | python: 0;
+                 colspacing  colspacing | python: 0;
+                 isFirstColumn repeat/column/start | nothing;
+                 isLastColumn repeat/column/end | nothing;
+                 lspacing python:not isFirstColumn and colspacing/2 or 0;
+                 rspacing python:not isLastColumn and colspacing/2 or 0;
+                 panelId python:panelTitle and normalizeString(panelTitle) or here.getId()"
+     tal:attributes="class string:viewlet $panelSkin $panelId; 
+                     style string:margin: 0 ${rspacing}px ${rowspacing}px ${lspacing}px" >
+        <metal:block tal:condition="usemacro">
+           <metal:block metal:use-macro="python:path(viewletPath)" />
+        </metal:block>
+        <metal:block tal:replace="structure python:path(viewletPath)"
+                   tal:condition="not: usemacro"/>
+</div>

@@ -1,0 +1,114 @@
+<html lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+
+<div metal:define-macro="viewlet_viewletconf"
+     tal:define="dummy viewletOptions/itemCount | python:viewletOptions.update({'itemCount':20})">
+     <div metal:use-macro="here/content_list_macros/macros/content_list_viewletconf" />
+     <div metal:use-macro="here/content_list_macros/macros/content_search_viewletconf" />
+     <div metal:use-macro="here/content_list_macros/macros/show_rss_field"/>
+</div>
+
+<dl metal:define-macro="viewlet"
+    class="portlet"
+    tal:define="theFolder python:here.isPrincipiaFolderish and here or here.aq_parent;
+                 folderPath python:'/'.join(theFolder.getPhysicalPath());
+                 query python:dict(viewletOptions); 
+                 itemCount viewletOptions/itemCount | python:20;
+                 itemCount python:int(itemCount);
+                 pathdepth query/path/depth | python: -1;
+                 dummy python:query.update({'path':{'query':folderPath,
+                                                    'depth':pathdepth},
+                                            'sort_on':'modified',
+                                            'sort_order':'reverse'}); 
+                 query python:context.cleanQuery(query);
+                 results python:here.portal_catalog.searchResults(query);
+                 Batch python:modules['Products.CMFPlone'].Batch;
+                 DateTime python:modules['DateTime'].DateTime;
+                 b_size itemCount;b_start python:0;b_start request/b_start | b_start;
+                 batch_base_url request/URL0;
+                 desc_length site_properties/search_results_description_length;
+                 desc_ellipsis string:...; 
+                 mq python:modules['ZTUtils'].make_query;
+                 params python:mq(query);
+                 batch python:Batch(results, b_size, int(b_start), orphan=1);">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+
+        <a href="http://plone.org/news/newslisting/RSS"
+           class="viewlet-rss-link"
+           tal:condition="viewletOptions/showRSS | python: 1"
+           tal:define="rss_copied python:here.translate('rss_copied', domain='contentpanels');
+                            rss_not_copied python:here.translate('rss_not_copied', domain='contentpanels')"
+           tal:attributes="href string:$here_url/search_rss?$params;
+                               onclick string:try{clipboardData.setData('Text','$here_url/search_rss?$params');;alert('$rss_copied')}catch(e){alert('$rss_not_copied');;void(window.open('$here_url/search_rss?$params'));;} return false; ">
+
+            <img title="RSS feed of these search results"
+                 alt="RSS Feed"
+                 src="rss.gif"
+                 i18n:attributes="title title_rss_feed; alt label_rss_feed;"
+                 tal:attributes="src string:$portal_url/rss.gif"/>
+        </a>
+
+        <span tal:replace="viewletOptions/viewlet_title | default">
+               <span i18n:translate="folder_change_list"
+                     tal:omit-tag=""
+                     i18n:domain="contentpanels"> Content change list in 
+                     <span i18n:name="name" tal:omit-tag=""
+                           tal:content="here/pretty_title_or_id">folder title</span>
+               </span>
+        </span>
+        <span class="portletTopRight"></span>
+    </dt>
+
+        <!-- Search results -->
+
+    <dd class="portletItem" tal:condition="batch">
+        <dl>
+
+        <tal:results repeat="result batch">
+        <tal:entry define="result_url result/getURL;
+                           url string:$result_url/view;">
+            <dt>
+        <a href="#"
+                tal:attributes="href url">
+                <img src="#"
+                     height="16"
+                     width="16"
+                     alt=""
+                     tal:on-error="structure python:path('here/linkOpaque.gif')"
+                     tal:replace="structure python:path('here/%s' % result.getIcon)" /></a>&nbsp;<a
+                href="#" tal:attributes="href url"
+                tal:content="result/pretty_title_or_id" />
+
+                <span class="discreet" i18n:translate="results_by_author">
+                by <span tal:omit-tag="" tal:content="result/Creator" i18n:name="author">Author</span>,
+                <span tal:omit-tag=""  tal:content="python:here.toLocalizedTime(result.ModificationDate, long_format=1)" i18n:name="date">Modification Date</span>
+                </span>
+
+            </dt>
+            
+            <dd tal:content="python:here.cropText(result.Description, desc_length, desc_ellipsis)"> Description </dd>
+
+        </tal:entry>
+        </tal:results>
+        </dl>
+         
+        <!-- Navigation -->
+        <div metal:use-macro="here/batch_macros/macros/navigation" />
+    </dd>
+
+    <dd class="portletItem"
+        tal:condition="not: results"
+        i18n:domain="contentpanels"
+        i18n:translate="no_items_yet">
+       No items yet. 
+    </dd>
+
+</dl>
+
+
+</html>
+

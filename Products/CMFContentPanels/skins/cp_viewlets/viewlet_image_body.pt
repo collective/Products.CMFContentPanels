@@ -1,0 +1,54 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+
+<body>
+
+<div metal:define-macro="portlet_viewletconf">
+
+    <div class="field">
+         <label i18n:translate="label_size" i18n:domain="plone">size</label>
+         <select name="image_size"
+                 tal:define="image_size viewletOptions/image_size | string:;
+                             sizes python:{'':'original',
+                                           'image_large':'large',
+                                           'image_preview':'preview',
+                                           'image_mini':'mini',
+                                           'image_thumb':'thumb',}">
+              <option value=""
+                      tal:repeat="v python:['','image_large','image_preview','image_mini','image_thumb']"
+                      tal:content="python:sizes[v]"
+                      tal:attributes="value v;
+                                      selected python:v==image_size">original</option>
+         </select>
+    </div>
+
+</div>
+
+<dl metal:define-macro="portlet"
+    tal:define="image_size viewletOptions/image_size | string:"
+    class="portlet">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <a href="#" tal:attributes="href string:${here/absolute_url}/view;
+           title here/Description"
+           tal:content="here/title_or_id" >title</a>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem lastItem">
+
+        <img tal:attributes="src string:${here/absolute_url}/$image_size;
+                             alt here/Title"/>
+
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+    </dd>
+
+</dl>
+
+</body>
+
+</html>
+

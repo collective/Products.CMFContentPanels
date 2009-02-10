@@ -1,0 +1,121 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+<body>
+
+<div metal:define-macro="portlet_viewletconf">
+     <div metal:use-macro="here/content_list_macros/macros/field_viewlet_title"/>
+     <div class="field">
+         <label i18n:domain="contentpanels"
+                i18n:translate="label_depth">depth</label>
+         <input type="text" name="depth:int" 
+                tal:attributes="value viewletOptions/depth | python:2"/>
+     </div>
+
+     <div class="field">
+         <input type="checkbox" name="isSitemap" id="isSitemap"
+                tal:attributes="checked viewletOptions/isSitemap | nothing"/>
+         <label i18n:domain="plone" for="isSitemap"
+                i18n:translate="label_site_map">Site map</label>
+     </div>
+
+     <div class="field">
+     <label i18n:translate="label_item_type">list types</label>
+     <input type="hidden" name="listTypes:default" value=""/>
+
+     <select multiple="multiple"
+             size="10"
+             name="listTypes:list:ignore_empty"
+             tal:define="plone_utils portal/plone_utils;
+                         types viewletOptions/listTypes | plone_utils/typesToList;
+                         portal_types portal/portal_types;">
+        <option i18n:translate=""
+                tal:repeat="ptype portal_types/listTypeInfo"
+                tal:attributes="value ptype/getId;
+                                selected python:ptype.getId() in types"
+                tal:content="ptype/Title">type</option>
+     </select>
+     </div>
+
+     <div class="field">
+     <label i18n:translate="label_review_status"> list states</label>
+     <input type="hidden" name="listStates:default" value=""/>
+     <select name="listStates:list:ignore_empty"
+             multiple="multiple"
+             size="3"
+             tal:define="states viewletOptions/listStates | python:[]">
+         <option i18n:translate=""
+                 tal:repeat="state here/getPreferredStates | python:portal.portal_catalog.uniqueValuesFor('review_state')"
+                 tal:attributes="value state;
+                                 selected python:state in states"
+                 tal:content="state">
+                 state </option>
+     </select>
+     </div>
+
+
+</div>
+
+<div metal:define-macro="portlet"
+     i18n:domain="plone"
+     tal:omit-tag=""
+     tal:define="depth viewletOptions/depth | python:2;
+                 plone_utils portal/plone_utils;
+                 listTypes viewletOptions/listTypes | plone_utils/typesToList;
+                 listStates viewletOptions/listStates | nothing;
+                 isSitemap viewletOptions/isSitemap | nothing;
+                 bottomLevel python:65535;
+                 publishcontext nocall:pc | python:[contentpanels];
+                 obj python:publishcontext[0];
+                 strategy python:modules['Products.CMFContentPanels.browser.subnavtree'].SubNavtreeStrategy(context);
+                 query python:{ 'path':{'query':isSitemap and '/'.join(context.getPhysicalPath()) or '/'.join(obj.getPhysicalPath()),
+                 'navtree' : not isSitemap,
+                 'depth': isSitemap and depth or -1},
+                                'sort_on':'getObjPositionInParent',
+                                'sort_order':'asc',};
+                 dummy python:listTypes and query.update({'portal_type':listTypes});
+                 dummy python:listStates and query.update({'review_state':listStates});
+                 data python:modules['Products.CMFPlone.browser.navtree'].buildFolderTree(context, 
+                 obj=obj, 
+                 query=query,
+                 strategy=strategy
+                          )"
+     >
+
+<dl class="portlet" id="portlet-navigation-tree">
+    <dt class="portletHeader">
+        <tal:title tal:content="viewletOptions/viewlet_title | default">
+            <span i18n:translate="box_navigation">Navigation</span></tal:title>
+    </dt>
+
+    <dd class="portletItem">
+        <ul class="portletNavigationTree navTreeLevel0">
+            <li class="navTreeItem"
+                tal:attributes="class python:test(data.get('currentItem', ''), 'navTreeCurrentItem', 'navTreeItem');">
+                <div class="contenttype-plone-site">
+                    <a class="visualIconPadding"
+                       tal:attributes="href here/absolute_url;
+                       title here/Description;">
+                    <span tal:omit-tag=""
+                          tal:content="here/pretty_title_or_id">Home</span>
+                    </a>
+                </div>
+            </li>
+            <tal:navtree define="children python:data.get('children', []);
+                                 level python:0;
+                                 show_children python:True;
+                                 viewActions here/portal_properties/site_properties/typesUseViewActionInListings|python:();
+                                 isNaviTree python:True;">
+                                 
+                <metal:main metal:use-macro="here/portlet_navtree_macro/macros/nav_main" />
+                
+            </tal:navtree>
+
+        </ul>
+    </dd>
+</dl>
+
+</div>
+
+</body>
+</html>

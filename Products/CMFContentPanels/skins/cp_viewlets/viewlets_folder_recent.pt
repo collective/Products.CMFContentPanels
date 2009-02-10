@@ -1,0 +1,201 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+<body>
+
+<div metal:define-macro="base_portlet_viewletconf">
+     <div metal:use-macro="here/content_list_macros/macros/content_list_viewletconf" />
+     <div metal:use-macro="here/content_list_macros/macros/content_search_viewletconf" />
+
+     <div metal:use-macro="here/content_list_macros/macros/show_rss_field"/>
+     <div class="field"
+          i18n:domain="contentpanels"
+          tal:define="href_more viewletOptions/href_more | python:'search'">
+        <label i18n:translate="link_more_to">link more to</label> 
+        <div>
+           <input type="radio" name="href_more" value="" 
+                  tal:attributes="checked python:href_more == ''"
+                  id="more_href_folder_contents"/>
+           <label for="more_href_folder_contents" 
+                  i18n:translate="link_folder_view">folder default view</label>
+           <input type="radio" name="href_more" value="search" 
+                  tal:attributes="checked python:href_more == 'search'"
+                  id="more_href_search"/>
+           <label for="more_href_search"
+                  i18n:domain="contentpanels"
+                  i18n:translate="link_search_page">search page</label>
+        </div>
+     </div>
+</div>
+
+<dl metal:define-macro="base_portlet" class="portlet viewletRecentItems"
+    tal:define="theFolder python:test(here.isPrincipiaFolderish, here, here.aq_parent);
+                 folderPath python:'/'.join(theFolder.getPhysicalPath());
+                 query python:dict(viewletOptions);
+                 itemCount viewletOptions/itemCount | python:5;
+                 itemCount python:int(itemCount);
+                 pathdepth query/path/depth | python:-1; 
+                 dummy python:query.update({'path':{'query':folderPath,
+                                                    'depth':pathdepth},
+                                            'sort_on':'Date', 
+                                            'sort_order':'reverse',
+                                            });
+                 query python:context.cleanQuery(query);
+                 results python:here.portal_catalog.searchResults(query, sort_limit=itemCount);
+                 mq python:modules['ZTUtils'].make_query;
+                 params python:mq(query);
+                 href_more viewletOptions/href_more | python:'search';">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+
+        <a href="http://plone.org/news/newslisting/RSS"
+           class="viewlet-rss-link"
+           tal:condition="viewletOptions/showRSS | python: 1"
+           tal:define="rss_copied python:here.translate('rss_copied', domain='contentpanels');
+                       rss_not_copied python:here.translate('rss_not_copied', domain='contentpanels')"
+           tal:attributes="href string:$here_url/search_rss?$params;
+                           onclick string:try{clipboardData.setData('Text','$here_url/search_rss?$params');;alert('$rss_copied')}catch(e){alert('$rss_not_copied');;void(window.open('$here_url/search_rss?$params'));;} return false; ">
+           <img title="RSS feed of these search results"
+                alt="RSS Feed"
+                src="rss.gif"
+                i18n:attributes="title title_rss_feed; alt label_rss_feed;"
+                tal:attributes="src string:$portal_url/rss.gif"/>
+        </a>
+
+        <a tal:attributes="href string:$here_url/$href_more?$params"
+           tal:content="viewletOptions/viewlet_title | default">
+           <span i18n:translate="last_updates_in"
+                 i18n:domain="contentpanels">latest updates in 
+                <span i18n:name="name" tal:content="here/pretty_title_or_id" >title</span>
+           </span>
+        </a>
+
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <tal:items tal:repeat="obj results">
+    <dd class="portletItem"
+        tal:attributes="class python:test(repeat['obj'].odd(),
+                                         'portletItem even',
+                                         'portletItem odd')">
+        <a class="tile" 
+           tal:attributes="href string:${obj/getURL}/view">
+           <img src="#"
+               tal:attributes="src string:$portal_url/${obj/getIcon}" />
+           <tal:title tal:content="obj/pretty_title_or_id">title</tal:title>
+           <span class="portletItemDetails"
+                 tal:define="modificationDate obj/Date;
+                             creator obj/Creator;
+                             author python:mtool.getMemberInfo(creator);
+                             authorName python:author and author['fullname'] or creator;
+                             modificationDate python:here.toLocalizedTime(modificationDate)"
+                 tal:content="string:(${authorName}) $modificationDate">
+                      creator   08/19/2001 03:01 AM
+           </span>
+        </a>
+    </dd>
+    </tal:items>
+
+    <dd class="portletItem"
+        i18n:domain="contentpanels"
+        tal:condition="not: results"
+        i18n:translate="no_items_yet">
+          No items yet. 
+    </dd>
+    <dd class="portletFooter even"
+        tal:condition="python:len(results) &gt; itemCount - 1">
+        <a href="#"
+           class="tile"
+           i18n:translate="box_morelink"
+           tal:attributes="href string:$here_url/$href_more?$params">More...</a>
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+     </dd>
+</dl>
+
+<div metal:define-macro="comments_viewletconf">
+     <div metal:use-macro="here/content_list_macros/macros/show_rss_field"/>
+</div>
+
+<dl metal:define-macro="comments"
+    class="portlet viewletRecentComments"
+    tal:define="folderPath python:'/'.join(here.getPhysicalPath());
+                query python:{'path':folderPath,
+                              'portal_type':'Discussion Item',
+                              'sort_on':'modified',
+                              'sort_order':'reverse'};
+                results python:here.portal_catalog.searchResults(query)[:5];
+                mq python:modules['ZTUtils'].make_query;
+                params python:mq(query);" >
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <a href="http://plone.org/news/newslisting/RSS"
+           class="viewlet-rss-link"
+           tal:condition="viewletOptions/showRSS | python: 1"
+           tal:define="rss_copied python:here.translate('rss_copied', domain='contentpanels', default='The RSS url is copied into clipboard. You can paste it to any other RSS browser.');
+                       rss_not_copied python:here.translate('rss_not_copied', default='After click the OK button, you can copy the URL of the popup window and paste it to any other RSS browser', domain='contentpanels')"
+           tal:attributes="href string:$here_url/search_rss?$params;
+                           onclick string:try{clipboardData.setData('Text','$here_url/search_rss?$params');;alert('$rss_copied')}catch(e){alert('$rss_not_copied');;void(window.open('$here_url/search_rss?$params'));;} return false; ">
+
+            <img title="RSS feed of these search results"
+                  alt="RSS Feed"
+                  src="rss.gif"
+                  i18n:attributes="title title_rss_feed; alt label_rss_feed;"
+                  tal:attributes="src string:$portal_url/rss.gif"/>
+         </a>
+
+         <a tal:attributes="href string:$here_url/search?path=folderPath&amp;sort_on=Date&amp;sort_order=reverse&amp;portal_type=Discussion+Item;"
+            i18n:domain="contentpanels" 
+            i18n:translate="Recent comments">Recent comments</a>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <tal:items tal:repeat="obj results">
+    <dd class="portletItem"
+        tal:attributes="class python:test(repeat['obj'].odd(),
+                                         'portletItem even',
+                                         'portletItem odd')">
+        <a class="tile"
+           tal:attributes="href string:${obj/getURL}/view">
+           <img src="#"
+               tal:attributes="src string:$portal_url/${obj/getIcon}" />
+           <tal:title tal:content="obj/pretty_title_or_id">title</tal:title>
+           <span class="portletItemDetails"
+                 tal:define="modificationDate obj/ModificationDate;
+                             creator obj/Creator;
+                             author python:mtool.getMemberInfo(creator);
+                             authorName python:author and author['fullname'] or creator;
+                             modificationDate python:here.toLocalizedTime(modificationDate)"
+                 tal:content="string:(${authorName}) $modificationDate">
+                      creator   08/19/2001 03:01 AM
+           </span>
+        </a>
+    </dd>
+    </tal:items>
+
+    <dd class="portletItem"
+        i18n:domain="contentpanels"
+        tal:condition="not: results"
+        i18n:translate="no_items_yet">
+          No items yet.
+    </dd>
+
+    <dd class="portletFooter even"
+        tal:condition="python:len(results) &gt; 4">
+        <a href="#"
+           class="tile"
+           i18n:translate="box_morelink"
+           tal:attributes="href string:$here_url/search?path=folderPath&amp;sort_on=modified&amp;sort_order=reverse&amp;portal_type=Discussion+Item;">
+        More&hellip;</a>
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+    </dd>
+
+</dl>
+
+</body>
+
+</html>
+

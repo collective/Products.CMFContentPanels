@@ -1,0 +1,117 @@
+<html metal:use-macro="here/main_template/macros/master"
+      i18n:domain="contentpanels">
+
+<div metal:fill-slot="main"
+     i18n:domain="contentpanels"
+     tal:define="contentpanels_template_id request/contentpanels_template_id | python:here.getProperty('contentpanels_template_id', '');
+                 t_contentpanels here/portal_contentpanels;
+                 contentpanels python:t_contentpanels.getTemplateById(contentpanels_template_id);
+                 page request/pageIndex | python:'0';
+                 pageIndex python:int(page);
+                 choose_template request/choose_template | nothing;
+                 description here/Description;">
+
+        <tal:block tal:define="dummy python:is_editable and actions['document_actions'].append(
+                                     {'url':'%s/%s?choose_template=1' % (here_url, template_id),
+                                      'id':'contentpanels',
+                                      'title':'Change layout template for this view',
+                                      'name':'Change layout template for this view'}) ">
+        <div metal:use-macro="here/document_actions/macros/document_actions">
+            Document actions (print, sendto etc)
+        </div>
+        </tal:block>
+
+        <h1 tal:content="object_title" class="documentFirstHeading">
+          Title or id
+        </h1>
+
+       <p tal:condition="python:contentpanels is None"
+          i18n:translate="no_contentpanels_template"> This view doesn't have a layout template yet. You must select one at first.</p>
+
+      <tal:contentpanels tal:condition="python:contentpanels is not None and not choose_template">
+         <tal:block tal:define="here python:contentpanels.ofContext(here);
+                                tabDisplayMode python: here.getPageLayoutMode() == 'tab';">
+           <tal:block tal:condition="tabDisplayMode">
+               <metal:block metal:use-macro="here/contentpanels_macros/macros/cpPages"/>
+           </tal:block>
+
+           <p class="documentDescription"
+              tal:content="python:description or default"
+              tal:condition="python:description or tabDisplayMode">
+                &nbsp;
+           </p>
+
+           <div class="visualClear"><!-- --></div>
+
+           <tal:block tal:condition="tabDisplayMode">
+               <tal:block metal:use-macro="here/contentpanels_macros/macros/viewlet" />
+           </tal:block>
+
+           <tal:block tal:condition="not:tabDisplayMode">
+             <tal:block tal:repeat="pageIndex python:range(len(here.getPageTitles()))">
+               <tal:block metal:use-macro="here/contentpanels_macros/macros/viewlet" />
+             </tal:block>
+           </tal:block>
+         </tal:block>
+      </tal:contentpanels>
+
+      <tal:choose tal:condition="python:is_editable and (choose_template or contentpanels is None)">
+        <fieldset tal:define="templates t_contentpanels/getTemplates"
+                tal:condition="templates">
+          <legend i18n:translate="legend_choose_contentpanels_template">choose a layout template for this view</legend>
+
+            <form action="setConentPanelsTemplate">
+
+              <p class="formHelp"
+                 i18n:translate="help_choose_contentpanels_template">
+                  The following layout tempaltes are set by the site administrator. 
+                  Each one is a ContentPanels content.
+              </p>
+
+              <div class="field">
+
+                 <tal:items tal:repeat="cp_template templates">
+                   <tal:block
+                      tal:define="template_obj python:t_contentpanels.getTemplateById(cp_template['id'])"
+                      tal:condition="python:template_obj is not None">
+
+                   <input type="radio" class="noborder" name="contentpanels_template_id" value=""
+                          tal:attributes="value cp_template/id;
+                                          id string:cp_template_${cp_template/id};
+                                          checked python:contentpanels_template_id == cp_template['id']"/>
+                   <label tal:content="cp_template/title"
+                          tal:attributes="for string:cp_template_${cp_template/id}"> title </label>
+                   <a target="_blank"
+                      i18n:translate="preview_template"
+                      tal:attributes="href string:$here_url/$template_id?contentpanels_template_id=${cp_template/id}">Preview</a>
+
+                   <a target="_blank" 
+                      i18n:translate="template_layout"
+                      tal:attributes="href string:${template_obj/absolute_url}/contentpanels_config_form">Layout</a>
+                   <br />
+                   </tal:block>
+                 </tal:items>
+
+              </div>
+
+              <div class="formControls">
+                 <input type="submit" class="context"
+                        i18n:attributes="value label_save"
+                        i18n:domain="plone"
+                        value="Update"/>
+              </div>
+
+            </form>
+         </fieldset>
+
+         <p class="portalMessage"
+            i18n:translate="no_contenpanels_templates"
+            tal:condition="not: t_contentpanels/getTemplates">
+             No templates avaible yet! Please contact site administrator to setup it.
+         </p>
+
+       </tal:choose>
+
+</div>
+
+</html>

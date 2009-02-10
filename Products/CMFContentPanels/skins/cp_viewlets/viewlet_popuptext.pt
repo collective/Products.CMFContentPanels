@@ -1,0 +1,89 @@
+<div metal:define-macro="portlet_viewletconf">
+
+     <div class="field">
+
+         <label i18n:domain="plone" i18n:translate="label_title">title:</label>
+
+         <input name="title" 
+                tal:attributes="value viewletOptions/title | nothing"/>
+
+     </div>
+    
+    <div class="field">
+
+         <label i18n:domain="iwpopup" i18n:translate="label_X">X Offset:</label>
+
+         <input name="x" 
+                tal:attributes="value viewletOptions/x | string:250px"/>
+
+     </div>
+     <div class="field">
+
+         <label i18n:domain="iwpopup" i18n:translate="label_Y">Y Offset:</label>
+
+         <input name="y" 
+                tal:attributes="value viewletOptions/y | string:250px"/>
+
+     </div>
+     <div class="field">
+
+         <label i18n:domain="iwpopup" i18n:translate="label_width">Width</label>
+
+         <input name="w" 
+                tal:attributes="value viewletOptions/w | string:250px"/>
+
+     </div>
+     
+     
+
+
+     <div class="field">
+         <label i18n:domain="contentpanels"
+                i18n:translate="label_text">text (HTML):</label>
+         <textarea name="message" rows="6"
+                tal:content="viewletOptions/message | nothing"></textarea>
+     </div>
+
+
+</div>
+
+<dl metal:define-macro="portlet" 
+    class="portlet" id="IWPopUpBox-showimage" style="position:absolute;width:250px;left:250px;top:250px"
+          tal:define="x viewletOptions/x | string:250px;
+                      y viewletOptions/y | string:250px;
+                      w viewletOptions/w | string:250px;
+                      pos string:postion:absolute;; top:${x};; left:${y};; width:${w};;"
+          tal:attributes="style pos" 
+          tal:on-error="nothing">
+    <dt class="portletHeader" id="IWPopUpBox-dragbar" style="cursor:hand; cursor:pointer" width="100%" onMousedown="IWPopUpBox.initializedrag(event)">        
+        <span class="portletTopLeft"></span>        
+        <!--span-->
+              <ilayer width="100%" onSelectStart="return false">
+                 <layer width="100%" onMouseover="IWPopUpBox.dragswitch=1;if (IWPopUpBox.ns4) IWPopUpBox.drag_dropns(showimage)" onMouseout="dragswitch=0"
+                  tal:content="viewletOptions/title | nothing">
+                      message
+                </layer></ilayer>
+        <!--/span-->
+        <span class="portletTopRight" style="position:absolute; top:1px; right:1px;"> 
+             <a href="#" onClick="IWPopUpBox.hidebox();return false">
+                <img src="buttonClose.png" alt ="X" >
+             </a> 
+        </span>
+    </dt>
+    
+    <dd class="portletItem">    
+         <span tal:content="structure viewletOptions/message | nothing">
+          message body
+         </span>
+    </dd>
+    <dd class="portletItem lastItem" style="text-align:center;">        
+        <span class="portletBottomLeft"></span>          
+           <a href="#" onClick="IWPopUpBox.hidebox();return false"> close window </a>           
+           <noscript> <br/>
+            <strong>JavaScript must be enabled to move or close this window!</strong>
+           </noscript>
+        <span class="portletBottomRight"></span>
+    </dd>
+
+</dl>
+

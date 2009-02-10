@@ -1,0 +1,526 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: CMFContentPanels 2.4\n"
+"POT-Creation-Date: 2004-03-25 01:57+0000\n"
+"PO-Revision-Date: 2006-10-18 08:00+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: es\n"
+"Language-Name: Spanish\n"
+"Preferred-Encodings: latin1 utf-8\n"
+"Domain: contentpanels\n"
+"X-Is-Fallback-For: es-es es-bo es-cl es-co es-cr es-do es-ec es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
+
+#: ../CMFContentPanels/skins/contentpanels/contentpanels_config_form.pt
+#. <span i18n:translate="Column Width">
+#.  Width
+#. </span>
+#: ../CMFContentPanels/skins/contentpanels/contentpanels_config_form.pt
+#. <input i18n:attributes="title" name="columnInfos.columnWidth:records" size="4" tal:attributes="value column/columnWidth" title="Column Width" type="text" value=""/>
+msgid "Column Width"
+msgstr "Ancho de la columna"
+
+# Row spacing: 
+msgid "label_row_spacing"
+msgstr "Espaciado de filas: "
+
+# Column spacing: 
+msgid "label_col_spacing"
+msgstr "Espaciado de columnas: "
+
+#: ../CMFContentPanels/skins/contentpanels/contentpanels_config_form.pt
+#. <input class="sameline" i18n:attributes="value" name="save" type="submit" value="Save"/>
+msgid "Save"
+msgstr "Guardar"
+
+
+#: ../CMFContentPanels/skins/contentpanels/contentpanels_config_form.pt
+#. <select i18n:attributes="title label_viewlet" name="panelObjectViewlet" tal:attributes="name string:CPI$columnIndex.panelObjectViewlet:records" tal:define="viewlets python: here.portal_actions.listFilteredActionsFor(panelContent).get('panel_viewlets', []);                                             viewlets python: [viewlet for viewlet in viewlets if (viewlet['id']!='contentpanels_viewlet' or panelContent.absolute_url() != cpPath)];                                             portlets python: here.portal_contentpanels.listFilteredActionsFor(panelContent).get('panel_viewlets',[]);" title="content viewlet" width="6">
+msgid "content viewlet"
+msgstr "Contenidos del viewlet"
+
+
+#: ../CMFContentPanels/skins/contentpanels/contentpanels_edit_form.cpt
+#. <p i18n:domain="contentpanels" i18n:translate="description_edit_contentpanels">
+#. ContentPanels is designed to build a complex view out of a combination of portlets.  Various types of portlets for various types of contents (Document, Image, Folder, Topic, ZWiki Page, etc) can be combined in a single page. Enter the relevant details below, and press 'Save'. You can use the 'config' tab to configure pages/columns/panels
+#. </p>
+msgid "description_edit_contentpanels"
+msgstr "Paneles de contenido está diseñado para construir una vista compleja como una combinación de portlets. Pueden combinarse en una única página varios tipos de portlets para varios tipos de contenidos (Documentos, Imágenes, Carpetas, Temas, Páginas ZWiki, etc) ."
+
+#: ../CMFContentPanels/skins/contentpanels/contentpanels_config_form.pt
+#. <span i18n:translate="label_align">
+#.  Align:
+#. </span>
+msgid "label_align"
+msgstr "Alineación:"
+
+# default:  noalign
+msgid "align_noalign"
+msgstr "sin alinear"
+
+# default:  left
+msgid "align_left"
+msgstr "izquierda"
+
+# default:  Center
+msgid "align_center"
+msgstr "centrado"
+
+# default:  right
+msgid "align_right"
+msgstr "derecha"
+
+#: ../CMFContentPanels/skins/contentpanels/contentpanels_config_form.pt
+#. <span i18n:translate="label_panel_padding">
+#.  Padding:
+#. </span>
+msgid "label_panel_padding"
+msgstr "Relleno:"
+
+# default: Page parameters
+msgid "legend_page_params"
+msgstr "Parámetros de la página"
+
+#: ../CMFContentPanels/skins/contentpanels/contentpanels_config_form.pt
+#. <span i18n:translate="label_title">
+#.  Title:
+#. </span>
+msgid "label_title"
+msgstr "Título:"
+
+
+#: ../CMFContentPanels/skins/contentpanels/contentpanels_config_form.pt
+#. <span i18n:translate="label_width">
+#.  Width:
+#. </span>
+msgid "label_width"
+msgstr "Ancho:"
+
+
+#: ../CMFContentPanels/skins/contentpanels/contentpanels_edit_form.cpt
+#. <legend i18n:domain="contentpanels" i18n:translate="legend_contentpanels_details">
+#.  ContentPanels Details
+#. </legend>
+msgid "legend_contentpanels_details"
+msgstr "Detalles del Panel de Contenido"
+
+msgid "Select Viewlet:"
+msgstr "Selecciona Viewlet:"
+
+# Box Skin Names
+
+msgid "Default"
+msgstr "Por Defecto"
+
+msgid "No Title"
+msgstr "Sin Título"
+
+msgid "Default Box"
+msgstr "Caja por Defecto"
+
+msgid "ZopeZen"
+msgstr "ZopeZen"
+
+msgid "Dotted"
+msgstr "Punteado"
+
+msgid "Rounded"
+msgstr "Redondeado"
+
+msgid "Alert"
+msgstr "Alerta"
+
+##############################
+# viewlets Names
+##########################
+
+msgid "My recent changes"
+msgstr "Mis cambios recientes"
+
+msgid "My favorites"
+msgstr "Mis favoritos"
+
+msgid "Calendar"
+msgstr "Calendario"
+
+msgid "Events"
+msgstr "Eventos"
+
+msgid "Review list"
+msgstr "Lista en estado Revisión"
+
+msgid "News"
+msgstr "Noticias"
+
+msgid "Language"
+msgstr "Lenguaje"
+
+msgid "Recent published"
+msgstr "Publicaciones Recientes"
+
+msgid "Nested contentpanels"
+msgstr "Paneles de Contenido Anidados"
+
+msgid "View"
+msgstr "Ver"
+
+msgid "Recent changes"
+msgstr "Cambios recientes"
+
+msgid "Folder listing"
+msgstr "Listado de la carpeta"
+
+msgid "Content listing"
+msgstr "Listado de contenidos"
+
+msgid "Body"
+msgstr "Cuerpo"
+
+msgid "Default viewlet"
+msgstr "Viewlet por defecto"
+
+msgid "My recent changes"
+msgstr "Mis cambios recientes"
+
+# default: More...
+msgid "box_morelink"
+msgstr "Relacionado"
+
+#######################
+# panel operations
+########################
+
+msgid "move left"
+msgstr "mover a la izquierda"
+
+msgid "move right"
+msgstr "mover a la derecha"
+
+msgid "delete this page"
+msgstr "borrar esta página"
+
+msgid "new panel"
+msgstr "nuevo panel"
+
+msgid "new column"
+msgstr "nueva columna"
+
+msgid "delete column"
+msgstr "borrar columna"
+
+msgid "move up"
+msgstr "mover arriba"
+
+msgid "move down"
+msgstr "mover abajo"
+
+msgid "delete this panel"
+msgstr "borrar este panel"
+
+#########################
+# select viewlet
+########################
+
+msgid "viewlet_context"
+msgstr "Contexto del viewlet"
+
+# default: Viewlet
+msgid "label_viewlet"
+msgstr ""
+
+msgid "label_skin"
+msgstr "Tipos de marco:"
+
+msgid "preview_viewlet"
+msgstr "previsualización del viewlet"
+
+msgid "label_preview"
+msgstr "Previsualización"
+
+msgid "select_this_viewlet"
+msgstr "seleccionar este viewlet"
+
+msgid "select_this_panel"
+msgstr "selecciona este panel"
+
+msgid "Title description"
+msgstr "Título y descripción"
+
+msgid "Image folder"
+msgstr "Galería de imágenes"
+
+msgid "label_custom_css"
+msgstr "CSS específica"
+
+msgid "help_custom_css"
+msgstr "Puedes definir una CSS específica para este panel aquí. En otro caso deja el campo en blanco."
+
+msgid "label_page_layout_mode"
+msgstr "Modo lienzo de página"
+
+msgid "help_page_layout_mode"
+msgstr "Puedes escoger entre 'modo pila' o 'modo pestaña'. Con 'modo pila', todas las páginas se muestran directamente como filas."
+       " Es útil para hacer páginas compuestas muy complejas. Con 'modo pestaña', puedes intercambiar las páginas utilizando"
+       " los enlaces en la pestaña superior derecha."
+
+msgid "page_layout_tile"
+msgstr "pila"
+
+msgid "page_layout_tab"
+msgstr "pestaña"
+
+msgid "label_portlet_pos"
+msgstr "Poner como portlet a la derecha/izquierda"
+
+msgid "help_portlet_pos"
+msgstr "Puedes poner este panel a la izquierda o derecha de la plantilla."
+
+msgid "portlet_pos_none"
+msgstr "ninguna"
+
+msgid "portlet_pos_left"
+msgstr "izquierda"
+
+msgid "portlet_pos_right"
+msgstr "derecha"
+
+msgid "goto_this_contentpanels"
+msgstr "ir a este panel"
+
+msgid "Document content"
+msgstr "Contenido del documento"
+
+# default: Content change list in 
+msgid "folder_change_list"
+msgstr "Últimos cambios en ${name}"
+
+msgid "Local navigation"
+msgstr "Navegación local"
+
+msgid "label_depth"
+msgstr "Profundidad:"
+
+msgid "ZPT macro"
+msgstr "Macro ZPT"
+
+# Zope Page template macro path
+msgid "zpt_macro_path"
+msgstr "Ruta de la macro Zope Page Template:"
+
+msgid "Inline frame"
+msgstr "Frame embebida"
+
+# Inline frame URL
+msgid "iframe_url"
+msgstr "URL del frame:"
+
+# Height
+msgid "label_height"
+msgstr "Alto:"
+
+################################
+# more viewlets names
+######################################
+
+msgid "Folder changes"
+msgstr "Últimos cambios en la carpeta"
+
+msgid "last_updates_in"
+msgstr "últimos cambios en ${name}"
+
+msgid "Article content"
+msgstr "Contenido del artículo"
+
+msgid "Source Code content"
+msgstr "Contenido del documento"
+
+msgid "Discussion list"
+msgstr "Lista de noticias y documentos"
+
+msgid "Recent comments"
+msgstr "Comentarios recientes"
+
+# page title
+msgid "heading_layout_form"
+msgstr "${cpTitle} (Página ${pageIndex})"
+
+msgid "new page"
+msgstr "Página nueva"
+
+#: ../CMFContentPanels/skins/contentpanels/contentpanels_config_form.pt
+#. <span i18n:translate="label_page_title">
+#.  Title:
+#. </span>
+msgid "label_page_title"
+msgstr "Título:"
+
+msgid "column_x_width"
+msgstr "Ancho de columna #${columnIndex}"
+
+msgid "Column Width"
+msgstr "Ancho de la columna"
+
+msgid "Personal related"
+msgstr "Relativo al Usuario"
+
+msgid "Site wide"
+msgstr "Relativo al Portal"
+
+msgid "Folder related"
+msgstr "Relativo a la carpeta"
+
+msgid "Content related"
+msgstr "Relativo al contenido"
+
+# No items yet.
+msgid "no_items_yet"
+msgstr "Todavía no hay elementos."
+
+#####nuevo 191
+
+# Spacing: 
+msgid "label_panel_space"
+msgstr "Espaciado:"
+
+# Panel configuration
+msgid "header_panel_configuration"
+msgstr "Configuración del panel"
+
+# You can change the context content, viewlet and other settings of the panel there. You can preview the panel at the bottom of this page.
+msgid "desc_panel_configuration"
+msgstr "Puedes cambiar aquí el contenido del panel. En la parte inferior de la página hay una previsualización."
+
+# Viewlet settings
+msgid "label_viewlet_settings"
+msgstr "Configuración del viewlet"
+
+msgid "label_list_count"
+msgstr "Número máximo a listar:"
+
+msgid "label_text"
+msgstr "texto (HTML):"
+
+msgid "label_rss_url"
+msgstr "URL RSS"
+
+# title (optional):
+msgid "label_viewlet_title"
+msgstr "Título (opcional):"
+
+# subfolders
+msgid "include_subfolder"
+msgstr "subcarpetas"
+
+# show rss link
+msgid "label_show_rss"
+msgstr "mostrar enlace rss"
+
+# link more to
+msgid "link_more_to"
+msgstr "relacionado apunta a"
+
+# folder default view
+msgid "link_folder_view"
+msgstr "vista por defecto carpeta"
+
+# search page
+msgid "link_search_page"
+msgstr "página búsqueda"
+
+# 2 new viewlets
+
+msgid "Simple text"
+msgstr "Texto simple"
+
+msgid "RSS"
+msgstr "RSS"
+
+msgid "Image news"
+msgstr "Imágenes de noticias"
+
+# image news 
+msgid "image_news"
+msgstr " Imágenes de noticias "
+
+msgid "Categories summary"
+msgstr "Resumen de categorías"
+
+# images count 
+msgid "label_image_count"
+msgstr "Número de imágenes:"
+
+# image size 
+msgid "label_image_size"
+msgstr "Tamaño de la imagen:"
+
+# contentpanels_templates_form
+
+# Template management
+msgid "heading_template_management"
+msgstr "Gestión de la plantilla"
+
+# This contentpanels is already set as a site display template.
+msgid "contenpanels_is_template"
+msgstr "Este panel de contenido ya se ha puesto como plantilla de visualización del portal."
+
+# Set this contentpanels as a site display template
+msgid "legend_set_to_template"
+msgstr "Panel de contenido como plantilla de visualización del portal"
+
+# Fill this form to make the layout of this page as a site template, which can be used in folder display view.
+msgid "help_set_to_template"
+msgstr "Rellena este formulario para poner el lienzo de esta página como plantilla del portal, que puede usarse como visualización en carpetas."
+
+# Add
+msgid "label_set_as_template"
+msgstr "Añadir"
+
+# Available display templates
+msgid "legend_available_templates"
+msgstr "Plantillas de visualización disponibles"
+
+# All the site contentpanels display templates are listed as following. 
+# You can remove the selected items.
+msgid "help_available_templates"
+msgstr "A continuación se muestran todas las plantillas de visualización del portal correspondientes a paneles de contenido. Puedes borrar los elementos seleccionados."
+
+# this template is broken
+msgid "template_is_broken"
+msgstr "esta plantilla está corrupta"
+
+# contentpanles_display_view
+
+#This view doesn't have a layout template yet. You must select one at first.
+msgid "no_contentpanels_template"
+msgstr "Esta vista todavía no tiene una plantilla. Debes seleccionar una para empezar."
+
+# choose a layout template for this view
+msgid "legend_choose_contentpanels_template"
+msgstr "Escoge una plantilla para esta vista"
+
+# The following layout tempaltes are set by the site administrator. 
+# Each one is a ContentPanels content.
+msgid "help_choose_contentpanels_template"
+msgstr "Las siguientes plantillas se han configurado por el administrador del portal. Cada una es un panel de contenido."
+
+# Preview
+msgid "preview_template"
+msgstr "Previsualizar"
+
+# Layout
+msgid "template_layout"
+msgstr "Lienzo"
+
+
+
+
+
+
+

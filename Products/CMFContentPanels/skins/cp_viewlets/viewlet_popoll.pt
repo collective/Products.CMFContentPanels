@@ -1,0 +1,91 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plonepopoll">
+    <body>
+
+    <!-- The vote box -->
+        <tal:portlet metal:define-macro="portlet"
+            tal:define="poll nocall:context;
+                        number python: poll.getNumber_of_choices();"
+            i18n:domain="plonepopoll">
+            <dl class="portlet portletPopoll">
+            <dt class="portletHeader">
+                <span class="portletTopLeft"></span>
+                <a tal:content="poll/title"
+                   tal:attributes="href poll/absolute_url">Poll title</a>
+                <span class="portletTopRight"></span>
+            </dt>
+            <tal:block tal:define="canVote poll/canVote;">
+              <dd class="portletItem">
+                  <h5 tal:content="poll/question">Question</h5>
+
+                  <form action="vote" name="results" method="post" enctype="multipart/form-data"
+                	tal:condition="canVote"
+                	tal:attributes="action string:${poll/absolute_url}/vote;
+                			name string:result-${poll/getId}">
+                    <tal:options tal:repeat="choice poll/getResults">
+                      <input class="noborder"
+                             name="choices"
+                             tal:attributes="value repeat/choice/index;
+                                             id    string:cb${repeat/choice/index};
+                                             type python:test((number > 1), 'checkbox', 'radio');"
+                             tal:condition="canVote"/>
+                      <span tal:replace="python:choice[0]">
+                        Choice
+                      </span>
+                      <!-- transient results -->
+                      <div tal:condition="python:poll.isVisible() and (poll.hasVoted() or poll.getShowCurrentResults())">
+                        <tal:block 
+                           tal:define="choice_count      python: choice[1];
+                                       choice_percentage python: '%0.2f'%choice[2];
+                                       bar_percentage    python: int(choice[2]) or 1;
+                		   num repeat/choice/number;
+                                       num python:num % 10">
+                          <img height="10" tal:attributes="width string:${bar_percentage}; src string:${portal_url}/bar_${num}.gif; alt string:${choice_percentage}%" />
+
+                          <span tal:content="structure string:${choice_count} (${choice_percentage}%)">150 (14%)</span>
+                        </tal:block>
+                      </div>
+                      <br />
+                    </tal:options>
+                    <input class="context"
+                	   type="submit"
+                	   name="vote"
+                	   value="Vote"
+                	   i18n:attributes="value" />
+                  </form>
+                  <tal:block define="is_visible poll/isVisible "
+                	     condition="not: canVote">
+                    <ul tal:condition="is_visible">
+                      <tal:choices tal:repeat="choice poll/getResults">
+                	<li tal:define="choice_id python: choice[0];
+                		        choice_count python: choice[1];
+                			choice_percentage python: '%0.2f' % choice[2];
+                			bar_percentage python: int(choice[2]) or 1;
+                                            oddrow repeat/choice/odd;
+                                            number repeat/choice/number;
+                                            number python:number % 10"
+                                tal:attributes="class python:oddrow and 'even' or 'odd'">
+                	  <span tal:replace="choice_id">Choice</span><br />
+                          <img height="10" tal:attributes="width string:${bar_percentage}; src string:${portal_url}/bar_${number}.gif; alt string:${choice_percentage}%" />
+                	  <strong tal:content="string:${choice_count} (${choice_percentage}%)">44%</strong>
+                	</li>
+                      </tal:choices>
+                    </ul>
+                    <tal:else condition="not: is_visible"
+                	       i18n:translate="text_results_not_visible">
+                      Results will appear later.
+                    </tal:else>
+                  </tal:block>
+              </dd>
+              <dd class="portletFooter">
+                 <span class="portletBottomLeft"></span>
+                 <span i18n:translate="box_votes" tal:omit-tag="">Votes:</span>
+                 <span tal:replace="poll/getVotesCount" />
+                 <span class="portletBottomRight"></span>
+              </dd>
+            </tal:block>
+            </dl>
+        </tal:portlet>
+    </body>
+</html>

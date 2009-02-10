@@ -1,0 +1,237 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+
+<body>
+
+<metal:block metal:define-macro="content_list_viewletconf">
+<div class="field" metal:define-macro="field_viewlet_title">
+     <label i18n:translate="label_viewlet_title"
+            i18n:domain="contentpanels" >title (optional):</label>
+     <input name="viewlet_title:ignore_empty" size="10"
+            tal:attributes="value viewletOptions/viewlet_title | nothing;"/>
+</div>
+
+<div class="field">
+     <label i18n:translate="label_list_count"
+            i18n:domain="contentpanels" >max number to list:</label>
+     <input name="itemCount:int" size="10"
+            tal:attributes="value viewletOptions/itemCount | python:5;"/>
+</div>
+</metal:block>
+
+<metal:block define-macro="content_search_viewletconf">
+
+<div class="field" metal:define-macro="subject_search_field">
+     <label i18n:translate="">Subject</label>
+     <input name="Subject:tuple:ignore_empty" size="20"
+            tal:define="Subject viewletOptions/Subject | python: []"
+            tal:attributes="value python:', '.join(Subject);"/>
+</div>
+
+<div class="field" metal:define-macro="portal_type_search_field">
+     <label i18n:translate="label_item_type">Portal Types</label>
+     <input type="hidden" name="portal_type:default" value=""/>
+     <select multiple="multiple"
+             size="10"
+             name="portal_type:list:ignore_empty"
+             tal:define="plone_utils portal/plone_utils;
+                         types viewletOptions/portal_type | python:['Document', 'Link', 'File', 'Image', 'News Item'];
+                         portal_types portal/portal_types;">
+        <option i18n:translate=""
+                tal:repeat="ptype putils/getUserFriendlyTypes"
+                tal:attributes="value ptype;
+                                selected python:ptype in types"
+                tal:content="python:portal_types.getTypeInfo(ptype).Title()">type</option>
+     </select>
+</div>
+
+<div class="field" metal:define-macro="status_search_field">
+     <label i18n:translate="label_review_status"> review status</label>
+     <input type="hidden" name="review_state:default" value=""/>
+     <select name="review_state:list:ignore_empty"
+             multiple="multiple"
+             size="3"
+             tal:define="states viewletOptions/review_state | python:[]">
+         <option i18n:translate=""
+                 tal:repeat="state here/getPreferredStates | python:portal.portal_catalog.uniqueValuesFor('review_state')"
+                 tal:attributes="value state;
+                                 selected python:state in states"
+                 tal:content="state">
+                 state </option>
+     </select>
+</div>
+
+<div class="field" metal:define-macro="subfolder_field">
+     <input type="hidden" name="path.depth:int:record:default"
+            value="1"/>
+     <input type="checkbox" name="path.depth:int:record" value="-1"
+            id="path_depth"
+            tal:define="pathdepth viewletOptions/path/depth | python:-1"
+            tal:attributes="checked python:pathdepth == -1"
+            checked="checked"/>
+     <label for="path_depth"
+            i18n:domain="contentpanels"
+            i18n:translate="include_subfolder">search sub-folder</label>
+</div>
+
+</metal:block>
+
+<div class="field" metal:define-macro="show_rss_field">
+     <input type="hidden" name="showRSS:int:default"
+            value="0"/>
+     <input type="checkbox" name="showRSS:boolean"
+            id="show_rss"
+            tal:define="showRSS viewletOptions/showRSS | python:1"
+            tal:attributes="checked showRSS"
+            checked="checked"/>
+     <label for="show_rss"
+            i18n:domain="contentpanels"
+            i18n:translate="label_show_rss">show rss link</label>
+</div>
+
+
+<!--
+     here defines some macros for different content list for viewlets.
+     input is 'results', which is a list of contents or catalogBrains 
+-->
+
+<!-- 
+1. description in link title 
+-->
+
+<metal:block metal:define-macro="description_in_title">
+    <tal:block tal:repeat="item results">
+
+        <div class="portletContent odd" 
+             tal:attributes="class python:test(repeat['item'].index % 2, 'portletContent even', 'portletContent odd')">
+
+            <tal:block tal:define="result_url item/getURL;
+                                   url string:$result_url/view;">
+
+              <a href="#"
+                tal:attributes="href url">
+        <img src="#"
+             height="16"
+             width="16"
+             alt=""
+             tal:on-error="structure here/linkOpaque.gif"
+             tal:attributes="src string:$portal_url/${item/getIcon}" /></a>&nbsp;<a
+                href="#" tal:attributes="href url; title item/Description"
+                tal:content="item/pretty_title_or_id" />
+
+                <span class="discreet"
+                      tal:define="modificationDate item/ModificationDate;
+                                  creator item/Creator;
+                                  author python:mtool.getMemberInfo(creator);
+                                  authorName python:author and author['fullname'] or creator;
+                                  modificationDate python:here.toLocalizedTime(modificationDate)"
+                      tal:content="string:(${authorName}) $modificationDate">
+                      creator   08/19/2001 03:01 AM
+                </span>
+
+            </tal:block>
+        </div>
+    </tal:block>
+</metal:block>
+
+<!-- 2. inline description -->
+
+<metal:block metal:define-macro="inline_description">
+    <tal:block tal:repeat="item results">
+
+        <div class="portletContent odd"
+             tal:attributes="class python:test(repeat['item'].index % 2, 'portletContent even', 'portletContent odd')" >
+
+            <tal:block tal:define="result_url item/getURL;
+                                   url string:$result_url/view;">
+              <a href="#"
+                tal:attributes="href url">
+                <img src="#"
+                     height="16"
+                     width="16"
+                     alt=""
+                     tal:on-error="structure string:$portal_url/linkOpaque.gif"
+                     tal:attributes="src string:$portal_url/${item/getIcon}" /></a>&nbsp;<a
+                href="#" tal:attributes="href url"
+                tal:content="item/pretty_title_or_id" />
+
+                <span class="discreet"
+                      tal:define="modificationDate item/ModificationDate;
+                                  modificationDate python:here.toLocalizedTime(modificationDate)"
+                      tal:content="string:(${item/Creator}) ${item/Description} $modificationDate">
+                      creator   08/19/2001 03:01 AM
+                </span>
+            </tal:block>
+        </div>
+    </tal:block>
+</metal:block>
+
+<!-- 3. separate line description -->
+
+<metal:block metal:define-macro="separate_line_description">
+    <tal:block tal:repeat="item results">
+
+        <div class="portletContent odd"
+             tal:attributes="class python:test(repeat['item'].index % 2, 'portletContent even', 'portletContent odd')">
+
+            <tal:block tal:define="result_url item/getURL;
+                                   url string:$result_url/view;">
+              <a href="#"
+                tal:attributes="href url">
+                <img src="#"
+                     height="16"
+                     width="16"
+                     alt=""
+                     tal:on-error="structure string:$portal_url/linkOpaque.gif"
+                     tal:attributes="src string:$portal_url/${item/getIcon}" /></a>&nbsp;<a
+                href="#" tal:attributes="href url"
+                tal:content="item/pretty_title_or_id" />
+
+                <span class="discreet"
+                      tal:define="modificationDate item/ModificationDate;
+                                  modificationDate python:here.toLocalizedTime(modificationDate)"
+                      tal:content="string:(${item/Creator}) $modificationDate">
+                      creator   08/19/2001 03:01 AM
+                </span>
+
+                <div class="formHelp">
+                    <span tal:content="structure item/Description"/>
+                </div>
+
+            </tal:block>
+        </div>
+    </tal:block>
+</metal:block>
+
+<!-- 4. short title -->
+
+<metal:block metal:define-macro="title_only">
+    <tal:block tal:repeat="item results">
+
+        <div class="portletContent odd"
+             tal:attributes="class python:test(repeat['item'].index % 2, 'portletContent even', 'portletContent odd')">
+
+            <tal:block tal:define="result_url item/getURL;
+                                   url string:$result_url/view;">
+              <a href="#"
+                tal:attributes="href url">
+                <img src="#"
+                     height="16"
+                     width="16"
+                     alt=""
+                     tal:on-error="structure string:portal_url/linkOpaque.gif')"
+                     tal:attributes="src string:$portal_url/${item/getIcon}" /></a>&nbsp;<a
+                href="#" tal:attributes="href url"
+                tal:content="item/pretty_title_or_id" />
+            </tal:block>
+        </div>
+    </tal:block>
+</metal:block>
+
+</body>
+
+</html>
+
+
+

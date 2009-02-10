@@ -1,0 +1,136 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+
+<body>
+
+<!-- The news box -->
+
+<div metal:define-macro="news_list_viewletconf"
+     tal:define="dummy viewletOptions/itemCount | python:viewletOptions.update({'itemCount':15})">
+     <div metal:use-macro="here/content_list_macros/macros/content_list_viewletconf" />
+     <div metal:use-macro="here/content_list_macros/macros/status_search_field" />
+</div>
+
+<div metal:define-macro="news_list"
+     tal:omit-tag=""
+     tal:define="folderPath python:'/'.join(here.getPhysicalPath());
+                 query python:{'portal_type':['News Item', 'Document'],
+		               'sort_on':'Date',
+			       'sort_order':'reverse',
+			       'path':folderPath};
+                 review_state viewletOptions/review_state | python:[];
+		 dummy python:review_state and query.update({'review_state':review_state});
+                 results python:context.portal_catalog(query);
+                 Batch python:modules['Products.CMFPlone'].Batch;
+                 b_start python:request.get('b_start',0);
+		 itemCount viewletOptions/itemCount | python:15;
+                 portal_discussion nocall:here/portal_discussion;
+                 isDiscussionAllowedFor nocall:portal_discussion/isDiscussionAllowedFor;
+                 getDiscussionFor nocall:portal_discussion/getDiscussionFor;
+                 home_url python: mtool.getHomeUrl;">
+
+   <tal:block tal:condition="results"
+        tal:define="batch python:Batch(results, int(itemCount), int(b_start), orphan=1)">
+
+        <metal:block tal:repeat="result batch">
+          <div metal:use-macro="here/news_listing/macros/listitem" />
+        </metal:block>
+
+        <!-- Navigation -->
+        <div metal:use-macro="here/batch_macros/macros/navigation" />
+
+   </tal:block>
+
+    <p tal:condition="not: results" i18n:translate="no_post"
+       i18n:domain="contentpanels">
+        No post.
+    </p>
+
+</div>
+
+
+<div metal:define-macro="image_news_viewletconf">
+  <div class="field">
+      <label i18n:translate="label_image_count"
+             i18n:domain="contentpanels"> images count </label>
+      <input name="imageCount:int" value="1"
+             tal:attributes="value viewletOptions/imageCount | python:1"/>
+  </div>
+
+  <div class="field">
+      <label i18n:translate="label_image_size"
+             i18n:domain="contentpanels"> image size </label>
+      <select name="imageSize"
+              tal:define="all_sizes python:['mini', 'thumb', 'tile', 'icon'];
+                          imageSize viewletOptions/imageSize | string:thumb;">
+          <option tal:repeat="size all_sizes"
+                  tal:attributes="value size;
+                                  selected python:size == imageSize"
+                  tal:content="size">
+          </option>
+      </select>
+  </div>
+</div>
+
+
+<dl metal:define-macro="image_news"
+     class="portlet"
+     i18n:domain="contentpanels"
+     tal:define="folderPath python:'/'.join(here.getPhysicalPath());
+                 query python:{'portal_type':['News Item'],
+                               'sort_on':'Date',
+                               'sort_order':'reverse',
+                               'path':folderPath};
+                 review_state viewletOptions/review_state | python:['published'];
+                 dummy python:review_state and query.update({'review_state':review_state});
+                 imageCount viewletOptions/imageCount | python:1;
+                 results python:context.portal_catalog(query, sort_limit=imageCount); 
+                 imageSize viewletOptions/imageSize | string:thumb;">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span i18n:translate="image_news"> image news </span>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <tal:items tal:repeat="item results">
+    <dd class="portletItem"
+        tal:attributes="class python:repeat['item'].odd() and 'portletItem even' or 'portletItem odd'">
+        <a class="imageNewsImage" tal:attributes="href item/getURL">
+            <img src="" tal:attributes="src string:${item/getURL}/image_$imageSize"
+                 alt=""/>
+        </a>
+        <div class="imageNewsTitle">
+                <a tal:attributes="href item/getURL" 
+                   tal:content="item/pretty_title_or_id"/> 
+        </div>
+        <div class="imageNewsDescription">
+             <a tal:attributes="href item/getURL"
+                   tal:content="item/Description"/>
+        </div>
+        <div class="visualClear"><!-- --></div>
+    </dd>
+    </tal:items>
+
+    <dd class="portletItem"
+        tal:condition="not: results" i18n:translate="no_post"
+        i18n:domain="contentpanels">
+          No post.
+    </dd>
+
+    <dd class="portletFooter even">
+        <a href="" class="tile"
+           tal:define="mq python:modules['ZTUtils'].make_query;
+                       params python:mq(query);"
+           tal:attributes="href string:${portal_url}/search?$params"
+           i18n:translate="box_morelink"
+           i18n:domain="plone" >
+                   More...
+           </a>
+    </dd>
+
+</dl>
+
+</body>
+</html>

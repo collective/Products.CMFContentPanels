@@ -1,0 +1,35 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: CMFContentPanels 1.8.3\n"
+"POT-Creation-Date: 2004-03-25 00:32+0000\n"
+"PO-Revision-Date: 2007-02-08 18:02+0200\n"
+"First-Translator: Christophe ZERR <christophe.zerr@interieur.gouv.fr>\n"
+"Last-Translator: zindep <zindep@zindep.com>\n"
+"Language-Team: Français <christophe.zerr@interieur.gouv.fr>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: fr\n"
+"Language-Name: Français\n"
+"Preferred-Encodings: latin1 utf-8\n"
+"Domain: plone\n"
+"X-Is-Fallback-For: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr"
+
+msgid "Layout"
+msgstr "Mise en page"
+
+msgid "ContentPanels"
+msgstr "Panneau"
+
+msgid "ContentPanels is a portlet content to build composite page."
+msgstr "Un Panneau est un contenu composé de différentes boites pour construire des pages composites."
+
+msgid "contentpanels property changes saved."
+msgstr "Les propriétés du Panneau ont été enregistrées."
+
+msgid "Templates"
+msgstr "modèles"
+
+msgid "Config"
+msgstr "Configuration"

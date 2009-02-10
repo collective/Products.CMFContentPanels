@@ -1,0 +1,172 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="at_ratings">
+
+<body>
+
+<!-- The news box -->
+<div metal:define-macro="top_ratings_viewletconf">
+     <div metal:use-macro="here/content_list_macros/macros/content_list_viewletconf" />
+     <div class="field">
+        <label i18n:translate="sort_mode">sort mode</label>
+        <input type="radio" name="ratings_sort_mode" 
+               tal:attributes="checked python:viewletOptions.get('ratings_sort_mode', 'best') == 'best'"
+               id="best_ratings" value="best"/> 
+        <label for="best_ratings" i18n:translate="best_ratings">best ratings</label> 
+        <input type="radio" name="ratings_sort_mode" 
+               tal:attributes="checked python:viewletOptions.get('ratings_sort_mode', 'best') == 'worst'"
+               id="worst_ratings" value="worst"/>
+        <label for="worst_ratings" i18n:translate="worst_ratings">worst ratings</label>
+     </div>
+     <div metal:use-macro="here/content_list_macros/macros/content_search_viewletconf" />
+</div>
+
+<dl metal:define-macro="top_ratings"
+    class="portlet" id="portlet-top-ratings"
+    tal:define="ratings_tool nocall:here/portal_ratings;
+                 folderPath python:'/'.join(here.getPhysicalPath());
+                 viewletOptions viewletOptions | python: {};
+                 star_icon string:$portal_url/small_yellow_star.gif;
+                 blank_star_icon string:$portal_url/small_gray_star.gif;
+                 query python:dict(viewletOptions);
+                 itemCount viewletOptions/itemCount | python:5;
+                 pathdepth query/path/depth | python: -1;
+                 dummy python:query.update({'path':{'query':folderPath,
+                                                    'depth':pathdepth},
+                                           });
+                 brains python:here.portal_catalog.searchResults(query);
+                 sort_mode viewletOptions/ratings_sort_mode | python: 'best';
+                 results python:sort_mode =='best' and ratings_tool.getTopRatings(brains, itemCount) or ratings_tool.getBadRatings(brains, itemCount);">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span tal:content="viewletOptions/viewlet_title | default">
+              <span i18n:translate="box_top_ratings" tal:omit-tag="">Top ratings</span>
+        </span>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <tal:items tal:repeat="result results">
+    <dd class="portletItem"
+        tal:define="oddrow repeat/result/odd;
+                    obj python:result[1]; 
+                    item_creator obj/Creator;
+                    value python:result[0];"
+        tal:attributes="class python:test(oddrow, 'portletItem even', 'portletItem odd')">
+
+        <a href="#"
+           class="tile"
+           tal:attributes="href string:${obj/getURL}/view;">
+           <img src="#" tal:attributes="src string:${here/portal_url}/${obj/getIcon}" />
+
+           <tal:title tal:content="obj/pretty_title_or_id">title</tal:title>
+
+           <span class="portletItemDetails">
+                    <tal:author
+                       tal:define="mi python:mtool.getMemberInfo(item_creator)"
+                       tal:content="python:mi and mi['fullname'] or item_creator"
+                       tal:attributes="href string:$portal_url/author/$item_creator">
+                          author
+                    </tal:author>
+                    <img tal:attributes="src python:test(value &lt; 1, blank_star_icon, star_icon);"
+                    /><img tal:attributes="src python:test(value &lt; 2, blank_star_icon, star_icon);"
+                    /><img tal:attributes="src python:test(value &lt; 3, blank_star_icon, star_icon);"
+                    /><img tal:attributes="src python:test(value &lt; 4, blank_star_icon, star_icon);"
+                    /><img tal:attributes="src python:test(value &lt; 5, blank_star_icon, star_icon);"/>
+           </span>
+        </a>
+    </dd>
+    </tal:items>
+
+    <dd class="portletItem"
+        i18n:domain="contentpanels"
+        tal:condition="not: results"
+        i18n:translate="no_items_yet">
+          No items yet.
+    </dd>
+</dl>
+
+<div metal:define-macro="top_countings_viewletconf">
+     <div metal:use-macro="here/content_list_macros/macros/content_list_viewletconf" />
+     <div class="field">
+        <label i18n:translate="sort_mode">sort mode</label>
+        <input type="radio" name="countings_sort_mode"
+               tal:attributes="checked python:viewletOptions.get('countings_sort_mode', 'best') == 'best'"
+               id="best_countings" value="best"/>
+        <label for="best_countings" i18n:translate="top_countings">top countings</label>
+        <input type="radio" name="countings_sort_mode"
+               tal:attributes="checked python:viewletOptions.get('countings_sort_mode', 'best') == 'worst'"
+               id="worst_countings" value="worst"/>
+        <label for="worst_countings" i18n:translate="lower_countings">lower countings</label>
+     </div>
+     <div metal:use-macro="here/content_list_macros/macros/content_search_viewletconf" />
+</div>
+ 
+<dl metal:define-macro="top_countings"
+    class="portlet" id="portlet-top-countings"
+    tal:define="ratings_tool nocall:here/portal_ratings;
+                folderPath python:'/'.join(here.getPhysicalPath());
+                itemCount viewletOptions/itemCount | python:5;
+                query python:dict(viewletOptions);
+                pathdepth query/path/depth | python: -1;
+                dummy python:query.update({'path':{'query':folderPath,
+                                                    'depth':pathdepth},
+                                            });
+                brains python:here.portal_catalog.searchResults(query);
+                sort_mode viewletOptions/countings_sort_mode | python: 'best';
+                results python:test(sort_mode =='best', ratings_tool.getTopCountings(brains, itemCount),
+                                    ratings_tool.getBadCountings(brains, itemCount) );">
+
+     <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span tal:content="viewletOptions/viewlet_title | default">
+            <span i18n:translate="box_top_countings" tal:omit-tag="">Top hit countings</span>
+        </span>
+        <span class="portletTopRight"></span> 
+     </dt>
+
+    <tal:items tal:repeat="result results">
+    <dd class="portletItem"
+        tal:define="oddrow repeat/result/odd;
+                    obj python:result[1];
+                    item_creator obj/Creator;
+                    value python:result[0];"
+        tal:attributes="class python:test(oddrow, 'portletItem even', 'portletItem odd')">
+
+        <a href="#"
+           class="tile"
+           tal:attributes="href string:${obj/getURL}/view;">
+           <img src="#" tal:attributes="src string:${here/portal_url}/${obj/getIcon}" />
+
+           <tal:title tal:content="obj/pretty_title_or_id">title</tal:title>
+
+           <span class="portletItemDetails">
+              <tal:author tal:define="mi python:mtool.getMemberInfo(item_creator)"
+                          tal:content="python:mi and mi['fullname'] or item_creator"
+                          tal:attributes="href string:$portal_url/author/$item_creator">
+                      author
+              </tal:author>
+
+              <tal:count i18n:translate="count_number">
+                       <span i18n:name="count"
+                             tal:omit-tag=""
+                             tal:content="value" />x
+              </tal:count>
+
+           </span>
+        </a>
+    </dd>
+    </tal:items>
+
+    <dd class="portletItem"
+        i18n:domain="contentpanels"
+        tal:condition="not: results"
+        i18n:translate="no_items_yet">
+          No items yet.
+    </dd>
+
+</dl>
+
+</body>
+
+</html>

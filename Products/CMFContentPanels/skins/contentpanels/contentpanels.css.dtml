@@ -1,0 +1,194 @@
+/* <dtml-with base_properties> (do not remove this :) */
+
+#region-content .viewlet .portlet{
+  font-size: 100%
+}
+
+.documentContent .portletFooter,
+.documentContent .portletItem {
+    padding: 0.3em;
+}
+
+.documentContent .portletItemDetails {
+    color: &dtml-discreetColor;;
+    font-size: &dtml-fontSmallSize;;
+    margin-top: -0.5em;
+}
+
+.cpPanels .cpPanel {
+    margin: 1em 0 0 0;
+}
+
+.documentContent .viewlet .portlet{
+   margin: 0 0 0 0;
+}
+
+.cpPanelsHeading {
+   background-color: lavender;
+   white-space: nowrap;
+   text-align: right;
+}
+
+.cpPanelsHeading .cpPanelsHeadingInput,
+.cpPanelHeading .cpPanelsHeadingInput {
+    float: left;
+}
+
+.cpPanelHeading {
+   background-color: lavender;
+}
+
+.cpPanelHeading td {
+    text-align: right
+}
+
+.cpViewletItem a {
+    white-space: nowrap;
+}
+
+.cpViewletItem span {
+    white-space:nowrap;
+    background-color: lightgreen;
+}
+
+/* Editing */
+
+.cpEditFormInputValues {
+    float: left;
+}
+
+.cpEditFormSubmitButtons {
+    float: right;
+}
+
+.cpRelatedContent li.cpRelatedItem{
+    display: inline;
+}
+
+/*
+** end content style
+** ------------------------------
+** begin page tab
+*/
+
+.cpPages {
+    float:right;
+    white-space: nowrap;
+    margin-top: 0;
+}
+
+.cpPages li {
+    display: inline;
+}
+
+.cpPages li a {    
+    font-size: 90%;
+    background-color: transparent;
+    border: &dtml-borderWidth; &dtml-borderStyle; &dtml-contentViewBorderColor;;
+    color: &dtml-contentViewFontColor;;
+    margin-right: 0.5em;
+    padding: 0em 1em;
+    text-decoration: none;
+    text-transform: &dtml-textTransform;;
+    z-index: 1;
+}
+.cpPages li.selected a {
+    background-color: &dtml-contentViewBackgroundColor;;
+    color: &dtml-contentViewFontColor;;
+}
+.cpPages li a:hover {
+    background-color: &dtml-contentViewBackgroundColor;;
+    color: &dtml-contentViewFontColor;;
+}
+
+/*
+** begin viewlet skins
+*/
+
+/* common viewlet skins, fix plone portlet css */
+
+/* default viewlet skins */
+
+/* no title skin */
+.notitlePortletWrapper dt.portletHeader {
+    display: none;
+}
+
+.notitlePortletWrapper .portlet,
+.notitlePortletWrapper dd.portletFooter,
+.notitlePortletWrapper dd.portletItem{
+    border: none;
+}
+
+/* zopezen skin */
+.zopezenPortletWrapper dt.portletHeader {
+    background-color: &dtml-backgroundColor;;
+    font-style: normal;
+    border: none;
+    text-transform: capitalize;
+    border-bottom: 2px solid &dtml-globalBackgroundColor;;
+}
+
+.boxPortletWrapper dl.portlet dd.portletFooter,
+.boxPortletWrapper dl.portlet dd.portletItem,
+.boxPortletWrapper dl.portlet,
+.zopezenPortletWrapper dl.portlet,
+.zopezenPortletWrapper dl.portlet dd.portletFooter,
+.zopezenPortletWrapper dl.portlet dd.portletItem {
+    border: none;
+}
+
+/* Alert skin */
+.alertPortletWrapper dl.portlet dt.portletHeader{
+    background: &dtml-notifyBorderColor;;
+    font-weight: bold;
+    border-color: &dtml-notifyBorderColor;;
+    text-transform: uppercase;
+    background-image: url(&dtml-portal_url;/info_icon.gif);
+    background-repeat: no-repeat;
+    background-position: 5px 50%;
+    padding-left: 2.5em;
+}
+
+.alertPortletWrapper dl.portlet dd.portletFooter,
+.alertPortletWrapper dl.portlet dd.portletItem {
+    background-color: &dtml-notifyBackgroundColor;;
+}
+
+/* dotted skin */
+.dottedPortletWrapper dl.portlet dt.portletHeader{
+    background: &dtml-backgroundColor;;
+    font-weight: bold;
+    border: none;
+    padding-left: 0em;
+    text-transform: capitalize;
+    color: &dtml-fontColor;;
+    border-bottom: 2px dotted &dtml-globalBackgroundColor;;
+}
+
+.dottedPortletWrapper dl.portlet dd.portletFooter,
+.dottedPortletWrapper dl.portlet dd.portletItem {
+   border: 2px dotted &dtml-globalBackgroundColor;;
+   border-top:none;
+   border-bottom: none;
+}
+
+.dottedPortletWrapper dl.portlet{
+   border-bottom: 2px dotted &dtml-globalBackgroundColor;;
+}
+
+.imageNewsImage {
+  float: left;
+  margin: 0.5em;
+}
+
+.imageNewsTitle {
+  font-weight:bold;
+}
+
+.viewlet-rss-link{
+  padding-right: 2px; 
+  float: right; 
+  display: block;
+}
+/* </dtml-with>  */

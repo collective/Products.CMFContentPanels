@@ -1,0 +1,2 @@
+<metal:block use-macro="here/global_defines/macros/defines" />
+<head tal:replace="structure provider:plone.htmlhead" />

@@ -1,0 +1,105 @@
+<html metal:use-macro="here/main_template/macros/master"
+      i18n:domain="contentpanels">
+
+<div metal:fill-slot="main"
+     i18n:domain="contentpanels"
+     tal:define="t_contentpanels here/portal_contentpanels; 
+                 path python:utool.getRelativeContentURL(context);
+                 templateinfo python:t_contentpanels.getTemplateInfo(here)">
+
+        <h1><span i18n:translate="heading_template_management">Template management</span>:
+            <span tal:content="object_title" class="documentFirstHeading">
+          Title or id
+            </span>
+        </h1>
+
+        <p class="documentDescription"
+           i18n:translate="contenpanels_is_template"
+           tal:condition="templateinfo">
+             This contentpanels is already set as a site display template.
+        </p>
+
+        <fieldset>
+           <legend i18n:translate="legend_set_to_template">Set this contentpanels as a site display template</legend>
+
+           <form action="contentpanels_add_template"
+                 tal:attributes="action string:$here_url/contentpanels_set_template">
+
+              <p class="formHelp"
+                 i18n:translate="help_set_to_template">
+                 Fill this form to make the layout of this page as a site template, which can be used in folder display view.
+              </p>
+
+             <div class="field">
+                 <label i18n:translate="label_short_name" i18n:domain="plone">id</label>
+                 <br />
+                 <input type="text" name="id" tal:attributes="value templateinfo/id | here/getId"/>
+             </div>
+
+             <div class="field">
+                 <label i18n:translate="label_title" i18n:domain="plone">title</label>
+                 <br />
+                 <input type="text" name="title" tal:attributes="value templateinfo/title | here/Title"/>
+             </div>
+
+             <div class="formControls">
+                 <input type="submit" class="context" 
+                        value="Add" i18n:attributes="value label_set_as_template"/>
+             </div>
+           </form>
+
+        </fieldset>
+
+        <fieldset tal:define="templates t_contentpanels/getTemplates"
+                tal:condition="templates">
+          <legend i18n:translate="legend_available_templates">Available display templates</legend>
+
+            <form action="setConentPanelsTemplate" 
+                  tal:attributes="action string:$here_url/contentpanels_remove_template">
+
+              <p class="formHelp"
+                 i18n:translate="help_available_templates">
+                  All the site contentpanels display templates are listed as following. 
+                  You can remove the selected items.
+              </p>
+
+              <div class="field">
+
+                 <tal:items tal:repeat="template templates">
+                   <input type="checkbox" class="noborder" name="ids:list" value=""
+                          tal:attributes="value template/id;
+                                          id string:cp_template_${template/id};
+                                          checked python:path == template['path']"/>
+
+                   <label tal:content="template/title"
+                          tal:attributes="for string:cp_template_${template/id};
+                                          title template/id"> title </label>
+                   <tal:block tal:define="template_obj python:t_contentpanels.getTemplateById(template['id'])">
+                   <a target="_blank" 
+                      i18n:translate="View"
+                      i18n:domain="plone"
+                      tal:condition="python:template_obj is not None"
+                      tal:attributes="href string:${template_obj/absolute_url}/contentpanels_config_form">View</a>
+                   <img tal:attributes="src string:$portal_url/error_icon.gif"
+                        title="this template is broken"
+                        i18n:attributes="title template_is_broken"
+                        tal:condition="python: template_obj is None" />
+                   </tal:block>
+                   <br />
+                 </tal:items>
+
+              </div>
+
+              <div class="formControls">
+                 <input type="submit" class="destructive"
+                        i18n:attributes="value label_remove"
+                        i18n:domain="plone"
+                        value="Remove"/>
+              </div>
+
+            </form>
+         </fieldset>
+
+</div>
+
+</html>

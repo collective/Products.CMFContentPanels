@@ -1,0 +1,7 @@
+- documentation
+- use TALES to locate the context content:
+
+  - relative path
+  - absolute path
+  - by reference UID
+  - any other TALES which returns a content

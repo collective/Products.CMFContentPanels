@@ -1,0 +1,199 @@
+<metal:page define-macro="master"><metal:doctype define-slot="doctype"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"></metal:doctype>
+<metal:block define-slot="top_slot" />
+<metal:block use-macro="here/global_defines/macros/defines" />
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      tal:attributes="lang language|default;
+                      xml:lang language|default;"
+      i18n:domain="contentpanels"
+      tal:define="cpPath options/cpPath | request/cpPath | here/absolute_url;
+                  here1 python:request.has_key('cpPath') and here or here.isPrincipiaFolderish and here or here.aq_parent;
+                  addPanel request/addPanel | string:edit;
+                  pageIndex request/pageIndex;
+                  columnIndex request/columnIndex;
+                  panelIndex request/panelIndex;
+                  viewletId options/viewletId | request/viewletId | request/panelObjectViewlet | string:default_viewlet;
+                  panelObjectViewlet viewletId;
+                  panelObject nocall:here;
+                  viewletPath python:here.portal_contentpanels.getViewletPath(viewletId);
+                  viewletConfPath string:${viewletPath}_viewletconf;
+                  viewletOptions options/viewletOptions | request/form;
+                  usemacro python:viewletPath and viewletPath.find('/macros/') != -1;
+                  panelSkin options/panelSkin | request/panelSkin | string:defaultPortletWrapper;
+                  paramString string:cpPath=$cpPath&amp;addPanel=$addPanel&amp;pageIndex=$pageIndex&amp;panelIndex=$panelIndex&amp;columnIndex=$columnIndex;
+                  panelObjectPath python:here.portal_url.getRelativeContentURL(here);
+                  baseurl string:${cpPath}/contentpanels_config?addPanel=${addPanel}&amp;pageIndex=$pageIndex&amp;columnIndex=$columnIndex&amp;panelIndex=$panelIndex&amp;panelObjectPath=$panelObjectPath&amp;panelObjectViewlet=;
+                  typeId python: here.getTypeInfo().getId();
+                  viewlets python: here.portal_contentpanels.listFilteredActionsFor(here);
+                  pt_viewlets python:viewlets.get('PT:' + typeId, []);
+                  pt_viewlets python: [viewlet for viewlet in pt_viewlets if (viewlet['id']!='contentpanels_viewlet' or here.absolute_url() != cpPath)];
+                  gl_viewlets python:viewlets.get('GL:content', []) + viewlets.get('GL:all', []);
+                  gl_viewlets python:test(here.isPrincipiaFolderish, viewlets.get('GL:folder', [])+gl_viewlets, gl_viewlets);
+                  gn_portal_viewlets python:viewlets.get('GN:portal', []);
+                  gn_personal_viewlets python:viewlets.get('GN:personal', []); ">
+
+<head tal:condition="not: here/header/macros/html_header | nothing"
+          tal:define="charset site_properties/default_charset|string:utf-8;
+                      language here/Language;
+                      lang language | default_language">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"
+          tal:attributes="content string:text/html;;charset=${charset}" />
+
+    <metal:cache use-macro="here/global_cache_settings/macros/cacheheaders">
+        Get the global cache headers located in global_cache_settings.
+    </metal:cache>
+
+    <base href="" tal:attributes="href here/renderBase" />
+    <tal:head replace="structure here/plone3_htmlhead" />
+</head>
+
+<tal:v25 tal:condition="here/header/macros/html_header | nothing">
+  <head metal:use-macro="here/header/macros/html_header">
+
+    <metal:fillbase fill-slot="base">
+      <metal:baseslot define-slot="base">
+        <base href="" tal:attributes="href here/renderBase" />
+      </metal:baseslot>
+    </metal:fillbase>
+
+    <metal:headslot fill-slot="head_slot"
+                    tal:define="language here/Language;
+                                lang language | default_language;
+                                charset site_properties/default_charset|string:utf-8">
+
+      <metal:cache use-macro="here/global_cache_settings/macros/cacheheaders">
+        Get the global cache headers located in global_cache_settings.
+      </metal:cache>
+
+    </metal:headslot>
+
+  </head>
+</tal:v25>
+
+<body onload="focus();">
+<div class="documentContent" id="content">
+   <h2 i18n:translate="header_panel_configuration">Panel configuration</h2>
+   <p i18n:translate="desc_panel_configuration">You can change the context content, viewlet and other settings of the panel there. You can preview the panel at the bottom of this page.</p>
+   <fieldset class="cpRelatedContent">
+	<legend i18n:translate="viewlet_context">Related Content</legend>
+
+            <!-- breadcrums -->
+               <div class="cpRelatedItem"
+                    tal:define="rpaths python:portal.portal_url.getRelativeContentPath(here);
+                                parents python:[portal.restrictedTraverse('/'.join(rpaths[:i+1])) for i in range(len(rpaths))];
+                                parents python:[portal] + parents">
+                <tal:crums tal:repeat="parent parents">
+                    <img tal:condition="repeat/parent/start"
+                         tal:attributes="src string:${here/portal_url}/logoIcon.gif"/>
+                    <tal:path>
+                        <a tal:attributes="href python:parent.absolute_url() + '/' + template.getId() + '?' + paramString+'&amp;panelSkin='+panelSkin" >
+                            <span tal:content="string: ${parent/pretty_title_or_id}"
+                                  tal:condition="python: parent.absolute_url()!=portal.absolute_url()"/>
+                            <span tal:content="string:Home"
+			          tal:condition="python: parent.absolute_url()==portal.absolute_url()"/>
+                        </a>
+			<span class="breadcrumbSeparator"
+			      tal:condition="not: repeat/parent/end" >&raquo;</span>
+                    </tal:path>
+                </tal:crums>
+            </div>
+
+    <div tal:condition="here/isPrincipiaFolderish"
+         class="discreet">
+
+      <ul>
+      <li class="cpRelatedItem"
+          tal:repeat="item python:here.getFolderContents({'sort_on':None})">
+          <img src="#"  i18n:attributes="title"
+               tal:attributes="src string:${here/portal_url}/${item/getIcon};
+                               title item/Type"
+          /><a tal:attributes="href string:${item/getURL}/${template/getId}?$paramString&amp;panelSkin=$panelSkin"
+             tal:content="item/pretty_title_or_id">Title</a>
+      </li>
+      </ul>
+    </div>
+  </fieldset>
+
+  <fieldset>
+	<legend i18n:translate="label_viewlet">Viewlet</legend>
+         <ul>
+	    <li tal:define="viewlets pt_viewlets" tal:condition="pt_viewlets"><strong i18n:translate="">Content related</strong>
+	       <metal:block metal:use-macro="here/contentpanels_macros/macros/list_viewlets" />
+	    </li>
+	    <li tal:define="viewlets gl_viewlets" tal:condition="gl_viewlets"><strong i18n:translate="">Folder related</strong>
+	       <metal:block metal:use-macro="here/contentpanels_macros/macros/list_viewlets" />
+	    </li>
+	    <li tal:define="viewlets gn_portal_viewlets" tal:condition="gn_portal_viewlets"><strong i18n:translate="">Site wide</strong>
+	       <metal:block metal:use-macro="here/contentpanels_macros/macros/list_viewlets" />
+	    </li>
+	    <li tal:define="viewlets gn_personal_viewlets" tal:condition="gn_personal_viewlets"><strong i18n:translate="">Personal related</strong>
+	       <metal:block metal:use-macro="here/contentpanels_macros/macros/list_viewlets" />
+	    </li>
+	 </ul>
+  </fieldset>
+
+   <form action="" method="post"
+         tal:attributes="action string:${here/absolute_url}/${template/id}">
+
+     <fieldset>
+       <legend i18n:translate="label_viewlet_settings">Viewlet settings</legend>
+
+       <div class="field"
+         tal:condition="python:getattr(site_properties, 'cp_show_skin_selection', True)">
+            <label i18n:translate="label_skin">Skins</label>
+            <select name="panelSkin">
+                <option tal:repeat="skinInfo here/portal_contentpanels/getPanelSkins"
+                        tal:attributes="value python:skinInfo[1];
+                                        selected python:panelSkin==skinInfo[1]"
+                        i18n:translate=""
+                        tal:content="python:skinInfo[0]"></option>
+            </select>
+       </div>
+       <tal:condition condition="python:usemacro and exists(viewletConfPath)">
+           <div metal:use-macro="python:path(viewletConfPath)"/>
+       </tal:condition>
+
+       <tal:condition condition="python: not usemacro and exists(viewletConfPath)">
+           <div tal:replace="structure python:path(viewletConfPath)"/>
+       </tal:condition>
+
+       <div class="formControls">
+           <input type="submit" class="context" value="Preview"
+                  name="buttonPreview"
+                  i18n:attributes="value label_preview"/>
+       </div>
+
+     </fieldset>
+
+     <input type="hidden" name="cpPath" tal:attributes="value cpPath" />
+     <input type="hidden" name="addPanel" tal:attributes="value addPanel" />
+     <input type="hidden" name="pageIndex" tal:attributes="value pageIndex" />
+     <input type="hidden" name="columnIndex" tal:attributes="value columnIndex" />
+     <input type="hidden" name="panelIndex" tal:attributes="value panelIndex" />
+     <input type="hidden" name="panelObjectPath" tal:attributes="value panelObjectPath" />
+     <input type="hidden" name="panelObjectViewlet" tal:attributes="value viewletId" />
+
+     <input type="submit" class="context" value="select this panel" name="buttonSelect"
+            tal:attributes="onclick string:this.form.action='${cpPath}/contentpanels_config'"
+            i18n:attributes="value select_this_panel"/>
+   </form>
+
+   <fieldset tal:define="panel python:{'panelObjectViewlet':panelObjectViewlet,
+                                       'panelObject':here,
+                                       'panelSkin':panelSkin,
+                                       'viewletOptions':viewletOptions,
+                                       'panelObjectPath':panelObjectPath}">
+    <legend i18n:translate="label_preview">Preview</legend>
+
+       <div metal:use-macro="here/base_panel/macros/panel" />
+
+    <div class="visualClear">&nbsp;</div>
+   </fieldset>
+
+</div>
+
+</body>
+</html>
+</metal:page>

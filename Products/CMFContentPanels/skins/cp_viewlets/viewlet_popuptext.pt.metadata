@@ -1,0 +1,20 @@
+[default]
+title=Contentpanels viewlet to display a popup box
+
+[security]
+Access contents information=1:Manager
+Change bindings=1:Manager
+Change cache settings=1:Manager
+Change permissions=1:Manager
+Copy or Move=1:Manager
+Delete objects=1:Manager
+FTP access=1:Manager
+Manage WebDAV Locks=1:Manager
+Manage properties=1:Manager
+Take ownership=1:Manager
+Undo changes=1:Manager
+View=1:Manager
+View management screens=1:Manager
+WebDAV Lock items=1:Manager
+WebDAV Unlock items=1:Manager
+WebDAV access=1:Manager

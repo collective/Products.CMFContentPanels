@@ -1,0 +1,69 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"
+      i18n:domain="plone">
+
+<body>
+
+<metal:block metal:define-macro="cpPages"
+     tal:omit-tag=""
+     tal:define="page_titles here/getPageTitles;">
+   <ul class="cpPages" tal:condition="python: len(page_titles) > 1">
+   <tal:pages repeat="pageTitle page_titles">
+      <li tal:define="selected python: pageIndex == repeat['pageTitle'].index;"
+        tal:attributes="class python:test(selected, 'selected', 'plain')">
+         <a href=""
+           tal:attributes="href string:${request/URL0}?pageIndex=${repeat/pageTitle/index}"
+           i18n:attributes="accesskey">
+                <span tal:replace="pageTitle">dummy</span>
+        </a>
+      </li>
+    </tal:pages>
+    </ul>
+</metal:block>
+
+<div metal:define-macro="viewlet"
+     tal:omit-tag="">
+
+      <table tal:define="pageIndex pageIndex | python:0;
+                         rowspacing python: int(here.getPageInfo(pageIndex, 'pageCellPad'));
+                         colspacing python: int(here.getPageInfo(pageIndex, 'pageCellSpace'));
+                         columns python:here.getPageInfo(pageIndex, 'pageColumns');
+			 page_titles here/getPageTitles;"
+             tal:attributes="width python: here.getPageInfo(pageIndex, 'pageWidth');
+                             align python: here.getPageInfo(pageIndex, 'pageAlign');
+			     class python: 'cp_%s' % page_titles[pageIndex];
+">
+
+        <tr>
+          <td width="#" valign="top"
+              tal:repeat="column columns"
+              tal:attributes="width column/columnWidth;">
+            <tal:block tal:define="panels column/columnPanels;
+                                   isEmptyColumn python: len(column['columnPanels']) == 0;">
+              <tal:panels tal:repeat="panel panels">
+
+                     <div tal:omit-tag="" 
+                          tal:on-error="string:">
+                          <div metal:use-macro="here/base_panel/macros/panel" />
+                     </div>
+
+              </tal:panels>
+
+            </tal:block>
+          </td>
+        </tr>
+      </table>
+
+</div>
+
+<metal:block metal:define-macro="list_viewlets" i18n:domain="contentpanels">
+    <span class="cpViewletItem" tal:repeat="viewlet viewlets">
+      | <a href="#" tal:condition="python:viewlet['id'] != viewletId"
+           i18n:translate="" tal:attributes="href string:${here/absolute_url}/${template/getId}?$paramString&amp;viewletId=${viewlet/id}&amp;panelSkin=$panelSkin"
+           tal:content="viewlet/title">viewlet name</a>
+      <span tal:condition="python:viewlet['id'] == viewletId"
+            tal:content="viewlet/title" for="select_the_viewlet" i18n:translate="">viewlet name</span>
+    </span>
+</metal:block>
+
+</body>
+</html>

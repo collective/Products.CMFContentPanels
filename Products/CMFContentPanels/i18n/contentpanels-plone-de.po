@@ -1,0 +1,31 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: CMFContentPanels 1.6\n"
+"POT-Creation-Date: 2004-03-25 00:32+0000\n"
+"PO-Revision-Date: 2006-06-01 19:50 +0200\n"
+"Last-Translator: Andreas Kaiser <kaiser@xo7.de>\n"
+"Language-Team: GERMAN <info@xo7.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: de\n"
+"Language-Name: Deutsch\n"
+"Preferred-Encodings: latin1 utf-8\n"
+"Domain: plone\n"
+
+msgid "Config"
+msgstr "Konfiguration"
+
+msgid "ContentPanels"
+msgstr "ContentPanels"
+
+msgid "ContentPanels is a portlet content to build composite page."
+msgstr "Mit ContentPanels können Sie zusammengesetze Seiten erstellen."
+
+msgid "contentpanels property changes saved."
+msgstr "Änderungen der Einstellungen gespeichert."
+
+msgid "Layout"
+msgstr "Layout"
+

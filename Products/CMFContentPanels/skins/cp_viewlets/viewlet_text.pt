@@ -1,0 +1,39 @@
+<div metal:define-macro="portlet_viewletconf">
+
+     <div class="field">
+
+         <label i18n:domain="plone" i18n:translate="label_title">title:</label>
+
+         <input name="title" 
+                tal:attributes="value viewletOptions/title | nothing"/>
+
+     </div>
+
+     <div class="field">
+         <label i18n:domain="contentpanels"
+                i18n:translate="label_text">text (HTML):</label>
+         <textarea name="message" rows="6"
+                tal:content="viewletOptions/message | nothing"></textarea>
+     </div>
+
+
+</div>
+
+<dl metal:define-macro="portlet"
+    class="portlet">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span tal:content="viewletOptions/title | nothing">message</span>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem lastItem">
+        <span tal:content="structure viewletOptions/message | nothing">
+         message body</span>
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+    </dd>
+
+</dl>
+

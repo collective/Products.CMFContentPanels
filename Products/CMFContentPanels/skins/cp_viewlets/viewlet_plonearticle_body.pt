@@ -1,0 +1,37 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+
+<body>
+<dl metal:define-macro="portlet"
+    class="portlet">
+     <metal:macro use-macro="here/plonearticle_macros/macros/javascript" />
+     <metal:macro use-macro="here/plonearticle_macros/macros/css" />
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span tal:content="here/title_or_id">title</span>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem plain">
+        <metal:main_macro define-macro="main"
+                          tal:define="base_macros here/plonearticle_macros/macros;
+                                    model_template here/getModel;
+                                    view_macros python:path('here/%s/macros|nothing' % model_template);
+                                    description_macro view_macros/description | base_macros/description;
+                                    body_macro view_macros/body | base_macros/body;
+                                    images_macro view_macros/images | base_macros/images;
+                                    attachments_macro view_macros/attachments | base_macros/attachments;
+                                    links_macro view_macros/links | base_macros/links;">
+                <metal:macro use-macro="description_macro" />
+                <metal:macro use-macro="body_macro" />
+                <metal:macro use-macro="images_macro" />
+                <metal:macro use-macro="attachments_macro" />
+                <metal:macro use-macro="links_macro" />
+        </metal:main_macro>
+   </dd>
+</dl>
+</body>
+</html>
+

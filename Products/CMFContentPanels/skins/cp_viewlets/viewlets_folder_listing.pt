@@ -1,0 +1,54 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+<body>
+
+<div metal:define-macro="base_portlet_viewletconf">
+     <div metal:use-macro="here/content_list_macros/macros/content_list_viewletconf" />
+</div>
+
+<dl metal:define-macro="base_portlet"
+    class="portlet"
+    tal:define="theFolder python:test(here.isPrincipiaFolderish, here, here.aq_parent);
+                folderContents theFolder/getFolderContents;
+                itemCount viewletOptions/itemCount | python:5;
+                itemCount python:int(itemCount);
+                results python:folderContents[:itemCount]"
+    tal:condition="results">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+
+         <a href="#"    
+            tal:attributes="href here/absolute_url"
+            tal:content="here/pretty_title_or_id" >title</a>
+
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <tal:items tal:repeat="item results">
+    <dd class="portletItem odd" 
+        tal:attributes="class python:test(repeat['item'].odd(), 'portletItem even', 'portletItem odd')" >
+        <a href="#"
+           tal:attributes="href string:${item/getURL}">
+           <img src="#" tal:attributes="src string:${here/portal_url}/${item/getIcon}" />
+           <span tal:replace="item/pretty_title_or_id">Title</span>
+        </a>
+    </dd>
+    </tal:items>
+
+    <dd class="portletFooter odd"
+        tal:condition="python:len(folderContents) > itemCount">
+        <a href="#"
+           class="tile"
+           i18n:translate="box_morelink"
+           tal:attributes="href theFolder/absolute_url"
+                   >More...</a>
+    </dd>
+
+</dl>
+
+</body>
+
+</html>
+

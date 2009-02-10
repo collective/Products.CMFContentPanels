@@ -1,0 +1,59 @@
+<span tal:define="portal_url here/portal_url"
+      tal:condition="nothing">
+        <style type="text/css"
+           tal:define="customCSS here/getCustomCSS"
+           tal:condition="customCSS"
+           tal:content="structure string:&lt;!-- $customCSS   --&gt;">
+        </style>
+</span>
+
+<tal:columns tal:define="
+        global utool nocall:here/portal_url;
+        global portal utool/getPortalObject;
+        global portal_object nocall:portal;
+        global portal_url utool;
+        global site_properties portal/portal_properties/site_properties;
+        global mtool nocall:portal/portal_membership;
+        global gtool nocall:portal/portal_groups | nothing;
+        global gdtool nocall:portal/portal_groupdata | nothing;
+        global atool nocall:portal/portal_actions;
+        global putils nocall:portal/plone_utils;
+        global wtool nocall:portal/portal_workflow;
+        global ifacetool nocall:portal/plone_interface | nothing;
+        global member mtool/getAuthenticatedMember;
+        global isAnon mtool/isAnonymousUser;
+        global checkPermission nocall:mtool/checkPermission;
+        global Iterator python:modules['Products.CMFPlone'].IndexIterator;
+        global tabindex python:Iterator(pos=80000);
+        global normalizeString nocall:putils/normalizeString;
+        global contentpanels_in python:here.aq_inner;
+        pc here/getPublishContext;
+        here python:pc[0];
+        template python:pc[1];
+        template_id template/getId | string:;
+        dummy python:request.form.update({'anchor_method':template_id});
+        global context nocall:here;
+        global here_url context/absolute_url;
+      "
+   tal:repeat="column python:contentpanels_in.getPageInfo(0, 'pageColumns')">
+   <tal:block tal:define="panels column/columnPanels">
+      <tal:block repeat="panel panels">
+
+          <div tal:omit-tag="" tal:on-error="string:">
+              <div metal:use-macro="here/base_panel/macros/panel" />
+          </div>
+
+      </tal:block>
+   </tal:block>
+</tal:columns>
+
+<div style="margin-top: -1em; text-align: center"
+     tal:condition="python:here.portal_membership.checkPermission('Modify portal content', here)">
+   <a title="goto this contentpanels"
+      i18n:domain="contentpanels"
+      i18n:attributes="title goto_this_contentpanels"
+      tal:attributes="href string:${here/absolute_url}/contentpanels_config_form" >
+      <img tal:attributes="src string:${here/portal_url}/contentpanels_icon.gif"/>
+   </a>
+</div>
+

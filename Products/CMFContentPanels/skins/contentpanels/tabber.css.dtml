@@ -1,0 +1,34 @@
+/* Form tabs */  .tabberlive .tabbertabhide {   display:none;  }  
+/*--------------------------------------------------    
+.tabber = before the tabber interface is set up    
+.tabberlive = after the tabber interface is set up    
+--------------------------------------------------*/  
+.tabber {  }  .tabberlive {      margin-bottom: 1em;  }  
+/*--------------------------------------------------    
+ul.tabbernav = the tab navigation list    
+li.tabberactive = the active tab    
+--------------------------------------------------*/  
+ul.tabbernav  {   margin:0;   padding: 1px 0;   border-bottom: 1px solid #74ae0b;   text-align: center;  }  
+ul.tabbernav li  {   list-style: none;   margin: 0;   display: inline;  }  
+ul.tabbernav li a  {   padding: 3px 0.5em;   margin-left: 0;   border: 1px solid #74ae0b;   border-style: solid none solid dotted;   text-decoration: 
+none;   color: #5d8811;   position: relative;   top: 1em;   background-color: White;  }  
+ul.tabbernav li a:hover  {   background-color: #cde2a7;   border-color: #74ae0b;  }  
+ul.tabbernav li a:active {   color: #5d8811;  }  ul.tabbernav li.tabberactive a  {   background-color: #cde2a7;   color: #5d8811;  }  
+ul.tabbernav li.tabberactive a:hover  {   background-color: #cde2a7;  }  
+/*--------------------------------------------------    
+.tabbertab = the tab content    
+Add style only after the tabber interface is set up (.tabberlive)    
+--------------------------------------------------*/  
+.tabberlive .tabbertab {   padding: 1em 0.1em 0.1em 0.1em;   border:1px solid #74ae0b;   border-top:0;  
+ /* If you don't want the tab size changing whenever a tab is changed      you can set a fixed height */  
+ /* height:200px; */  
+ /* If you set a fix height set overflow to auto and you will get a      scrollbar when necessary */  
+ /* overflow:auto; */  }  
+/* If desired, hide the heading since a heading is provided by the tab */  
+.tabberlive .tabbertab h2 {   display:none;  }  
+/* End form tabs */  
+#undefinednav1 { border-left: 1px solid #74ae0b;;}  
+#undefinednav2 { border-right: 1px solid #74ae0b;;}  
+* html .tabbertab {height: 1%} /* IE fix */  
+.summaryColumn {      border-right: 1px solid #8cacbb;  }  
+.visualOnlyPrint {display: none;}  

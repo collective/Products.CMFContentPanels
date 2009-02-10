@@ -1,0 +1,455 @@
+# Gettext Message File for ContentPanels.
+# panjunyong <panjy AT zopechina.com>, 2003
+msgid ""
+msgstr ""
+"Project-Id-Version: ContentPanels 1.6\n"
+"POT-Creation-Date: 2004-03-25 01:43+0000\n"
+"PO-Revision-Date: 2003-07-03 16:16+0800\n"
+"Last-Translator: panjunyong <panjy@zopechina.com>\n"
+"Language-Team: ZopeChina.com <panjy@zopechina.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-code: zh\n"
+"Language-name: Chinese\n"
+"Preferred-encodings: utf-8\n"
+"Domain: contentpanels\n"
+"X-Is-Fallback-For: zh-cn zh-hk zh-mo zh-sg\n"
+
+#: ../CMFContentPanels/skins/contentpanels/contentpanels_config_form.pt
+#. <input class="sameline" i18n:attributes="value" name="save" type="submit" value="Save"/>
+msgid "Save"
+msgstr "保存"
+
+
+#: ../CMFContentPanels/skins/contentpanels/contentpanels_config_form.pt
+#. <select i18n:attributes="title label_viewlet" name="panelObjectViewlet" tal:attributes="name string:CPI$columnIndex.panelObjectViewlet:records" tal:define="viewlets python: here.portal_actions.listFilteredActionsFor(panelContent).get('panel_viewlets', []);                                             viewlets python: [viewlet for viewlet in viewlets if (viewlet['id']!='contentpanels_viewlet' or panelContent.absolute_url() != cpPath)];                                             portlets python: here.portal_contentpanels.listFilteredActionsFor(panelContent).get('panel_viewlets',[]);" title="content viewlet" width="6">
+msgid "content viewlet"
+msgstr "内容视图"
+
+
+#: ../CMFContentPanels/skins/contentpanels/contentpanels_edit_form.cpt
+#. <p i18n:domain="contentpanels" i18n:translate="description_edit_contentpanels">
+#. ContentPanels is designed to build a complex view out of a combination of portlets.  Various types of portlets for various types of contents (Document, Image, Folder, Topic, ZWiki Page, etc) can be combined in a single page. Enter the relevant details below, and press 'Save'. You can use the 'config' tab to configure pages/columns/panels
+#. </p>
+msgid "description_edit_contentpanels"
+msgstr "复合面板页面，可组合多个内容的不同视图到一个页面上。在下面输入相关的信息，点击'保存'。"
+
+
+#: ../CMFContentPanels/skins/contentpanels/contentpanels_config_form.pt
+#. <span i18n:translate="label_align">
+#.  Align:
+#. </span>
+msgid "label_align"
+msgstr "排列"
+
+
+#: ../CMFContentPanels/skins/contentpanels/contentpanels_config_form.pt
+#. <span i18n:translate="label_panel_space">
+#.  Padding:
+#. </span>
+msgid "label_panel_space"
+msgstr "面板间距"
+
+#: ../CMFContentPanels/skins/contentpanels/contentpanels_config_form.pt
+#. <span i18n:translate="label_width">
+#.  Width:
+#. </span>
+msgid "label_width"
+msgstr "宽"
+
+
+#: ../CMFContentPanels/skins/contentpanels/contentpanels_edit_form.cpt
+#. <legend i18n:domain="contentpanels" i18n:translate="legend_contentpanels_details">
+#.  ContentPanels Details
+#. </legend>
+msgid "legend_contentpanels_details"
+msgstr "复合面板页面详细属性"
+
+msgid "Select Viewlet:"
+msgstr "选择视图:"
+
+# Box Skin Names
+
+msgid "Default"
+msgstr "默认"
+
+msgid "No Title"
+msgstr "没有标题"
+
+msgid "Default Box"
+msgstr "有框标题"
+
+msgid "ZopeZen"
+msgstr "无框标题"
+
+# viewlet Names
+
+msgid "My recent changes"
+msgstr "我最近的更改"
+
+msgid "My favorites"
+msgstr "我的收藏"
+
+msgid "Calendar"
+msgstr "日历"
+
+msgid "Events"
+msgstr "事件"
+
+msgid "Review list"
+msgstr "评审清单"
+
+msgid "News"
+msgstr "新闻"
+
+msgid "Language"
+msgstr "语言"
+
+msgid "Recent published"
+msgstr "最近发布"
+
+msgid "Nested contentpanels"
+msgstr "嵌套子面板"
+
+msgid "View"
+msgstr "查看"
+
+msgid "Recent changes"
+msgstr "最近更新"
+
+msgid "Folder listing"
+msgstr "内容列表"
+
+msgid "Body"
+msgstr "正文"
+
+msgid "Default viewlet"
+msgstr "默认视图"
+
+msgid "My recent changes"
+msgstr "我最近的更改"
+
+# title
+
+msgid "move left"
+msgstr "左移"
+
+msgid "move right"
+msgstr "右移"
+
+msgid "delete this page"
+msgstr "删除此页"
+
+msgid "new panel"
+msgstr "添加面板"
+
+msgid "new column"
+msgstr "添加列"
+
+msgid "delete column"
+msgstr "删除此列"
+
+msgid "move up"
+msgstr "上移"
+
+msgid "move down"
+msgstr "下移"
+
+msgid "delete this panel"
+msgstr "删除此面板"
+
+msgid "viewlet_context"
+msgstr "关联内容"
+
+msgid "preview_viewlet"
+msgstr "预览"
+
+msgid "select_this_panel"
+msgstr "选择这个面板"
+
+msgid "Title description"
+msgstr "标题描述"
+
+msgid "Image folder"
+msgstr "图片文件夹"
+
+msgid "label_custom_css"
+msgstr "定制CSS"
+
+msgid "help_custom_css"
+msgstr "在这里可为这个复合面板定制CSS. 如果不了解CSS，可保持空。"
+
+msgid "label_page_layout_mode"
+msgstr "页面排版方式"
+
+msgid "help_page_layout_mode"
+msgstr "你可选择'平铺模式'和'标签页模式'. 使用'平铺模式', 所有的页面将以行的形式显示在一个页面中。"
+       "这样适合制作非常复杂的页面。使用'标签页模式', 你可以使用页面右上方的标签链接切换页面."
+
+msgid "page_layout_tile"
+msgstr "平铺"
+
+msgid "page_layout_tab"
+msgstr "标签页"
+
+msgid "label_portlet_pos"
+msgstr "设置到模板左右列"
+
+msgid "help_portlet_pos"
+msgstr "你可以把这个复合面板设置到网站模板的左边或者右边列。"
+
+msgid "portlet_pos_none"
+msgstr "不设置"
+
+msgid "portlet_pos_left"
+msgstr "左列"
+
+msgid "portlet_pos_right"
+msgstr "右列"
+
+msgid "goto_this_contentpanels"
+msgstr "跳转到这个复合面板"
+
+msgid "Document content"
+msgstr "页面正文"
+
+msgid "label_viewlet"
+msgstr "视图"
+
+msgid "label_skin"
+msgstr "皮肤"
+
+msgid "label_preview"
+msgstr "预览"
+
+msgid "label_panel"
+msgstr "面板"
+
+msgid "folder_change_list"
+msgstr "“${name}”的内容更改清单:"
+
+
+################################
+# more viewlets names
+######################################
+
+msgid "Folder changes"
+msgstr "最近更改分页清单"
+
+msgid "Discussion list"
+msgstr "交流讨论"
+
+msgid "Recent comments"
+msgstr "最新评注"
+
+msgid "Topic result list"
+msgstr "查询集结果清单"
+
+msgid "Simple topic result list" 
+msgstr "查询集结果简化清单"
+
+# page title
+msgid "heading_layout_form"
+msgstr "${cpTitle} (第${pageIndex}页)"
+
+msgid "new page"
+msgstr "添加页面"
+
+
+#: ../CMFContentPanels/skins/contentpanels/contentpanels_config_form.pt
+#. <span i18n:translate="label_page_title">
+#.  Title:
+#. </span>
+msgid "label_page_title"
+msgstr "本页标题"
+
+msgid "column_x_width"
+msgstr "第${columnIndex}列宽度"
+
+msgid "legend_page_params"
+msgstr "页面参数"
+
+msgid "Alert"
+msgstr "警告框"
+
+msgid "Dotted"
+msgstr "虚线框"
+
+msgid "Rounded"
+msgstr "园框"
+
+msgid "Content related"
+msgstr "内容相关"
+
+msgid "Folder related"
+msgstr "文件夹相关"
+
+msgid "Site wide"
+msgstr "整个网站的"
+
+msgid "Personal related"
+msgstr "个人相关"
+
+msgid "last_updates_in"
+msgstr "最近更新(${name})"
+
+msgid "folder_change_list"
+msgstr "${name} 下最近内容更改清单"
+
+msgid "Poll"
+msgstr "投票"
+
+msgid "label_viewlet_settings"
+msgstr "视图设置"
+
+msgid "label_list_count"
+msgstr "最大显示数量"
+
+msgid "header_panel_configuration"
+msgstr "面板设置"
+
+msgid "desc_panel_configuration"
+msgstr "在这里，您可以选择面板的关联内容、视图，并设置视图的参数，页面下方为面板的预览效果。"
+
+msgid "label_list_count"
+msgstr "最大显示数量:"
+
+msgid "label_text"
+msgstr "文字(HTML格式):"
+
+msgid "label_rss_url"
+msgstr "RSS链接地址"
+
+msgid "Simple text"
+msgstr "简单文本"
+
+msgid "RSS"
+msgstr "RSS聚合"
+
+msgid "no_post"
+msgstr "还没有任何帖子。"
+
+msgid "label_viewlet_title"
+msgstr "标题(可选)"
+
+msgid "include_subfolder"
+msgstr "查子文件夹"
+
+msgid "link_more_to"
+msgstr "“更多”链接的指向"
+
+msgid "link_folder_view"
+msgstr "文件夹"
+
+msgid "link_search_page"
+msgstr "搜索结果"
+
+msgid "image_news"
+msgstr "图片新闻"
+
+msgid "Image news"
+msgstr "图片新闻"
+
+msgid "label_image_size"
+msgstr "图片大小"
+
+msgid "Local navigation"
+msgstr "本地导航树"
+
+msgid "label_depth"
+msgstr "显示深度"
+
+msgid "label_show_rss"
+msgstr "显示RSS链接"
+
+msgid "ZPT macro"
+msgstr "ZPT宏"
+
+msgid "zpt_macro_path"
+msgstr "模板宏路径"
+
+msgid "Inline frame"
+msgstr "内嵌帧"
+
+msgid "label_height"
+msgstr "高"
+
+msgid "iframe_url"
+msgstr "内嵌帧URL地址"
+
+
+#. Default: "choose a layout template for this view"
+msgid "legend_choose_contentpanels_template"
+msgstr "为这个视图选择一个显示模板"
+
+#. Default: "This view doesn't have a layout template yet. You must select one at first."
+msgid "no_contentpanels_template"
+msgstr "这个视图还没有设置显示模板, 您必须先选择一个."
+
+#. Default: "The follow layout tempaltes are set by the site administrator. Each one is a ContentPanels content. "
+msgid "help_choose_contentpanels_template"
+msgstr "下面的显示模板是由网站系统管理员预先设置的。每个模板是一个“内容面板”。本视图将根据所选条目的布局设置进行显示。"
+
+#. Default: "No templates avaible yet! Please contact site administrator to setup it."
+msgid "no_contenpanels_templates"
+msgstr "无法获得显示模板, “内容面板视图”被禁用，请使用其他视图。"
+
+msgid "rss_copied"
+msgstr "RSS链接地址已复制到剪贴板，您可以直接按下Ctrl+V粘贴到RSS软件的新频道地址中，或者发送给别人。"
+
+msgid "rss_not_copied"
+msgstr "点击确定按钮后, 您可以把弹出窗口中的URL地址拷贝后, 粘贴到RSS软件的新频道地址中，或者发送给别人。"
+
+#. Default: "Please select a content item"
+msgid "heading_select_item"
+msgstr "请选择一个内容条目"
+
+msgid "Top ratings"
+msgstr "评分排名"
+
+msgid "Top hit countings"
+msgstr "点击排名"
+
+msgid "label_row_spacing"
+msgstr "行间距"
+
+msgid "label_col_spacing"
+msgstr "列间距"
+
+msgid "contenpanels_is_template"
+msgstr "这个内容面板已经设置成站点的显示模板了。"
+
+msgid "legend_set_to_template"
+msgstr "设置这个内容面板为站点显示模板"
+
+msgid "label_set_as_template"
+msgstr "设置为模板"
+
+msgid "help_set_to_template"
+msgstr "填写下面的表单，将此内容面板加入到站点的显示模板中。这样在文件夹的“内容面板视图”中就可选择使用这个模板。"
+
+msgid "legend_available_templates"
+msgstr "已有的显示模板"
+
+msgid "help_available_templates"
+msgstr "下面是站点中所有的视图模板，你可删除选中的条目。"
+
+msgid "template_is_broken"
+msgstr "这个模板已经不存在!"
+
+msgid "no_items_yet"
+msgstr "还没有任何内容。"
+
+msgid "label_image_count"
+msgstr "图片显示数量"
+
+msgid "preview_template"
+msgstr "预览"
+
+msgid "template_layout"
+msgstr "布局"
+
+msgid "heading_template_management"
+msgstr "模板管理"

@@ -1,0 +1,39 @@
+# Translation of contentpanels-plone.pot to Portuguese (Brazil)
+# Dorneles Treméa <dorneles@x3ng.com.br>, 2008.
+# Luciano de Fazio <luciano@camaracatanduva.sp.gov.br>, 2004-2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: CMFContentPanels\n"
+"POT-Creation-Date: 2004-10-28 00:32+0000\n"
+"PO-Revision-Date: 2008-03-02 01:54-0300\n"
+"Last-Translator: Dorneles Treméa <dorneles@x3ng.com.br>\n"
+"Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: pt-br\n"
+"Language-Name: Português do Brasil\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone\n"
+
+msgid "Config"
+msgstr "Configurar"
+
+msgid "ContentPanels view"
+msgstr "Visão de um painel <br /> de conteúdo"
+
+msgid "ContentPanels"
+msgstr "Painel de Conteúdo"
+
+msgid "ContentPanels is a portlet content to build composite page."
+msgstr "ContentPanels é um portlet para construir páginas compostas."
+
+msgid "Layout"
+msgstr "Layout"
+
+msgid "Templates"
+msgstr "Templates"
+
+msgid "contentpanels property changes saved."
+msgstr "Alterações nas propriedades do ContentPanels salvas."

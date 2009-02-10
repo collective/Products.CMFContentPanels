@@ -1,0 +1,43 @@
+
+<div metal:define-macro="viewlet_viewletconf"
+     i18n:domain="contentpanels">
+
+  <div class="field">
+
+    <label i18n:translate="label_width">Width</label>
+    <input name="width" size="6"
+           tal:attributes="value viewletOptions/width | string:450"/>
+
+  </div>
+
+  <div class="field">
+
+      <label i18n:translate="label_height">Height</label>
+      <input name="height" size="6"
+             tal:attributes="value viewletOptions/height | string:150"/>
+
+  </div>
+
+  <div class="field">
+
+     <label i18n:translate="iframe_url">Inline frame URL</label>
+     <br />
+     <input type="text" name="iframe_url"  size="50"
+            tal:attributes="value viewletOptions/iframe_url | string:"/>
+
+  </div>
+
+</div>
+
+<tal:block metal:define-macro="viewlet"
+           tal:condition="viewletOptions/iframe_url | nothing">
+
+  <iframe src="../ciss_220/mysamples/helloworld.html" height="150" width="450"
+          tal:attributes="height viewletOptions/height | string:150;
+                          width viewletOptions/width | string:450;
+                          src viewletOptions/iframe_url;">
+  Sorry, you can't see this example.  Your browser does not support including external HTML files as objects.
+  </iframe>
+
+</tal:block>
+

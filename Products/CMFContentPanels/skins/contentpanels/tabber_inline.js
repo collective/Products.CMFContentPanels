@@ -1,0 +1,2 @@
+var tabberOptions = {manualStartup:true};
+/* \x3C is the hexcode for 'less than' (&lt;)\x3E is the hexcode for 'greater than' (&gt;)it's needed for proper XHTML validation */ document.write('\x3Cstyle type="text/css"\x3E.tabber{display:none;}\x3C/style\x3E');

@@ -1,0 +1,75 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="contentpanels">
+
+  <metal:block fill-slot="css_slot">
+        <style type="text/css"
+               tal:define="customCSS here/getCustomCSS"
+               tal:condition="customCSS"
+               tal:content="structure string:&lt;!-- $customCSS --&gt;">
+        </style>
+  </metal:block>
+
+<body>
+
+<div metal:fill-slot="main"
+     tal:define="page request/pageIndex | python:'0';
+                 pageIndex python:int(page)" >
+
+    <tal:nothing condition="nothing">
+    <div metal:use-macro="here/document_actions/macros/document_actions">
+         Document actions (print, sendto etc)
+    </div>
+    </tal:nothing>
+
+    <h1 tal:define="title here/Title"
+        tal:content="title" 
+        tal:condition="title"
+        class="documentFirstHeading">
+        Title or id
+    </h1>
+
+    <div class="documentDescription"
+         tal:define="description here/Description"
+         tal:condition="description"
+         tal:content="description">
+       description
+    </div>
+
+    <div class="visualClear"><!-- --></div>
+
+  <metal:body define-macro="body">
+    <tal:block tal:condition="python: here.getPageLayoutMode() == 'tab'">
+       <div class="tabber">
+           <tal:tabs tal:repeat="page_title here/getPageTitles">
+           <div class="tabbertab"
+                tal:define="pageIndex repeat/page_title/index">
+                <h2 tal:content="page_title">Tab</h2>
+                <tal:block metal:use-macro="here/contentpanels_macros/macros/viewlet" />
+
+           </div>
+           </tal:tabs>
+       </div>
+
+       <div class="visualNoPrint">
+            <div class="visualClear">&nbsp;</div>
+            <script type="text/javascript">
+                    tabberAutomatic(tabberOptions);
+            </script>
+       </div>
+
+    </tal:block>
+
+    <tal:block tal:condition="python: here.getPageLayoutMode() == 'tile'">
+       <tal:block tal:repeat="pageIndex python:range(len(here.getPageTitles()))">
+          <tal:block metal:use-macro="here/contentpanels_macros/macros/viewlet" />
+       </tal:block>
+    </tal:block>
+  </metal:body>
+
+</div>
+
+</body>
+
+</html>

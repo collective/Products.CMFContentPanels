@@ -1,0 +1,102 @@
+var IWPopUpBox = {}
+/******************************************
+* Popup Box- By Jim Silver @ jimsilver47@yahoo.com
+* Visit http://www.dynamicdrive.com/ for full source code
+* This notice must stay intact for use
+******************************************/
+
+
+
+IWPopUpBox.ns4=document.layers
+IWPopUpBox.ie4=document.all
+IWPopUpBox.ns6=document.getElementById&&!document.all
+
+//drag drop function for NS 4////
+/////////////////////////////////
+
+IWPopUpBox.dragswitch = 0
+IWPopUpBox.nsx = 0
+IWPopUpBox.nsy = 0
+IWPopUpBox.nstemp = 0
+
+IWPopUpBox.drag_dropns = function(name) {
+	if (!IWPopUpBox.ns4)
+		return
+	IWPopUpBox.temp=eval(name)
+	IWPopUpBox.temp.captureEvents(Event.MOUSEDOWN | Event.MOUSEUP)
+	IWPopUpBox.temp.onmousedown=IWPopUpBox.gons
+	IWPopUpBox.temp.onmousemove=IWPopUpBox.dragns
+	IWPopUpBox.temp.onmouseup=IWPopUpBox.stopns
+}
+
+IWPopUpBox.gons = function(e){
+	if (!e) var e = window.event; // IE compatibility
+	IWPopUpBox.temp.captureEvents(Event.MOUSEMOVE)
+	IWPopUpBox.nsx=e.x
+	IWPopUpBox.nsy=e.y
+	}
+IWPopUpBox.dragns = function(e){
+	if (!e) var e = window.event; // IE compatibility
+	if (IWPopUpBox.dragswitch==1){
+		temp.moveBy(e.x - IWPopUpBox.nsx,e.y - IWPopUpBox.nsy)
+		return false
+	}
+}
+
+IWPopUpBox.stopns =function() {
+temp.releaseEvents(Event.MOUSEMOVE)
+}
+
+//drag drop function for ie4+ and NS6////
+/////////////////////////////////
+
+
+IWPopUpBox.drag_drop = function(e){
+	if (!e) var e = window.event; // IE compatibility
+	if (IWPopUpBox.ie4&&IWPopUpBox.dragapproved){
+		crossobj.style.left=tempx+event.clientX-offsetx
+		crossobj.style.top=tempy+event.clientY-offsety
+		return false
+	}
+	else if (IWPopUpBox.ns6&&IWPopUpBox.dragapproved){
+		crossobj.style.left=tempx+e.clientX-offsetx+"px"
+		crossobj.style.top=tempy+e.clientY-offsety+"px"
+		return false
+	}
+}
+
+IWPopUpBox.initializedrag = function(e){
+	if (!e) var e = window.event; // IE compatibility
+	crossobj=IWPopUpBox.ns6? document.getElementById("IWPopUpBox-showimage") : document.all.showimage
+	var firedobj=IWPopUpBox.ns6? e.target : event.srcElement
+	var topelement=IWPopUpBox.ns6? "html" : document.compatMode && document.compatMode!="BackCompat"? "documentElement" : "body"
+	while (firedobj.tagName!=topelement.toUpperCase() && firedobj.id!="IWPopUpBox-dragbar"){
+		firedobj=IWPopUpBox.ns6? firedobj.parentNode : firedobj.parentElement
+	}
+
+	if (firedobj.id=="IWPopUpBox-dragbar"){
+		offsetx=IWPopUpBox.ie4? event.clientX : e.clientX
+		offsety=IWPopUpBox.ie4? event.clientY : e.clientY
+
+		tempx=parseInt(crossobj.style.left)
+		tempy=parseInt(crossobj.style.top)
+
+		IWPopUpBox.dragapproved=true
+		document.onmousemove=IWPopUpBox.drag_drop
+	}
+}
+
+document.onmouseup=new Function("IWPopUpBox.dragapproved=false")
+
+////drag drop functions end here//////
+
+IWPopUpBox.hidebox = function(){
+	crossobj=IWPopUpBox.ns6? document.getElementById("IWPopUpBox-showimage") : document.all.showimage
+	if (IWPopUpBox.ie4||IWPopUpBox.ns6)
+		crossobj.style.visibility="hidden"
+	else if (IWPopUpBox.ns4)
+		document.showimage.visibility="hide"
+}
+
+//registerPloneFunction(IWPopUpBox.hidebox)
+//registerPloneFunction(IWPopUpBox.initializedrag)

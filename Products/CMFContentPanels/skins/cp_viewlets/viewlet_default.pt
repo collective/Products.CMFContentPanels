@@ -1,0 +1,31 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+<body>
+
+<dl metal:define-macro="portlet"
+    class="portlet">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+
+        <img src="" tal:attributes="src python:here.getIcon()"/>&nbsp;
+        <a href="#"    
+           tal:attributes="href here/absolute_url"
+           tal:content="here/title_or_id" >title</a>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem lastItem">
+       <span tal:content="structure here/Description">description
+       </span>
+
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+    </dd>
+
+</dl>
+
+</body>
+</html>
+

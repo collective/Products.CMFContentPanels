@@ -1,0 +1,30 @@
+
+I found a way to fix the problem, but I needed to modify ZWiki a little in order to do it because of an issue with the way it uses aq_parent. Here's what I did, in case you are interested:
+
+I modified the renderText() method in the AbstractPageType class in ZWiki/pagetypes/common.py
+I changed:
+        p = p.__of__(page.aq_parent)
+to:
+        wiki_base = kw.get('WIKI_BASE', page.aq_parent)
+        p = p.__of__(wiki_base)
+
+in CMFContentPanels/skins/contentpanels/viewlets/viewlet_zwikipage_body.pt
+instead of:
+        python:here.render(here,request)
+do:
+        python:here.renderText(here.text(), here.pageType(), WIKI_BASE=here.getWikiBase())
+
+I also added a script called getWikiBase to the root of my Plone site:
+        wiki_base = context.aq_parent
+
+        if context.meta_type == 'ZWiki Page':
+          while context.wiki_url() != wiki_base.absolute_url():
+            wiki_base = wiki_base.aq_parent
+
+        return wiki_base
+
+I hope you find this useful..
+
+Cheers,
+Edwin
+

@@ -1,0 +1,21 @@
+AUTHOR
+
+  Pan Junyong, (id: panjunyong), panjy at zopechina dot com, www.zopechina.com
+
+CONTRIBUTORS:
+
+  - Jean-Charles ROGEZ, jean-charles.rogez@edf.fr, http://etudes-w3.edfgdf.fr
+    * Contributed version 1.8.4
+
+  - Enzo Cesanelli, enzo@noiza.com
+    * Italian translation
+
+  - Christophe ZERR, christophe.zerr@interieur.gouv.fr
+    * French translation
+
+  - Luciano de Fazio, <luciano@camaracatanduva.sp.gov.br
+    * Initial Brazilian translation
+
+  - Dorneles Tremea, dorneles@x3ng.com.br
+    * Fixed bugs and updated the Brazilian translation
+

@@ -1,0 +1,7 @@
+#IWPopUpBox-showimage {
+position:absolute;
+width:350px;
+left:250px;
+top:250px
+}
+

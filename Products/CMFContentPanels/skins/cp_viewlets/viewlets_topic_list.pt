@@ -1,0 +1,105 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+
+<body>
+
+<div metal:define-macro="base_portlet_viewletconf">
+     <div metal:use-macro="here/content_list_macros/macros/content_list_viewletconf" />
+     <div metal:use-macro="here/content_list_macros/macros/show_rss_field"/>
+</div>
+
+<div metal:define-macro="title_only_viewletconf">
+     <div metal:use-macro="here/content_list_macros/macros/content_list_viewletconf" />
+</div>
+
+<dl metal:define-macro="base_portlet"
+    class="portlet"
+    tal:define="itemCount python:int(viewletOptions.get('itemCount', 5) );
+                results python:here.queryCatalog()[:itemCount];">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <a href="http://plone.org/news/newslisting/RSS"
+           class="viewlet-rss-link"
+           tal:condition="viewletOptions/showRSS | python: 1"
+           tal:attributes="href string:$here_url/RSS">
+           <img alt="RSS" title="RSS subscription feed for news items"
+                tal:attributes="src string:$portal_url/rss.gif"/>
+        </a>
+
+        <a href="#"    
+           tal:attributes="href here/absolute_url"
+           tal:content="here/pretty_title_or_id" > Topic title</a>
+
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <tal:items tal:repeat="obj results">
+    <dd class="portletItem"
+        tal:attributes="class python:test(repeat['obj'].odd(),
+                                         'portletItem even',
+                                         'portletItem odd')">
+        <a class="tile"
+           tal:attributes="href string:${obj/getURL}/view">
+           <img src="#"
+               tal:attributes="src string:$portal_url/${obj/getIcon}" />
+           <tal:title tal:content="obj/pretty_title_or_id">title</tal:title>
+           <span class="portletItemDetails"
+                 tal:define="modificationDate obj/ModificationDate;
+                             creator obj/Creator;
+                             author python:mtool.getMemberInfo(creator);
+                             authorName python:author and author['fullname'] or creator;
+                             modificationDate python:here.toLocalizedTime(modificationDate)"
+                 tal:content="string:(${authorName}) $modificationDate">
+                      creator   08/19/2001 03:01 AM
+           </span>
+        </a>
+    </dd>
+    </tal:items>
+
+    <dd class="portletItem"
+        i18n:domain="contentpanels"
+        tal:condition="not: results"
+        i18n:translate="no_items_yet">
+          No items yet.
+    </dd>
+
+    <dd class="portletFooter even">
+        <a href="#"
+           class="title"
+           i18n:translate="box_morelink"
+           tal:attributes="href string:${here/absolute_url}/search"
+           >More...</a>
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+    </dd>
+</dl>
+
+<div metal:define-macro="inline_description">
+    <metal:block use-macro="here/viewlets_topic_list/macros/base_portlet">
+        <metal:block metal:fill-slot="body">
+            <metal:block metal:use-macro="here/content_list_macros/macros/inline_description"/>
+        </metal:block>
+    </metal:block>
+</div>
+
+<div metal:define-macro="separate_line_description">
+    <metal:block use-macro="here/viewlets_topic_list/macros/base_portlet">
+        <metal:block metal:fill-slot="body">
+            <metal:block metal:use-macro="here/content_list_macros/macros/separate_line_description"/>
+        </metal:block>
+    </metal:block>
+</div>
+
+<div metal:define-macro="title_only">
+    <metal:block use-macro="here/viewlets_topic_list/macros/base_portlet">
+        <metal:block metal:fill-slot="body">
+            <metal:block metal:use-macro="here/content_list_macros/macros/title_only"/>
+        </metal:block>
+    </metal:block>
+</div>
+
+</body>
+
+</html>
