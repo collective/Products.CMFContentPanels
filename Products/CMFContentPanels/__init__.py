@@ -9,16 +9,22 @@ from Products.CMFCore.DirectoryView import registerDirectory
 
 from ContentPanelsTool import registerViewlets
 from ContentPanelsTool import ContentPanelsTool
-from config import VIEWLETS, SKINS_DIR, GLOBALS
+from config import SKINS_DIR, GLOBALS,VIEWLETS
 from config import PROJECTNAME, ADD_CONTENT_PERMISSION
 
 registerViewlets(VIEWLETS)
-registerDirectory(SKINS_DIR, GLOBALS)
-
 from Products.PythonScripts.Utility import allow_module
+
 allow_module("feedparser")
 allow_module('Products.CMFContentPanels.browser.subnavtree')
-
+# Check for Plone versions
+try:
+    from Products.CMFPlone.migrations import v3_0
+except ImportError:
+    HAS_PLONE30 = False
+else:
+    HAS_PLONE30 = True
+    
 def initialize(context):
 
     import ContentPanels

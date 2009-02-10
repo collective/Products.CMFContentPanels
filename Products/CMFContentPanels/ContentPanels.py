@@ -13,6 +13,7 @@
 
 """Implement the content panels content type."""
 import pprint
+from zope.interface import implements
 from copy import deepcopy
 from AccessControl import ClassSecurityInfo
 from Acquisition import aq_base, aq_parent, aq_inner
@@ -38,6 +39,7 @@ except ImportError:
     from Products.Archetypes.public import ReadOnlyStorage
     from Products.Archetypes.public import TextAreaWidget, SelectionWidget
 
+from Products.CMFContentPanels.interfaces import IContentPanels
 from config import VOC_PAGE_LAYOUT, VOC_PORTLET_POS, PROJECTNAME
 
 ContentPanelsSchema = BaseSchema.copy() + Schema((
@@ -115,7 +117,7 @@ class ContentPanels(BaseContent):
     schema = ContentPanelsSchema
 
     __implements__ = (getattr(BaseContent,'__implements__',()),)
-
+    implements(IContentPanels)
     security = ClassSecurityInfo()
     archetype_name            = 'ContentPanels'
     meta_type                 = 'CMF Content Panels'

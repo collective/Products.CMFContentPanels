@@ -1,7 +1,11 @@
-- documentation
-- use TALES to locate the context content:
+TODO
+----
 
-  - relative path
-  - absolute path
-  - by reference UID
-  - any other TALES which returns a content
+- Modify the way Viewlets are registered (eventually change the name from 
+viewlets to something else as Z3 brings us the Viewlet miracle)
+
+- Edition should be done in a easier way
+
+- Support for working copy support and versioning
+
+- A tableless version

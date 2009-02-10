@@ -1,0 +1,13 @@
+    <configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="Products.CMFContentPanels">
+
+  <genericsetup:registerProfile
+      name="default"
+      title="Products.CMFContentPanels"
+      directory="profiles/default"
+      description="Extension profile"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+</configure>

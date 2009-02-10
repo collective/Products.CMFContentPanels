@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<action-icons>
+ <action-icon category="plone" action_id="contentpanels"
+              title="Change display template for this view"
+              priority="0"
+              icon_expr="contentpanels_icon.gif"/>
+</action-icons>

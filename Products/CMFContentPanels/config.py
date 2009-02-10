@@ -114,6 +114,10 @@ VIEWLETS = [
       'string:here/viewlet_popoll/macros/portlet',
       '', 'View', 'PT:PlonePopoll', 1),
 
+      ('headline_viewlet', 'Editable Headline',
+       'string:here/viewlet_headline/macros/portlet',
+       '', 'View', 'PT:News item', 1),
+
     # GL: global viewlets
 
     ('macro_viewlet', 'ZPT macro',

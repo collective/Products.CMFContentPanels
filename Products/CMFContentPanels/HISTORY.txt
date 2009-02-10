@@ -1,3 +1,13 @@
+v2.6a
+  - Eggfication 
+  [erico_andrei]
+  
+  - Added a Generic Setup Profile
+  [erico_andrei]
+  
+  - Added Editable Headline viewlet
+  [erico_andrei]
+  
 V2.5
   
   - Added PoPoll viewlet.

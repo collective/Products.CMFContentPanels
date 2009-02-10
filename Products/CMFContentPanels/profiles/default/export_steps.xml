@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<export-steps>
+ <export-step id="contentpanel_actions" version="200902061525"
+              handler="Products.CMFContentTypes.exportimport.exportimport.exportActionProviders"
+              title="CMFContentPanels Action Provider">
+    Export Content Panels tool's action provider and its actions.
+ </export-step>
+</export-steps>

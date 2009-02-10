@@ -1,3 +1,4 @@
+from zope.interface import implements
 from Globals import InitializeClass, DTMLFile
 from AccessControl import ClassSecurityInfo
 from OFS.SimpleItem import SimpleItem
@@ -15,6 +16,8 @@ from Products.CMFCore.Expression import Expression
 
 from Products.CMFPlone.migrations.migration_util import safeEditProperty
 
+from Products.CMFContentPanels.interfaces import IContentPanelsTool
+
 viewlet_registery = []
 def registerViewlets(actions):
     for action in actions:
@@ -28,7 +31,8 @@ class ContentPanelsTool( UniqueObject, SimpleItem, PropertyManager, ActionsTool 
 
     action_providers = ('portal_contentpanels',)
     security = ClassSecurityInfo()
-
+    implements(IContentPanelsTool)
+    
     manage_options = (ActionProviderBase.manage_options +
                 #     ({ 'label' : 'Overview', 'action' : 'manage_overview' }
                 #     , 

@@ -1,0 +1,55 @@
+<div metal:define-macro="portlet_viewletconf">
+
+     <div class="field">
+
+         <label i18n:domain="plone" i18n:translate="label_title">title:</label>
+
+         <input name="title" 
+                tal:attributes="value viewletOptions/title | here/title_or_id| nothing"/>
+
+     </div>
+
+     <div class="field">
+         <label i18n:domain="contentpanels"
+                i18n:translate="label_text">Description:</label>
+         <textarea name="description" rows="6"
+                tal:content="viewletOptions/description | here/Description | nothing"></textarea>
+     </div>
+     <div class="field">
+          <label i18n:translate="label_size" i18n:domain="plone">size</label>
+          <select name="image_size"
+                  tal:define="image_size viewletOptions/image_size | string:;
+                              sizes python:{'':'original',
+                                            'image_large':'large',
+                                            'image_preview':'preview',
+                                            'image_mini':'mini',
+                                            'image_thumb':'thumb',}">
+               <option value=""
+                       tal:repeat="v python:['','image_large','image_preview','image_mini','image_thumb']"
+                       tal:content="python:sizes[v]"
+                       tal:attributes="value v;
+                                       selected python:v==image_size">original</option>
+          </select>
+     </div>
+
+</div>
+
+<dl metal:define-macro="portlet"
+    class="portlet">
+    
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span tal:content="viewletOptions/title | nothing">message</span>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem lastItem" tal:define="image_size viewletOptions/image_size| nothing">
+        <img tal:condition="python:here.getImage() and image_size" tal:attributes="src string:${here/absolute_url}/$image_size;
+                             alt here/Title"/>
+        <span tal:content="viewletOptions/description | nothing">
+         message body</span>
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+    </dd>
+
+</dl>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<object name="portal_skins" meta_type="Plone Skins Tool">
+ <object name="contentpanels"
+         meta_type="Filesystem Directory View"
+         directory="CMFContentPanels/skins/contentpanels"/>
+ <object name="cp_viewlets"
+         meta_type="Filesystem Directory View"
+         directory="CMFContentPanels/skins/cp_viewlets"/>
+ <skin-path name="*">
+  <layer insert-after="custom" name="contentpanels"/>
+  <layer insert-after="custom" name="cp_viewlets"/>
+ </skin-path>
+</object>
