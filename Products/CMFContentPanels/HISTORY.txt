@@ -1,13 +1,16 @@
-v2.6a
+v2.6a1
   - Eggfication 
-  [erico_andrei]
+    [erico_andrei]
   
   - Added a Generic Setup Profile
-  [erico_andrei]
+    [erico_andrei]
   
   - Added Editable Headline viewlet
-  [erico_andrei]
+    [erico_andrei]
   
+  - Updated the Brazilian Portuguese translation files.
+    [erico_andrei]
+    
 V2.5
   
   - Added PoPoll viewlet.

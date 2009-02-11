@@ -2,7 +2,7 @@ TODO
 ----
 
 - Modify the way Viewlets are registered (eventually change the name from 
-viewlets to something else as Z3 brings us the Viewlet miracle)
+viewlets to something else as Z3 brings us the Viewlets miracle :-D )
 
 - Edition should be done in a easier way
 
