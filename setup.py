@@ -24,6 +24,7 @@ setup(name='Products.CMFContentPanels',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-,
+          'feedparser',
       ],
       entry_points="""
       # -*- Entry points: -*-
