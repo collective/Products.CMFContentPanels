@@ -11,6 +11,7 @@ from ContentPanelsTool import registerViewlets
 from ContentPanelsTool import ContentPanelsTool
 from config import SKINS_DIR, GLOBALS,VIEWLETS
 from config import PROJECTNAME, ADD_CONTENT_PERMISSION
+from config import MessageFactory
 
 registerViewlets(VIEWLETS)
 from Products.PythonScripts.Utility import allow_module

@@ -18,6 +18,7 @@ from copy import deepcopy
 from AccessControl import ClassSecurityInfo
 from Acquisition import aq_base, aq_parent, aq_inner
 from Products.CMFCore import permissions
+from Products.CMFContentPanels import MessageFactory as _
 
 try:
     from Products.CMFPlone.migrations import v3_0
@@ -69,15 +70,13 @@ ContentPanelsSchema = BaseSchema.copy() + Schema((
         default='tile',
         vocabulary=VOC_PAGE_LAYOUT,
         widget=SelectionWidget(
-            label='Page layout mode',
-            label_msgid='label_page_layout_mode',
-            description=("You can choose 'tile mode' or 'tab mode'. With"
-                         "'tile mode', all pages are shown directly as rows. "
-                         "It is useful for you to make very complex composite "
-                         "page. With 'tab mode', you can switch pages using "
-                         "the top-right tab links."),
-            description_msgid="help_page_layout_mode",
-            i18n_domain='contentpanels',
+            label=_(u'label_page_layout_mode', u'Page layout mode'), #            label_msgid='label_page_layout_mode',
+            description=_(u"help_page_layout_mode", u"You can choose 'tile mode' or 'tab mode'. With"
+                         u"'tile mode', all pages are shown directly as rows. "
+                         u"It is useful for you to make very complex composite "
+                         u"page. With 'tab mode', you can switch pages using "
+                         u"the top-right tab links."),  #           description_msgid="help_page_layout_mode",
+            
         ),
     ),
 
@@ -87,11 +86,9 @@ ContentPanelsSchema = BaseSchema.copy() + Schema((
         edit_accessor='getPortletsPos',
         storage=ReadOnlyStorage(),
         widget=SelectionWidget(
-            label='Set to left/right column',
-            label_msgid='label_portlet_pos',
-            description=("You can set this contentpanels as the left or "
-                         "right column of the template."),
-            description_msgid="help_portlet_pos",
+            label=_(u"label_portlet_pos", u'Set to left/right column'), #         label_msgid=u'label_portlet_pos',
+            description=_(u"help_portlet_pos", u"You can set this contentpanels as the left or "
+                               u"right column of the template."), #           description_msgid="help_portlet_pos",
             i18n_domain='contentpanels',
         ),
     ),
@@ -99,11 +96,9 @@ ContentPanelsSchema = BaseSchema.copy() + Schema((
     StringField(
         name='customCSS',
         widget=TextAreaWidget(
-            label='Custom CSS',
-            label_msgid='label_custom_css',
-            description=("You can define custom CSS for this contentpanels "
-                         "here. Leave it blank if you don't know about CSS."),
-            description_msgid='help_custom_css',
+            label=_(u"label_custom_css", u'Custom CSS'), #             label_msgid='label_custom_css',
+            description=_(u"help_custom_css", u"You can define custom CSS for this contentpanels "
+                               u"here. Leave it blank if you don't know about CSS."), #            description_msgid='help_custom_css',
             i18n_domain='contentpanels',
         ),
     ),

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-02-08 17:03+0000\n"
+"POT-Creation-Date: 2009-10-20 20:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12,515 +12,514 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: fr\n"
-"Language-Name: Français\n"
-"Preferred-Encodings: latin1 utf-8\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
 "Domain: contentpanels\n"
 
-#: ./skins/contentpanels/contentpanels_templates_form.pt
-#. <input class="context" i18n:attributes="value label_set_as_template" type="submit" value="Add"/>
-msgid "label_set_as_template"
+#: ./config.py:108
+msgid "Article content"
 msgstr ""
 
+#: ./config.py:180
+msgid "Calendar"
+msgstr ""
 
-#: ./skins/contentpanels/contentpanels_config_form.pt
-#. <input i18n:attributes="title" name="columnInfos.columnWidth:records" size="4" tal:attributes="value column/columnWidth" title="Column Width" type="text" value=""/>
+#. Default: "Column Width"
+#: ./skins/contentpanels/contentpanels_config_form.pt:119
 msgid "Column Width"
 msgstr ""
 
-
-#: ./skins/cp_viewlets/portlet_mychanges.pt
-#. <h5 i18n:translate="My recent changes">
-#.  My recent changes
-#. </h5>
-msgid "My recent changes"
-msgstr "My recent changes"
-
-
-#: ./skins/contentpanels/cp_new_panel_form.pt
-#. <input class="context" i18n:attributes="value label_preview" name="buttonPreview" type="submit" value="Preview"/>
-msgid "Preview"
+#. Default: "Content related"
+#: ./skins/contentpanels/cp_new_panel_form.pt:122
+msgid "Content related"
 msgstr ""
 
+#: ./config.py:154
+msgid "Discussion list"
+msgstr ""
 
-#: ./skins/cp_viewlets/viewlets_folder_recent.pt
-#. <a i18n:domain="contentpanels" i18n:translate="Recent comments" tal:attributes="href string:$here_url/search?path=folderPath&amp;sort_on=Date&amp;sort_order=reverse&amp;portal_type=Discussion+Item;">
-#.  Recent comments
-#. </a>
+#: ./config.py:84
+msgid "Document content"
+msgstr ""
+
+#: ./config.py:120
+msgid "Editable Headline"
+msgstr ""
+
+#: ./config.py:146
+msgid "Folder changes"
+msgstr ""
+
+#: ./config.py:134
+msgid "Folder listing"
+msgstr ""
+
+#. Default: "Folder related"
+#: ./skins/contentpanels/cp_new_panel_form.pt:125
+msgid "Folder related"
+msgstr ""
+
+#: ./config.py:150
+msgid "Image folder"
+msgstr ""
+
+#: ./config.py:158
+msgid "Image news"
+msgstr ""
+
+#: ./config.py:192
+msgid "Inline frame"
+msgstr ""
+
+#: ./config.py:162
+msgid "Local navigation"
+msgstr ""
+
+#: ./config.py:208
+msgid "Login"
+msgstr ""
+
+#: ./config.py:172
+msgid "My favorites"
+msgstr ""
+
+#. Default: "My recent changes"
+#: ./skins/cp_viewlets/portlet_mychanges.pt:17
+msgid "My recent changes"
+msgstr ""
+
+#: ./config.py:200
+msgid "Navigation"
+msgstr ""
+
+#: ./config.py:96
+msgid "Nested contentpanels"
+msgstr ""
+
+#. Default: "Personal related"
+#: ./skins/contentpanels/cp_new_panel_form.pt:131
+msgid "Personal related"
+msgstr ""
+
+#: ./config.py:116
+msgid "Plone Popoll"
+msgstr ""
+
+#. Default: "string:here/viewlet_mpoll/macros/portlet"
+#: ./config.py:112
+msgid "Poll"
+msgstr ""
+
+#: ./config.py:188
+msgid "RSS"
+msgstr ""
+
+#: ./config.py:138
+msgid "Recent changes"
+msgstr ""
+
+#. Default: "Recent comments"
+#: ./skins/cp_viewlets/viewlets_folder_recent.pt:149
 msgid "Recent comments"
-msgstr "Recent comments"
+msgstr ""
 
+#: ./config.py:204
+msgid "Related"
+msgstr ""
 
-#: ./skins/contentpanels/contentpanels_config_form.pt
-#. <input class="context" i18n:attributes="value" name="save" type="submit" value="Save"/>
+#: ./config.py:176
+msgid "Review list"
+msgstr ""
+
+#. Default: "Save"
+#: ./skins/contentpanels/contentpanels_config_form.pt:91
 msgid "Save"
 msgstr ""
 
+#: ./config.py:184
+msgid "Simple text"
+msgstr ""
 
-#: ./skins/contentpanels/contentpanels_config_form.pt
-#. <span i18n:translate="column_x_width">
-#.  Column width
-#.                      #
-#.  ${columnIndex}
-#. </span>
+#. Default: "Site wide"
+#: ./skins/contentpanels/cp_new_panel_form.pt:128
+msgid "Site wide"
+msgstr ""
+
+#: ./config.py:130
+msgid "Title description"
+msgstr ""
+
+#: ./config.py:222
+msgid "Top hit countings"
+msgstr ""
+
+#: ./config.py:218
+msgid "Top ratings"
+msgstr ""
+
+#: ./config.py:88
+msgid "Topic result list"
+msgstr ""
+
+#: ./config.py:126
+msgid "ZPT macro"
+msgstr ""
+
+#. Default: "Column width #${columnIndex}"
+#: ./skins/contentpanels/contentpanels_config_form.pt:117
 msgid "column_x_width"
-msgstr "Column width # ${columnIndex}"
+msgstr ""
 
-
-#: ./skins/contentpanels/contentpanels_templates_form.pt
-#. <p class="documentDescription" i18n:translate="contenpanels_is_template" tal:condition="templateinfo">
-#.              This contentpanels is already set as a site display template.
-#. </p>
+#. Default: "This contentpanels is already set as a site display template."
+#: ./skins/contentpanels/contentpanels_templates_form.pt:16
 msgid "contenpanels_is_template"
-msgstr "This contentpanels is already set as a site display template."
+msgstr ""
 
-
-#: ./skins/contentpanels/contentpanels_config_form.pt
-#. <img alt="delete column" i18n:attributes="title" tal:attributes="src string:$portal_url/delete.gif" title="delete column"/>
+#. Default: "delete column"
+#: ./skins/contentpanels/contentpanels_config_form.pt:146
 msgid "delete column"
 msgstr ""
 
-
-#: ./skins/contentpanels/contentpanels_config_form.pt
-#. <img alt="delete this page" i18n:attributes="title" tal:attributes="src string:$portal_url/delete.gif;" title="delete this page"/>
+#. Default: "delete this page"
+#: ./skins/contentpanels/contentpanels_config_form.pt:56
 msgid "delete this page"
 msgstr ""
 
-
-#: ./skins/contentpanels/contentpanels_config_form.pt
-#. <img alt="delete this panel" i18n:attributes="title" tal:attributes="src string:$portal_url/delete.gif" title="delete this panel"/>
+#. Default: "delete this panel"
+#: ./skins/contentpanels/contentpanels_config_form.pt:201
 msgid "delete this panel"
 msgstr ""
 
-
-#: ./skins/contentpanels/cp_new_panel_form.pt
-#. <p i18n:translate="desc_panel_configuration">
-#.  You can change the context content, viewlet and other settings of the panel there. You can preview the panel at the bottom of this page.
-#. </p>
+#. Default: "You can change the context content, viewlet and other settings of the panel there. You can preview the panel at the bottom of this page."
+#: ./skins/contentpanels/cp_new_panel_form.pt:78
 msgid "desc_panel_configuration"
-msgstr "You can change the context content, viewlet and other settings of the panel there. You can preview the panel at the bottom of this page."
-
-
-#: ./skins/cp_viewlets/viewlet_full_changes.pt
-#. <span i18n:domain="contentpanels" i18n:translate="folder_change_list" tal:omit-tag="">
-#.   Content change list in
-#.  ${name}
-#. </span>
-msgid "folder_change_list"
-msgstr "Content change list in ${name}"
-
-
-#: ./skins/contentpanels/contentpanels_body.pt
-#. <a i18n:attributes="title goto_this_contentpanels" i18n:domain="contentpanels" tal:attributes="href string:${here/absolute_url}/contentpanels_config_form" title="goto this conentpanels">
-msgid "goto this contentpanels"
 msgstr ""
 
+#: ./config.py:104
+msgid "dynamic page"
+msgstr ""
 
-#: ./skins/contentpanels/cp_new_panel_form.pt
-#. <h2 i18n:translate="header_panel_configuration">
-#.  Panel configuration
-#. </h2>
+#. Default: "goto this contentpanels"
+#: ./skins/contentpanels/contentpanels_body.pt:52
+msgid "goto_this_contentpanels"
+msgstr ""
+
+#. Default: "Panel configuration"
+#: ./skins/contentpanels/cp_new_panel_form.pt:77
 msgid "header_panel_configuration"
-msgstr "Panel configuration"
+msgstr ""
 
-
-#: ./skins/contentpanels/contentpanels_config_form.pt
-#. <h2 i18n:translate="heading_layout_form">
-#.  ${cpTitle}
-#.          (Page
-#.  ${pageIndex}
-#.  )
-#. </h2>
+#. Default: "${cpTitle} (Page ${pageIndex})"
+#: ./skins/contentpanels/contentpanels_config_form.pt:64
 msgid "heading_layout_form"
-msgstr "${cpTitle} (Page ${pageIndex} )"
+msgstr ""
 
-
-#: ./skins/contentpanels/nav_browser_popup.pt
-#. <h2 i18n:domain="contentpanels" i18n:translate="heading_select_item">
-#.  Please select a content item
-#. </h2>
+#. Default: "Please select a content item"
+#: ./skins/contentpanels/nav_browser_popup.pt:64
 msgid "heading_select_item"
-msgstr "Please select a content item"
+msgstr ""
 
-
-#: ./skins/contentpanels/contentpanels_templates_form.pt
-#. <span i18n:translate="heading_template_management">
-#.  Template management
-#. </span>
+#. Default: "Template management"
+#: ./skins/contentpanels/contentpanels_templates_form.pt:10
 msgid "heading_template_management"
-msgstr "Template management"
+msgstr ""
 
-
-#: ./skins/contentpanels/contentpanels_templates_form.pt
-#. <p class="formHelp" i18n:translate="help_available_templates">
-#.                   All the site contentpanels display templates are listed as following.
-#.                   You can remove the selected items.
-#. </p>
+#. Default: "All the site contentpanels display templates are listed as following. You can remove the selected items."
+#: ./skins/contentpanels/contentpanels_templates_form.pt:60
 msgid "help_available_templates"
-msgstr "All the site contentpanels display templates are listed as following. You can remove the selected items."
+msgstr ""
 
-
-#: ./skins/contentpanels/contentpanels_display_view.pt
-#. <p class="formHelp" i18n:translate="help_choose_contentpanels_template">
-#.                   The following layout tempaltes are set by the site administrator.
-#.                   Each one is a ContentPanels content.
-#. </p>
+#. Default: "The following layout tempaltes are set by the site administrator. Each one is a ContentPanels content."
+#: ./skins/contentpanels/contentpanels_display_view.pt:65
 msgid "help_choose_contentpanels_template"
-msgstr "The following layout tempaltes are set by the site administrator. Each one is a ContentPanels content."
+msgstr ""
 
+#. Default: "You can define custom CSS for this contentpanels here. Leave it blank if you don't know about CSS."
+#: ./ContentPanels.py:100
+msgid "help_custom_css"
+msgstr ""
 
-#: ./skins/contentpanels/contentpanels_templates_form.pt
-#. <p class="formHelp" i18n:translate="help_set_to_template">
-#.                  Fill this form to make the layout of this page as a site template, which can be used in folder display view.
-#. </p>
+#. Default: "You can choose 'tile mode' or 'tab mode'. With'tile mode', all pages are shown directly as rows. It is useful for you to make very complex composite page. With 'tab mode', you can switch pages using the top-right tab links."
+#: ./ContentPanels.py:74
+msgid "help_page_layout_mode"
+msgstr ""
+
+#. Default: "You can set this contentpanels as the left or right column of the template."
+#: ./ContentPanels.py:90
+msgid "help_portlet_pos"
+msgstr ""
+
+#. Default: "Fill this form to make the layout of this page as a site template, which can be used in folder display view."
+#: ./skins/contentpanels/contentpanels_templates_form.pt:28
 msgid "help_set_to_template"
-msgstr "Fill this form to make the layout of this page as a site template, which can be used in folder display view."
+msgstr ""
 
-
-#: ./skins/cp_viewlets/viewlet_iframe.pt
-#. <label i18n:translate="iframe_url">
-#.  Inline frame URL
-#. </label>
+#. Default: "Inline frame URL"
+#: ./skins/cp_viewlets/viewlet_iframe.pt:23
 msgid "iframe_url"
-msgstr "Inline frame URL"
+msgstr ""
 
+#: ./config.py:92
+msgid "image"
+msgstr ""
 
-#: ./skins/cp_viewlets/viewlet_news.pt
-#. <span i18n:translate="image_news">
-#.   image news
-#. </span>
+#. Default: "image news"
+#: ./skins/cp_viewlets/viewlet_news.pt:93
 msgid "image_news"
-msgstr "image news"
+msgstr ""
 
-
-#: ./skins/cp_viewlets/content_list_macros.pt
-#. <label for="path_depth" i18n:domain="contentpanels" i18n:translate="include_subfolder">
-#.  search sub-folder
-#. </label>
+#. Default: "search sub-folder"
+#: ./skins/cp_viewlets/content_list_macros.pt:73
 msgid "include_subfolder"
-msgstr "search sub-folder"
+msgstr ""
 
-
-#: ./skins/contentpanels/contentpanels_config_form.pt
-#. <span i18n:translate="label_col_spacing">
-#.  Column spacing:
-#. </span>
+#. Default: "Column spacing:"
+#: ./skins/contentpanels/contentpanels_config_form.pt:86
 msgid "label_col_spacing"
-msgstr "Column spacing:"
+msgstr ""
 
+#. Default: "Custom CSS"
+#: ./ContentPanels.py:99
+msgid "label_custom_css"
+msgstr ""
 
-#: ./skins/cp_viewlets/viewlet_subportal_nav.pt
-#. <label i18n:domain="contentpanels" i18n:translate="label_depth">
-#.  depth
-#. </label>
+#. Default: "depth"
+#: ./skins/cp_viewlets/viewlet_subportal_nav.pt:9
 msgid "label_depth"
-msgstr "depth"
+msgstr ""
 
-
-#: ./skins/cp_viewlets/viewlet_iframe.pt
-#. <label i18n:translate="label_height">
-#.  Height
-#. </label>
+#. Default: "Height"
+#: ./skins/cp_viewlets/viewlet_iframe.pt:15
 msgid "label_height"
-msgstr "Height"
+msgstr ""
 
-
-#: ./skins/cp_viewlets/viewlet_news.pt
-#. <label i18n:domain="contentpanels" i18n:translate="label_image_count">
-#.   images count
-#. </label>
+#. Default: "images count"
+#: ./skins/cp_viewlets/viewlet_news.pt:55
 msgid "label_image_count"
-msgstr "images count"
+msgstr ""
 
-
-#: ./skins/cp_viewlets/viewlet_news.pt
-#. <label i18n:domain="contentpanels" i18n:translate="label_image_size">
-#.   image size
-#. </label>
+#. Default: "image size"
+#: ./skins/cp_viewlets/viewlet_news.pt:62
 msgid "label_image_size"
-msgstr "image size"
+msgstr ""
 
-
-#: ./skins/cp_viewlets/content_list_macros.pt
-#. <label i18n:domain="contentpanels" i18n:translate="label_list_count">
-#.  max number to list:
-#. </label>
+#. Default: "max number to list:"
+#: ./skins/cp_viewlets/content_list_macros.pt:16
 msgid "label_list_count"
-msgstr "max number to list:"
+msgstr ""
 
+#. Default: "Page layout mode"
+#: ./ContentPanels.py:73
+msgid "label_page_layout_mode"
+msgstr ""
 
-#: ./skins/contentpanels/contentpanels_config_form.pt
-#. <span i18n:translate="label_page_title">
-#.  Page Title:
-#. </span>
+#. Default: "Page Title:"
+#: ./skins/contentpanels/contentpanels_config_form.pt:75
 msgid "label_page_title"
-msgstr "Page Title:"
+msgstr ""
 
+#. Default: "Set to left/right column"
+#: ./ContentPanels.py:89
+msgid "label_portlet_pos"
+msgstr ""
 
-#: ./skins/contentpanels/cp_new_panel_form.pt
-#. <legend i18n:translate="label_preview">
-#.  Preview
-#. </legend>
+#. Default: "Preview"
+#: ./skins/contentpanels/cp_new_panel_form.pt:163
 msgid "label_preview"
-msgstr "Preview"
+msgstr ""
 
-
-#: ./skins/contentpanels/contentpanels_config_form.pt
-#. <span i18n:translate="label_row_spacing">
-#.  Row spacing:
-#. </span>
+#. Default: "Row spacing:"
+#: ./skins/contentpanels/contentpanels_config_form.pt:82
 msgid "label_row_spacing"
-msgstr "Row spacing:"
+msgstr ""
 
-
-#: ./skins/cp_viewlets/viewlet_rss.pt
-#. <label i18n:domain="contentpanels" i18n:translate="label_rss_url">
-#.  RSS URL:
-#. </label>
+#. Default: "RSS URL:"
+#: ./skins/cp_viewlets/viewlet_rss.pt:11
 msgid "label_rss_url"
-msgstr "RSS URL:"
+msgstr ""
 
+#. Default: "Add"
+#: ./skins/contentpanels/contentpanels_templates_form.pt:46
+msgid "label_set_as_template"
+msgstr ""
 
-#: ./skins/cp_viewlets/content_list_macros.pt
-#. <label for="show_rss" i18n:domain="contentpanels" i18n:translate="label_show_rss">
-#.  show rss link
-#. </label>
+#. Default: "show rss link"
+#: ./skins/cp_viewlets/content_list_macros.pt:88
 msgid "label_show_rss"
-msgstr "show rss link"
+msgstr ""
 
-
-#: ./skins/contentpanels/cp_new_panel_form.pt
-#. <label i18n:translate="label_skin">
-#.  Skins
-#. </label>
+#. Default: "Skins"
+#: ./skins/contentpanels/cp_new_panel_form.pt:145
 msgid "label_skin"
-msgstr "Skins"
+msgstr ""
 
-
-#: ./skins/cp_viewlets/viewlet_text.pt
-#. <label i18n:domain="contentpanels" i18n:translate="label_text">
-#.  text (HTML):
-#. </label>
+#. Default: "Description:"
+#: ./skins/cp_viewlets/viewlet_headline.pt:13
 msgid "label_text"
-msgstr "text (HTML):"
+msgstr ""
 
-
-#: ./skins/contentpanels/cp_new_panel_form.pt
-#. <legend i18n:translate="label_viewlet">
-#.  Viewlet
-#. </legend>
+#. Default: "Viewlet"
+#: ./skins/contentpanels/cp_new_panel_form.pt:120
 msgid "label_viewlet"
-msgstr "Viewlet"
+msgstr ""
 
-
-#: ./skins/contentpanels/cp_new_panel_form.pt
-#. <legend i18n:translate="label_viewlet_settings">
-#.  Viewlet settings
-#. </legend>
+#. Default: "Viewlet settings"
+#: ./skins/contentpanels/cp_new_panel_form.pt:141
 msgid "label_viewlet_settings"
-msgstr "Viewlet settings"
+msgstr ""
 
-
-#: ./skins/cp_viewlets/content_list_macros.pt
-#. <label i18n:domain="contentpanels" i18n:translate="label_viewlet_title">
-#.  title (optional):
-#. </label>
+#. Default: "title (optional):"
+#: ./skins/cp_viewlets/content_list_macros.pt:9
 msgid "label_viewlet_title"
-msgstr "title (optional):"
+msgstr ""
 
-
-#: ./skins/cp_viewlets/viewlet_iframe.pt
-#. <label i18n:translate="label_width">
-#.  Width
-#. </label>
+#. Default: "Width"
+#: ./skins/cp_viewlets/viewlet_iframe.pt:7
 msgid "label_width"
-msgstr "Width"
+msgstr ""
 
-
-#: ./skins/cp_viewlets/viewlets_folder_recent.pt
-#. <span i18n:domain="contentpanels" i18n:translate="last_updates_in">
-#.  latest updates in
-#.  ${name}
-#. </span>
-msgid "last_updates_in"
-msgstr "latest updates in ${name}"
-
-
-#: ./skins/contentpanels/contentpanels_templates_form.pt
-#. <legend i18n:translate="legend_available_templates">
-#.  Available display templates
-#. </legend>
+#. Default: "Available display templates"
+#: ./skins/contentpanels/contentpanels_templates_form.pt:55
 msgid "legend_available_templates"
-msgstr "Available display templates"
+msgstr ""
 
-
-#: ./skins/contentpanels/contentpanels_display_view.pt
-#. <legend i18n:translate="legend_choose_contentpanels_template">
-#.  choose a layout template for this view
-#. </legend>
+#. Default: "choose a layout template for this view"
+#: ./skins/contentpanels/contentpanels_display_view.pt:61
 msgid "legend_choose_contentpanels_template"
-msgstr "choose a layout template for this view"
+msgstr ""
 
-
-#: ./skins/contentpanels/contentpanels_config_form.pt
-#. <legend i18n:translate="legend_page_params">
-#.  Page parameters
-#. </legend>
+#. Default: "Page parameters"
+#: ./skins/contentpanels/contentpanels_config_form.pt:71
 msgid "legend_page_params"
-msgstr "Page parameters"
+msgstr ""
 
-
-#: ./skins/contentpanels/contentpanels_templates_form.pt
-#. <legend i18n:translate="legend_set_to_template">
-#.  Set this contentpanels as a site display template
-#. </legend>
+#. Default: "Set this contentpanels as a site display template"
+#: ./skins/contentpanels/contentpanels_templates_form.pt:23
 msgid "legend_set_to_template"
-msgstr "Set this contentpanels as a site display template"
+msgstr ""
 
-
-#: ./skins/cp_viewlets/viewlets_folder_recent.pt
-#. <label for="more_href_folder_contents" i18n:translate="link_folder_view">
-#.  folder default view
-#. </label>
+#. Default: "folder default view"
+#: ./skins/cp_viewlets/viewlets_folder_recent.pt:19
 msgid "link_folder_view"
-msgstr "folder default view"
+msgstr ""
 
-
-#: ./skins/cp_viewlets/viewlets_folder_recent.pt
-#. <label i18n:translate="link_more_to">
-#.  link more to
-#. </label>
+#. Default: "link more to"
+#: ./skins/cp_viewlets/viewlets_folder_recent.pt:14
 msgid "link_more_to"
-msgstr "link more to"
+msgstr ""
 
-
-#: ./skins/cp_viewlets/viewlets_folder_recent.pt
-#. <label for="more_href_search" i18n:domain="contentpanels" i18n:translate="link_search_page">
-#.  search page
-#. </label>
+#. Default: "search page"
+#: ./skins/cp_viewlets/viewlets_folder_recent.pt:24
 msgid "link_search_page"
-msgstr "search page"
+msgstr ""
 
-
-#: ./skins/contentpanels/contentpanels_config_form.pt
-#. <img alt="move down" i18n:attributes="title" tal:attributes="src string:$portal_url/down.gif" title="move down"/>
+#. Default: "move down"
+#: ./skins/contentpanels/contentpanels_config_form.pt:178
 msgid "move down"
 msgstr ""
 
-
-#: ./skins/contentpanels/contentpanels_config_form.pt
-#. <img alt="move left" i18n:attributes="title" tal:attributes="src string:$portal_url/left.gif;" title="move left"/>
-#. <img alt="move left" i18n:attributes="title" tal:attributes="src string:$portal_url/left.gif" title="move left"/>
+#. Default: "move left"
+#: ./skins/contentpanels/contentpanels_config_form.pt:44
 msgid "move left"
 msgstr ""
 
-
-#: ./skins/contentpanels/contentpanels_config_form.pt
-#. <img alt="move right" i18n:attributes="title" tal:attributes="src string:$portal_url/right.gif;" title="move right"/>
-#. <img alt="move right" i18n:attributes="title" tal:attributes="src string:$portal_url/right.gif" title="move right"/>
+#. Default: "move right"
+#: ./skins/contentpanels/contentpanels_config_form.pt:50
 msgid "move right"
 msgstr ""
 
-
-#: ./skins/contentpanels/contentpanels_config_form.pt
-#. <img alt="move up" i18n:attributes="title" tal:attributes="src string:$portal_url/up.gif" title="move up"/>
+#. Default: "move up"
+#: ./skins/contentpanels/contentpanels_config_form.pt:173
 msgid "move up"
 msgstr ""
 
-
-#: ./skins/contentpanels/contentpanels_config_form.pt
-#. <img alt="new column" i18n:attributes="title" tal:attributes="src string:$portal_url/newCol.gif" title="new column"/>
+#. Default: "new column"
+#: ./skins/contentpanels/contentpanels_config_form.pt:142
 msgid "new column"
 msgstr ""
 
-
-#: ./skins/contentpanels/contentpanels_config_form.pt
-#. <img alt="new page" i18n:attributes="title" tal:attributes="src string:$portal_url/newPage.gif" title="new page"/>
+#. Default: "new page"
+#: ./skins/contentpanels/contentpanels_config_form.pt:38
 msgid "new page"
 msgstr ""
 
-
-#: ./skins/contentpanels/contentpanels_config_form.pt
-#. <img alt="new panel" i18n:attributes="title" tal:attributes="src string:$portal_url/newPanel.gif" title="new panel"/>
+#. Default: "new panel"
+#: ./skins/contentpanels/contentpanels_config_form.pt:128
 msgid "new panel"
 msgstr ""
 
-
-#: ./skins/contentpanels/contentpanels_display_view.pt
-#. <p class="portalMessage" i18n:translate="no_contenpanels_templates" tal:condition="not: t_contentpanels/getTemplates">
-#.              No templates avaible yet! Please contact site administrator to setup it.
-#. </p>
+#. Default: "No templates avaible yet! Please contact site administrator to setup it."
+#: ./skins/contentpanels/contentpanels_display_view.pt:107
 msgid "no_contenpanels_templates"
-msgstr "No templates avaible yet! Please contact site administrator to setup it."
+msgstr ""
 
-
-#: ./skins/contentpanels/contentpanels_display_view.pt
-#. <p i18n:translate="no_contentpanels_template" tal:condition="python:contentpanels is None">
-#.   This view doesn't have a layout template yet. You must select one at first.
-#. </p>
+#. Default: "This view doesn't have a layout template yet. You must select one at first."
+#: ./skins/contentpanels/contentpanels_display_view.pt:28
 msgid "no_contentpanels_template"
-msgstr "This view doesn't have a layout template yet. You must select one at first."
+msgstr ""
 
-
-#: ./skins/cp_viewlets/viewlet_ratings.pt
-#. <dd class="portletItem" i18n:domain="contentpanels" i18n:translate="no_items_yet" tal:condition="not: results">
-#.           No items yet.
-#. </dd>
+#. Default: "No items yet."
+#: ./skins/cp_viewlets/viewlets_topic_list.pt:61
 msgid "no_items_yet"
-msgstr "No items yet."
+msgstr ""
 
-
-#: ./skins/cp_viewlets/viewlet_news.pt
-#. <p i18n:domain="contentpanels" i18n:translate="no_post" tal:condition="not: results">
-#.         No post.
-#. </p>
-#. <dd class="portletItem" i18n:domain="contentpanels" i18n:translate="no_post" tal:condition="not: results">
-#.           No post.
-#. </dd>
+#. Default: "No post."
+#: ./skins/cp_viewlets/viewlet_news.pt:45
 msgid "no_post"
-msgstr "No post."
+msgstr ""
 
+#: ./config.py:46
+msgid "none"
+msgstr ""
 
-#: ./skins/contentpanels/contentpanels_display_view.pt
-#. <a i18n:translate="preview_template" tal:attributes="href string:$here_url/$template_id?contentpanels_template_id=${cp_template/id}" target="_blank">
-#.  Preview
-#. </a>
+#. Default: "Preview"
+#: ./skins/contentpanels/contentpanels_display_view.pt:84
 msgid "preview_template"
-msgstr "Preview"
-
-
-#: ./skins/contentpanels/cp_new_panel_form.pt
-#. <input class="context" i18n:attributes="value select_this_panel" name="buttonSelect" tal:attributes="onclick string:this.form.action='${cpPath}/contentpanels_config'" type="submit" value="select this panel"/>
-msgid "select this panel"
 msgstr ""
 
+#: ./config.py:100
+msgid "recent messages"
+msgstr ""
 
-#: ./skins/contentpanels/contentpanels_display_view.pt
-#. <a i18n:translate="template_layout" tal:attributes="href string:${template_obj/absolute_url}/contentpanels_config_form" target="_blank">
-#.  Layout
-#. </a>
+#. Default: "select this panel"
+#: ./skins/contentpanels/cp_new_panel_form.pt:178
+msgid "select_this_panel"
+msgstr ""
+
+#: ./config.py:47
+msgid "set to left"
+msgstr ""
+
+#: ./config.py:48
+msgid "set to right"
+msgstr ""
+
+#: ./config.py:42
+msgid "tab mode"
+msgstr ""
+
+#. Default: "this template is broken"
+#: ./skins/contentpanels/contentpanels_templates_form.pt:83
+msgid "template_is_broken"
+msgstr ""
+
+#. Default: "Layout"
+#: ./skins/contentpanels/contentpanels_display_view.pt:88
 msgid "template_layout"
-msgstr "Layout"
-
-
-#: ./skins/contentpanels/contentpanels_templates_form.pt
-#. <img i18n:attributes="title template_is_broken" tal:attributes="src string:$portal_url/error_icon.gif" tal:condition="python: template_obj is None" title="this template is broken"/>
-msgid "this template is broken"
 msgstr ""
 
+#: ./config.py:41
+msgid "tile mode"
+msgstr ""
 
-#: ./skins/contentpanels/cp_new_panel_form.pt
-#. <legend i18n:translate="viewlet_context">
-#.  Related Content
-#. </legend>
+#. Default: "Related Content"
+#: ./skins/contentpanels/cp_new_panel_form.pt:80
 msgid "viewlet_context"
-msgstr "Related Content"
+msgstr ""
 
-
-#: ./skins/cp_viewlets/viewlet_macro_path.pt
-#. <label i18n:translate="zpt_macro_path">
-#.  Zope Page template macro path
-#. </label>
+#. Default: "Zope Page template macro path"
+#: ./skins/cp_viewlets/viewlet_macro_path.pt:7
 msgid "zpt_macro_path"
-msgstr "Zope Page template macro path"
+msgstr ""
 
