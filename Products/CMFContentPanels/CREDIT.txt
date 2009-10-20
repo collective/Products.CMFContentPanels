@@ -19,3 +19,6 @@ CONTRIBUTORS:
   - Dorneles Tremea, dorneles@x3ng.com.br
     * Fixed bugs and updated the Brazilian translation
 
+  - Luciano Pacheco, lucmult@gmail.com
+    * Improve translation structure and updated Brazilian translation
+

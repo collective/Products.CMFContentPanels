@@ -1,3 +1,10 @@
+v2.6a2 
+  - Improve translation structure
+    [lucmult]
+
+  - Updated Brazilian translation
+    [lucmult]
+
 v2.6a1
   - Eggfication 
     [erico_andrei]
