@@ -327,12 +327,14 @@ class ContentPanels(BaseContent):
         return panelObject
 
     security.declareProtected( permissions.ModifyPortalContent, 'addPage' )
-    def addPage(self, pageTitle='Untitled page', pageIndex=-1):
+    def addPage(self, pageTitle=None, pageIndex=-1):
         """
         add a new page at pageIndex, it has two columns as default.
         if pageIndex is -1 then add at the end of the contentpanels
         return the new page index (from 0)
         """
+        if pageTitle is None:
+            pageTitle = _(u'Untitled page')
         if pageIndex == -1:
             pageIndex = len(self.panelsConfig)
         self.panelsConfig.insert(pageIndex, {'pageColumns': [],

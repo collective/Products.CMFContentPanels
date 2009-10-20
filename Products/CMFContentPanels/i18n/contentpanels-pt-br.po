@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ContentPanels-1.7.2\n"
-"POT-Creation-Date: 2009-10-20 20:55+0000\n"
+"POT-Creation-Date: 2009-10-20 21:35+0000\n"
 "PO-Revision-Date: 2008-03-02 00:50-0300\n"
 "Last-Translator: Luciano Pacheco <lucmult@gmail.com>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
@@ -172,6 +172,10 @@ msgstr "Melhores avaliados"
 #: ./config.py:88
 msgid "Topic result list"
 msgstr "Resultado de uma coleção"
+
+#: ./ContentPanels.py:337
+msgid "Untitled page"
+msgstr "Página sem título"
 
 #: ./config.py:126
 msgid "ZPT macro"
