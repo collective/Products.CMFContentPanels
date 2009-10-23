@@ -110,7 +110,7 @@ VIEWLETS = [
      '', 'View', 'PT:PloneArticle', 1),
 
     ('mpoll_viewlet', _(u'Poll'),
-     'string:here/viewlet_mpoll/macros/portlet'),
+     'string:here/viewlet_mpoll/macros/portlet',
      '', 'View', 'PT:MPoll', 1),
 
      ('popoll_viewlet', _(u'Plone Popoll'),
