@@ -1,0 +1,7 @@
+Changelog
+=========
+
+2.6a2 (2009-12-12)
+------------------
+
+* Fixes panelet error [erico_andrei]
