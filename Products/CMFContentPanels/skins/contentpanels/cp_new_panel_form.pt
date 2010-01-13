@@ -105,12 +105,12 @@
 
       <ul>
       <li class="cpRelatedItem"
-          tal:repeat="item python:here.getFolderContents({'sort_on':None})">
+          tal:repeat="item python:here.getFolderContents({'sort_on':'Date','sort_order':'reverse'})">
           <img src="#"  i18n:attributes="title"
                tal:attributes="src string:${here/portal_url}/${item/getIcon};
                                title item/Type"
           /><a tal:attributes="href string:${item/getURL}/${template/getId}?$paramString&amp;panelSkin=$panelSkin"
-             tal:content="item/pretty_title_or_id">Title</a>
+             tal:content="item/pretty_title_or_id">Title</a><br />
       </li>
       </ul>
     </div>
