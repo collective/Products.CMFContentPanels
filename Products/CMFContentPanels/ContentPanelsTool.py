@@ -13,8 +13,11 @@ from Products.CMFCore.ActionInformation import ActionInformation
 from Products.CMFCore.ActionsTool import ActionsTool
 from Products.CMFCore.ActionProviderBase import ActionProviderBase
 from Products.CMFCore.Expression import Expression
-
-from Products.CMFPlone.migrations.migration_util import safeEditProperty
+try:
+    from Products.CMFPlone.migrations.migration_util import safeEditProperty
+except ImportError:
+    # Plone 4
+    from plone.app.upgrade.utils import safeEditProperty
 
 from Products.CMFContentPanels.interfaces import IContentPanelsTool
 
