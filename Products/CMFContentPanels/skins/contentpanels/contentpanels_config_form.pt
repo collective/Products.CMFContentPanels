@@ -152,7 +152,7 @@ columns
 
               <div class="cpPanel" tal:repeat="panel panels">
 
-              <table width="100%" border="1" 
+              <table width="100%" border="0" 
                      tal:define="panelIndex repeat/panel/index;
                                  lastPanel python:repeat['panel'].index-1;
                                  nextPanel python:repeat['panel'].index+1;"
