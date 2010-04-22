@@ -23,20 +23,19 @@
 <div metal:define-macro="viewlet"
      tal:omit-tag="">
 
-      <table tal:define="pageIndex pageIndex | python:0;
+      <div tal:define="pageIndex pageIndex | python:0;
                          rowspacing python: int(here.getPageInfo(pageIndex, 'pageCellPad'));
                          colspacing python: int(here.getPageInfo(pageIndex, 'pageCellSpace'));
                          columns python:here.getPageInfo(pageIndex, 'pageColumns');
 			 page_titles here/getPageTitles;"
              tal:attributes="width python: here.getPageInfo(pageIndex, 'pageWidth');
-                             align python: here.getPageInfo(pageIndex, 'pageAlign');
-			     class python: 'cp_%s' % page_titles[pageIndex];
+                            class python: 'cp_%s' % page_titles[pageIndex];
 ">
+<div tal:repeat="column columns">
 
-        <tr>
-          <td width="#" valign="top"
-              tal:repeat="column columns"
-              tal:attributes="width column/columnWidth;">
+           <div class="cpttableless"
+              tal:define="largura column/columnWidth;"
+              tal:attributes="style python:'width:' + largura">
             <tal:block tal:define="panels column/columnPanels;
                                    isEmptyColumn python: len(column['columnPanels']) == 0;">
               <tal:panels tal:repeat="panel panels">
@@ -49,10 +48,10 @@
               </tal:panels>
 
             </tal:block>
-          </td>
-        </tr>
-      </table>
-
+          </div>
+         </div>
+      </div>
+<div class="visualClear"></div>
 </div>
 
 <metal:block metal:define-macro="list_viewlets" i18n:domain="contentpanels">
