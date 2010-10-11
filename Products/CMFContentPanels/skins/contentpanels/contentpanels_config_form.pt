@@ -19,7 +19,8 @@
 
 <div metal:fill-slot="main"
      tal:define="page request/pageIndex | python:'0';
-                 global pageIndex python:int(page);" >
+                 global pageIndex python:int(page);
+				 here_url context/@@plone_context_state/object_url;" >
 
     <tal:condition tal:condition="python: here.getPageLayoutMode() != 'tile'">
      <metal:block metal:use-macro="here/contentpanels_macros/macros/cpPages"/>

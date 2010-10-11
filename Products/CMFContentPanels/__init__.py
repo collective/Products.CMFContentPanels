@@ -18,13 +18,6 @@ from Products.PythonScripts.Utility import allow_module
 
 allow_module("feedparser")
 allow_module('Products.CMFContentPanels.browser.subnavtree')
-# Check for Plone versions
-try:
-    from Products.CMFPlone.migrations import v3_0
-except ImportError:
-    HAS_PLONE30 = False
-else:
-    HAS_PLONE30 = True
     
 def initialize(context):
 

@@ -2,10 +2,9 @@ from Products.CMFCore.utils import getToolByName
 from Products.Archetypes.public import listTypes
 from Products.Archetypes.Extensions.utils import installTypes, install_subskin
 from Products.CMFContentPanels.config import PROJECTNAME, GLOBALS, NEW_VIEW_METHODS
-from Products.CMFContentPanels import HAS_PLONE30
+from Products.CMFContentPanels.config import PLONE_VERSION
 from Products.CMFContentPanels.ContentPanelsTool import ContentPanelsTool
 
-from Products.ExternalMethod import ExternalMethod
 from Products.StandardCacheManagers import RAMCacheManager
 
 from Acquisition import aq_base
@@ -56,7 +55,7 @@ def resetContentPanelsPermissions(portal, out):
 def install(self, reinstall=False):
     portal = getToolByName(self, 'portal_url').getPortalObject()
     setup_tool = getToolByName(self, 'portal_setup')
-    if HAS_PLONE30:
+    if PLONE_VERSION >= 3:
         setup_tool.runAllImportStepsFromProfile(
                 "profile-Products.CMFContentPanels:default",
                 purge_old=False)

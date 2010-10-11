@@ -101,7 +101,8 @@
 -->
 
 <metal:block metal:define-macro="description_in_title">
-    <tal:block tal:repeat="item results">
+    <tal:block tal:repeat="item results"
+	           tal:define="mtool context/portal_membership">
 
         <div class="portletContent odd" 
              tal:attributes="class python:test(repeat['item'].index % 2, 'portletContent even', 'portletContent odd')">

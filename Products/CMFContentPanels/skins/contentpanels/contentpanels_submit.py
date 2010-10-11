@@ -4,7 +4,7 @@
 ##bind namespace=
 ##bind script=script
 ##bind subpath=traverse_subpath
-##parameters=pageIndex=0, pageInfo, columnInfos=[], CPI0=[], CPI1=[], CPI2=[], CPI3=[], CPI4=[], CPI5=[], CPI6=[], CPI7=[], CPI8=[], CPI9=[]
+##parameters=pageIndex=0, pageInfo=None, columnInfos=[], CPI0=[], CPI1=[], CPI2=[], CPI3=[], CPI4=[], CPI5=[], CPI6=[], CPI7=[], CPI8=[], CPI9=[]
 ##title=edit the submitted config data
 
 # what is parameter CPIX (CPI0, CPI1, ..)

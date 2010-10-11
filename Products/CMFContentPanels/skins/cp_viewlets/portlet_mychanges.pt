@@ -9,7 +9,8 @@
                  results python:here.portal_catalog.searchResults( 
                                     Creator=memberName
                                    , sort_on='modified'
-                                   , sort_order='reverse')[:5];"
+                                   , sort_order='reverse')[:5];
+                 portal_url context/@@plone_portal_state/portal_url"
      tal:condition="results">
 
      <div class="portlet">

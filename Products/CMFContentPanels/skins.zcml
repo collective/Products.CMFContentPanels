@@ -1,7 +1,7 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:cmf="http://namespaces.zope.org/cmf"
-    i18n_domain="Products.CMFContentPanels">
+    i18n_domain="contentpanels">
 
    <cmf:registerDirectory name="contentpanels"/>
    <cmf:registerDirectory name="cp_viewlets"/>

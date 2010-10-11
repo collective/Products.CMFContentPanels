@@ -1,3 +1,7 @@
+v2.6a3
+  - Updated to run in Plone4
+    [lepri]
+
 v2.6a2 
   - Improve translation structure
     [lucmult]

@@ -1,529 +1,531 @@
-# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
-# SOME DESCRIPTIVE TITLE.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-10-20 21:35+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: CMFContentPanels 1.6\n"
+"POT-Creation-Date: 2010-10-08 13:10+0000\n"
+"PO-Revision-Date: 2004-03-25 00:33 +0001\n"
+"Last-Translator: Enzo Cesanelli <enzo@noiza.com>\n"
+"Language-Team: Italian <<enzo@noiza.com>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=latin1\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
-"Preferred-Encodings: utf-8 latin1\n"
+"Language-Code: it\n"
+"Language-Name: Italian\n"
+"Preferred-Encodings: latin1 utf-8\n"
 "Domain: contentpanels\n"
 
-#: ./config.py:108
+#: ../config.py:121
 msgid "Article content"
 msgstr ""
 
-#: ./config.py:180
+#: ../config.py:193
 msgid "Calendar"
-msgstr ""
+msgstr "Calendario"
 
-#. Default: "Column Width"
-#: ./skins/contentpanels/contentpanels_config_form.pt:119
+#. <span i18n:translate="Column Width">
+#. Width
+#. </span>
+#. <input i18n:attributes="title" name="columnInfos.columnWidth:records" size="4" tal:attributes="value column/columnWidth" title="Column Width" type="text" value=""/>
+#: ../skins/contentpanels/contentpanels_config_form.pt:119
 msgid "Column Width"
-msgstr ""
+msgstr "Larghezza Colonna"
 
-#. Default: "Content related"
-#: ./skins/contentpanels/cp_new_panel_form.pt:122
+#: ../skins/contentpanels/cp_new_panel_form.pt:122
 msgid "Content related"
 msgstr ""
 
-#: ./config.py:154
+#: ../profiles/default/types/ContentPanels.xml
+msgid "ContentPanels"
+msgstr ""
+
+#: ../profiles/default/types/ContentPanels.xml
+msgid "ContentPanels is a portlet content to build composite page."
+msgstr ""
+
+#: ../config.py:167
 msgid "Discussion list"
 msgstr ""
 
-#: ./config.py:84
+#: ../config.py:97
 msgid "Document content"
 msgstr ""
 
-#: ./config.py:120
+#: ../config.py:133
 msgid "Editable Headline"
 msgstr ""
 
-#: ./config.py:146
+#: ../config.py:159
 msgid "Folder changes"
 msgstr ""
 
-#: ./config.py:134
+#: ../config.py:147
 msgid "Folder listing"
 msgstr ""
 
-#. Default: "Folder related"
-#: ./skins/contentpanels/cp_new_panel_form.pt:125
+#: ../skins/contentpanels/cp_new_panel_form.pt:125
 msgid "Folder related"
 msgstr ""
 
-#: ./config.py:150
+#: ../config.py:163
 msgid "Image folder"
 msgstr ""
 
-#: ./config.py:158
+#: ../config.py:171
 msgid "Image news"
 msgstr ""
 
-#: ./config.py:192
+#: ../config.py:205
 msgid "Inline frame"
 msgstr ""
 
-#: ./config.py:162
+#: ../config.py:175
 msgid "Local navigation"
 msgstr ""
 
-#: ./config.py:208
+#: ../config.py:221
 msgid "Login"
 msgstr ""
 
-#: ./config.py:172
+#: ../config.py:185
 msgid "My favorites"
-msgstr ""
+msgstr "I miei preferiti"
 
-#. Default: "My recent changes"
-#: ./skins/cp_viewlets/portlet_mychanges.pt:17
+#: ../config.py:181
+#: ../skins/cp_viewlets/portlet_mychanges.pt:17
 msgid "My recent changes"
-msgstr ""
+msgstr "I miei cambiamenti più recenti"
 
-#: ./config.py:200
+#: ../config.py:213
 msgid "Navigation"
 msgstr ""
 
-#: ./config.py:96
+#: ../config.py:109
 msgid "Nested contentpanels"
-msgstr ""
+msgstr "ContentPanels annidati"
 
-#. Default: "Personal related"
-#: ./skins/contentpanels/cp_new_panel_form.pt:131
+#: ../skins/contentpanels/cp_new_panel_form.pt:131
 msgid "Personal related"
 msgstr ""
 
-#: ./config.py:116
+#: ../config.py:129
 msgid "Plone Popoll"
 msgstr ""
 
-#. Default: "string:here/viewlet_mpoll/macros/portlet"
-#: ./config.py:112
+#: ../config.py:125
 msgid "Poll"
 msgstr ""
 
-#: ./config.py:188
+#: ../config.py:201
 msgid "RSS"
 msgstr ""
 
-#: ./config.py:138
+#: ../config.py:151
 msgid "Recent changes"
 msgstr ""
 
-#. Default: "Recent comments"
-#: ./skins/cp_viewlets/viewlets_folder_recent.pt:149
+#: ../config.py:155
+#: ../skins/cp_viewlets/viewlets_folder_recent.pt:149
 msgid "Recent comments"
 msgstr ""
 
-#: ./config.py:204
+#: ../config.py:217
 msgid "Related"
 msgstr ""
 
-#: ./config.py:176
+#: ../config.py:189
 msgid "Review list"
-msgstr ""
+msgstr "Lista di revisione"
 
-#. Default: "Save"
-#: ./skins/contentpanels/contentpanels_config_form.pt:91
+#. <input class="sameline" i18n:attributes="value" name="save" type="submit" value="Save"/>
+#: ../skins/contentpanels/contentpanels_config_form.pt:91
 msgid "Save"
-msgstr ""
+msgstr "Registra"
 
-#: ./config.py:184
+#: ../config.py:197
 msgid "Simple text"
 msgstr ""
 
-#. Default: "Site wide"
-#: ./skins/contentpanels/cp_new_panel_form.pt:128
+#: ../skins/contentpanels/cp_new_panel_form.pt:128
 msgid "Site wide"
 msgstr ""
 
-#: ./config.py:130
+#: ../config.py:143
 msgid "Title description"
 msgstr ""
 
-#: ./config.py:222
+#: ../config.py:235
 msgid "Top hit countings"
 msgstr ""
 
-#: ./config.py:218
+#: ../config.py:231
 msgid "Top ratings"
 msgstr ""
 
-#: ./config.py:88
+#: ../config.py:101
 msgid "Topic result list"
 msgstr ""
 
-#: ./ContentPanels.py:337
+#: ../ContentPanels.py:337
 msgid "Untitled page"
 msgstr ""
 
-#: ./config.py:126
+#: ../config.py:139
 msgid "ZPT macro"
 msgstr ""
 
 #. Default: "Column width #${columnIndex}"
-#: ./skins/contentpanels/contentpanels_config_form.pt:117
+#: ../skins/contentpanels/contentpanels_config_form.pt:117
 msgid "column_x_width"
 msgstr ""
 
 #. Default: "This contentpanels is already set as a site display template."
-#: ./skins/contentpanels/contentpanels_templates_form.pt:16
+#: ../skins/contentpanels/contentpanels_templates_form.pt:16
 msgid "contenpanels_is_template"
 msgstr ""
 
-#. Default: "delete column"
-#: ./skins/contentpanels/contentpanels_config_form.pt:146
+#: ../skins/contentpanels/contentpanels_config_form.pt:146
 msgid "delete column"
-msgstr ""
+msgstr "elimina colonna"
 
-#. Default: "delete this page"
-#: ./skins/contentpanels/contentpanels_config_form.pt:56
+#: ../skins/contentpanels/contentpanels_config_form.pt:56
 msgid "delete this page"
-msgstr ""
+msgstr "elimina questa pagina"
 
-#. Default: "delete this panel"
-#: ./skins/contentpanels/contentpanels_config_form.pt:201
+#: ../skins/contentpanels/contentpanels_config_form.pt:201
 msgid "delete this panel"
-msgstr ""
+msgstr "elimina questo pannello"
 
 #. Default: "You can change the context content, viewlet and other settings of the panel there. You can preview the panel at the bottom of this page."
-#: ./skins/contentpanels/cp_new_panel_form.pt:78
+#: ../skins/contentpanels/cp_new_panel_form.pt:78
 msgid "desc_panel_configuration"
 msgstr ""
 
-#: ./config.py:104
+#: ../config.py:117
 msgid "dynamic page"
 msgstr ""
 
 #. Default: "goto this contentpanels"
-#: ./skins/contentpanels/contentpanels_body.pt:52
+#: ../skins/contentpanels/contentpanels_body.pt:52
 msgid "goto_this_contentpanels"
 msgstr ""
 
 #. Default: "Panel configuration"
-#: ./skins/contentpanels/cp_new_panel_form.pt:77
+#: ../skins/contentpanels/cp_new_panel_form.pt:77
 msgid "header_panel_configuration"
 msgstr ""
 
 #. Default: "${cpTitle} (Page ${pageIndex})"
-#: ./skins/contentpanels/contentpanels_config_form.pt:64
+#: ../skins/contentpanels/contentpanels_config_form.pt:64
 msgid "heading_layout_form"
 msgstr ""
 
 #. Default: "Please select a content item"
-#: ./skins/contentpanels/nav_browser_popup.pt:64
+#: ../skins/contentpanels/nav_browser_popup.pt:64
 msgid "heading_select_item"
 msgstr ""
 
 #. Default: "Template management"
-#: ./skins/contentpanels/contentpanels_templates_form.pt:10
+#: ../skins/contentpanels/contentpanels_templates_form.pt:10
 msgid "heading_template_management"
 msgstr ""
 
 #. Default: "All the site contentpanels display templates are listed as following. You can remove the selected items."
-#: ./skins/contentpanels/contentpanels_templates_form.pt:60
+#: ../skins/contentpanels/contentpanels_templates_form.pt:60
 msgid "help_available_templates"
 msgstr ""
 
 #. Default: "The following layout tempaltes are set by the site administrator. Each one is a ContentPanels content."
-#: ./skins/contentpanels/contentpanels_display_view.pt:65
+#: ../skins/contentpanels/contentpanels_display_view.pt:65
 msgid "help_choose_contentpanels_template"
 msgstr ""
 
 #. Default: "You can define custom CSS for this contentpanels here. Leave it blank if you don't know about CSS."
-#: ./ContentPanels.py:100
+#: ../ContentPanels.py:100
 msgid "help_custom_css"
 msgstr ""
 
 #. Default: "You can choose 'tile mode' or 'tab mode'. With'tile mode', all pages are shown directly as rows. It is useful for you to make very complex composite page. With 'tab mode', you can switch pages using the top-right tab links."
-#: ./ContentPanels.py:74
+#: ../ContentPanels.py:74
 msgid "help_page_layout_mode"
 msgstr ""
 
 #. Default: "You can set this contentpanels as the left or right column of the template."
-#: ./ContentPanels.py:90
+#: ../ContentPanels.py:90
 msgid "help_portlet_pos"
 msgstr ""
 
 #. Default: "Fill this form to make the layout of this page as a site template, which can be used in folder display view."
-#: ./skins/contentpanels/contentpanels_templates_form.pt:28
+#: ../skins/contentpanels/contentpanels_templates_form.pt:28
 msgid "help_set_to_template"
 msgstr ""
 
 #. Default: "Inline frame URL"
-#: ./skins/cp_viewlets/viewlet_iframe.pt:23
+#: ../skins/cp_viewlets/viewlet_iframe.pt:23
 msgid "iframe_url"
 msgstr ""
 
-#: ./config.py:92
+#: ../config.py:105
 msgid "image"
 msgstr ""
 
 #. Default: "image news"
-#: ./skins/cp_viewlets/viewlet_news.pt:93
+#: ../skins/cp_viewlets/viewlet_news.pt:93
 msgid "image_news"
 msgstr ""
 
 #. Default: "search sub-folder"
-#: ./skins/cp_viewlets/content_list_macros.pt:73
+#: ../skins/cp_viewlets/content_list_macros.pt:73
 msgid "include_subfolder"
 msgstr ""
 
 #. Default: "Column spacing:"
-#: ./skins/contentpanels/contentpanels_config_form.pt:86
+#: ../skins/contentpanels/contentpanels_config_form.pt:86
 msgid "label_col_spacing"
 msgstr ""
 
 #. Default: "Custom CSS"
-#: ./ContentPanels.py:99
+#: ../ContentPanels.py:99
 msgid "label_custom_css"
 msgstr ""
 
 #. Default: "depth"
-#: ./skins/cp_viewlets/viewlet_subportal_nav.pt:9
+#: ../skins/cp_viewlets/viewlet_subportal_nav.pt:9
 msgid "label_depth"
 msgstr ""
 
 #. Default: "Height"
-#: ./skins/cp_viewlets/viewlet_iframe.pt:15
+#: ../skins/cp_viewlets/viewlet_iframe.pt:15
 msgid "label_height"
 msgstr ""
 
 #. Default: "images count"
-#: ./skins/cp_viewlets/viewlet_news.pt:55
+#: ../skins/cp_viewlets/viewlet_news.pt:55
 msgid "label_image_count"
 msgstr ""
 
 #. Default: "image size"
-#: ./skins/cp_viewlets/viewlet_news.pt:62
+#: ../skins/cp_viewlets/viewlet_news.pt:62
 msgid "label_image_size"
 msgstr ""
 
 #. Default: "max number to list:"
-#: ./skins/cp_viewlets/content_list_macros.pt:16
+#: ../skins/cp_viewlets/content_list_macros.pt:16
+#: ../skins/cp_viewlets/viewlet_rss.pt:20
 msgid "label_list_count"
 msgstr ""
 
 #. Default: "Page layout mode"
-#: ./ContentPanels.py:73
+#: ../ContentPanels.py:73
 msgid "label_page_layout_mode"
 msgstr ""
 
 #. Default: "Page Title:"
-#: ./skins/contentpanels/contentpanels_config_form.pt:75
+#: ../skins/contentpanels/contentpanels_config_form.pt:75
 msgid "label_page_title"
 msgstr ""
 
 #. Default: "Set to left/right column"
-#: ./ContentPanels.py:89
+#: ../ContentPanels.py:89
 msgid "label_portlet_pos"
 msgstr ""
 
 #. Default: "Preview"
-#: ./skins/contentpanels/cp_new_panel_form.pt:163
+#: ../skins/contentpanels/cp_new_panel_form.pt:163
 msgid "label_preview"
 msgstr ""
 
 #. Default: "Row spacing:"
-#: ./skins/contentpanels/contentpanels_config_form.pt:82
+#: ../skins/contentpanels/contentpanels_config_form.pt:82
 msgid "label_row_spacing"
 msgstr ""
 
 #. Default: "RSS URL:"
-#: ./skins/cp_viewlets/viewlet_rss.pt:11
+#: ../skins/cp_viewlets/viewlet_rss.pt:11
 msgid "label_rss_url"
 msgstr ""
 
 #. Default: "Add"
-#: ./skins/contentpanels/contentpanels_templates_form.pt:46
+#: ../skins/contentpanels/contentpanels_templates_form.pt:46
 msgid "label_set_as_template"
 msgstr ""
 
 #. Default: "show rss link"
-#: ./skins/cp_viewlets/content_list_macros.pt:88
+#: ../skins/cp_viewlets/content_list_macros.pt:88
 msgid "label_show_rss"
 msgstr ""
 
 #. Default: "Skins"
-#: ./skins/contentpanels/cp_new_panel_form.pt:145
+#: ../skins/contentpanels/cp_new_panel_form.pt:145
 msgid "label_skin"
 msgstr ""
 
-#. Default: "Description:"
-#: ./skins/cp_viewlets/viewlet_headline.pt:13
+#. Default: "text (HTML):"
+#: ../skins/cp_viewlets/viewlet_headline.pt:13
+#: ../skins/cp_viewlets/viewlet_popuptext.pt:41
+#: ../skins/cp_viewlets/viewlet_text.pt:13
 msgid "label_text"
 msgstr ""
 
 #. Default: "Viewlet"
-#: ./skins/contentpanels/cp_new_panel_form.pt:120
+#: ../skins/contentpanels/cp_new_panel_form.pt:120
 msgid "label_viewlet"
 msgstr ""
 
 #. Default: "Viewlet settings"
-#: ./skins/contentpanels/cp_new_panel_form.pt:141
+#: ../skins/contentpanels/cp_new_panel_form.pt:141
 msgid "label_viewlet_settings"
 msgstr ""
 
 #. Default: "title (optional):"
-#: ./skins/cp_viewlets/content_list_macros.pt:9
+#: ../skins/cp_viewlets/content_list_macros.pt:9
+#: ../skins/cp_viewlets/viewlet_rss.pt:3
 msgid "label_viewlet_title"
 msgstr ""
 
+#. <span i18n:translate="label_width">
+#. Width:
+#. </span>
 #. Default: "Width"
-#: ./skins/cp_viewlets/viewlet_iframe.pt:7
+#: ../skins/cp_viewlets/viewlet_iframe.pt:7
 msgid "label_width"
-msgstr ""
+msgstr "Largezza:"
 
 #. Default: "Available display templates"
-#: ./skins/contentpanels/contentpanels_templates_form.pt:55
+#: ../skins/contentpanels/contentpanels_templates_form.pt:55
 msgid "legend_available_templates"
 msgstr ""
 
 #. Default: "choose a layout template for this view"
-#: ./skins/contentpanels/contentpanels_display_view.pt:61
+#: ../skins/contentpanels/contentpanels_display_view.pt:61
 msgid "legend_choose_contentpanels_template"
 msgstr ""
 
 #. Default: "Page parameters"
-#: ./skins/contentpanels/contentpanels_config_form.pt:71
+#: ../skins/contentpanels/contentpanels_config_form.pt:71
 msgid "legend_page_params"
 msgstr ""
 
 #. Default: "Set this contentpanels as a site display template"
-#: ./skins/contentpanels/contentpanels_templates_form.pt:23
+#: ../skins/contentpanels/contentpanels_templates_form.pt:23
 msgid "legend_set_to_template"
 msgstr ""
 
 #. Default: "folder default view"
-#: ./skins/cp_viewlets/viewlets_folder_recent.pt:19
+#: ../skins/cp_viewlets/viewlets_folder_recent.pt:19
 msgid "link_folder_view"
 msgstr ""
 
 #. Default: "link more to"
-#: ./skins/cp_viewlets/viewlets_folder_recent.pt:14
+#: ../skins/cp_viewlets/viewlets_folder_recent.pt:14
 msgid "link_more_to"
 msgstr ""
 
 #. Default: "search page"
-#: ./skins/cp_viewlets/viewlets_folder_recent.pt:24
+#: ../skins/cp_viewlets/viewlets_folder_recent.pt:24
 msgid "link_search_page"
 msgstr ""
 
-#. Default: "move down"
-#: ./skins/contentpanels/contentpanels_config_form.pt:178
+#: ../skins/contentpanels/contentpanels_config_form.pt:178
 msgid "move down"
-msgstr ""
+msgstr "sposta sotto"
 
-#. Default: "move left"
-#: ./skins/contentpanels/contentpanels_config_form.pt:44
+#: ../skins/contentpanels/contentpanels_config_form.pt:44
 msgid "move left"
-msgstr ""
+msgstr "sposta a sinistra"
 
-#. Default: "move right"
-#: ./skins/contentpanels/contentpanels_config_form.pt:50
+#: ../skins/contentpanels/contentpanels_config_form.pt:50
 msgid "move right"
-msgstr ""
+msgstr "sposta a destra"
 
-#. Default: "move up"
-#: ./skins/contentpanels/contentpanels_config_form.pt:173
+#: ../skins/contentpanels/contentpanels_config_form.pt:173
 msgid "move up"
-msgstr ""
+msgstr "sposta sopra"
 
-#. Default: "new column"
-#: ./skins/contentpanels/contentpanels_config_form.pt:142
+#: ../skins/contentpanels/contentpanels_config_form.pt:142
 msgid "new column"
-msgstr ""
+msgstr "nuova colonna"
 
-#. Default: "new page"
-#: ./skins/contentpanels/contentpanels_config_form.pt:38
+#: ../skins/contentpanels/contentpanels_config_form.pt:38
 msgid "new page"
 msgstr ""
 
-#. Default: "new panel"
-#: ./skins/contentpanels/contentpanels_config_form.pt:128
+#: ../skins/contentpanels/contentpanels_config_form.pt:128
 msgid "new panel"
-msgstr ""
+msgstr "nuovo pannello"
 
 #. Default: "No templates avaible yet! Please contact site administrator to setup it."
-#: ./skins/contentpanels/contentpanels_display_view.pt:107
+#: ../skins/contentpanels/contentpanels_display_view.pt:107
 msgid "no_contenpanels_templates"
 msgstr ""
 
 #. Default: "This view doesn't have a layout template yet. You must select one at first."
-#: ./skins/contentpanels/contentpanels_display_view.pt:28
+#: ../skins/contentpanels/contentpanels_display_view.pt:28
 msgid "no_contentpanels_template"
 msgstr ""
 
 #. Default: "No items yet."
-#: ./skins/cp_viewlets/viewlets_topic_list.pt:61
+#: ../skins/cp_viewlets/viewlet_full_changes.pt:103
+#: ../skins/cp_viewlets/viewlet_image_folder.pt:52
+#: ../skins/cp_viewlets/viewlet_ratings.pt:81
 msgid "no_items_yet"
 msgstr ""
 
 #. Default: "No post."
-#: ./skins/cp_viewlets/viewlet_news.pt:45
+#: ../skins/cp_viewlets/viewlet_news.pt:45
 msgid "no_post"
 msgstr ""
 
-#: ./config.py:46
+#: ../config.py:59
 msgid "none"
 msgstr ""
 
 #. Default: "Preview"
-#: ./skins/contentpanels/contentpanels_display_view.pt:84
+#: ../skins/contentpanels/contentpanels_display_view.pt:84
 msgid "preview_template"
 msgstr ""
 
-#: ./config.py:100
+#: ../config.py:113
 msgid "recent messages"
 msgstr ""
 
 #. Default: "select this panel"
-#: ./skins/contentpanels/cp_new_panel_form.pt:178
+#: ../skins/contentpanels/cp_new_panel_form.pt:178
 msgid "select_this_panel"
 msgstr ""
 
-#: ./config.py:47
+#: ../config.py:60
 msgid "set to left"
 msgstr ""
 
-#: ./config.py:48
+#: ../config.py:61
 msgid "set to right"
 msgstr ""
 
-#: ./config.py:42
+#: ../config.py:55
 msgid "tab mode"
 msgstr ""
 
 #. Default: "this template is broken"
-#: ./skins/contentpanels/contentpanels_templates_form.pt:83
+#: ../skins/contentpanels/contentpanels_templates_form.pt:83
 msgid "template_is_broken"
 msgstr ""
 
 #. Default: "Layout"
-#: ./skins/contentpanels/contentpanels_display_view.pt:88
+#: ../skins/contentpanels/contentpanels_display_view.pt:88
 msgid "template_layout"
 msgstr ""
 
-#: ./config.py:41
+#: ../config.py:54
 msgid "tile mode"
 msgstr ""
 
 #. Default: "Related Content"
-#: ./skins/contentpanels/cp_new_panel_form.pt:80
+#: ../skins/contentpanels/cp_new_panel_form.pt:80
 msgid "viewlet_context"
 msgstr ""
 
 #. Default: "Zope Page template macro path"
-#: ./skins/cp_viewlets/viewlet_macro_path.pt:7
+#: ../skins/cp_viewlets/viewlet_macro_path.pt:7
 msgid "zpt_macro_path"
 msgstr ""
 

@@ -4,17 +4,38 @@ from Products.CMFCore.permissions import AddPortalContent
 from zope.i18nmessageid import MessageFactory
 _ = MessageFactory = MessageFactory('contentpanels')
 
+try:
+    # Plone 4 and higher 
+    import plone.app.upgrade
+    PLONE_VERSION = 4 
+except ImportError: 
+    PLONE_VERSION = 3
+
+if PLONE_VERSION == 3:
+    try:
+        from Products.CMFPlone.migrations import v3_0
+        del v3_0
+        PLONE_VERSION = 3
+    except ImportError:
+        PLONE_VERSION = 2
+       
 ADD_CONTENT_PERMISSION = AddPortalContent
 PROJECTNAME = 'CMFContentPanels'
 SKINS_DIR = 'skins'
 
 GLOBALS = globals()
 
-NEW_VIEW_METHODS = {
-    u'Folder': ('contentpanels_display_view',),
-    'Plone Site': ('contentpanels_display_view',),
-    'Large Plone Folder': ('contentpanels_display_view',),
-}
+if PLONE_VERSION == 3:
+    NEW_VIEW_METHODS = {
+        u'Folder': ('contentpanels_display_view',),
+        'Plone Site': ('contentpanels_display_view',),
+        'Large Plone Folder': ('contentpanels_display_view',),
+    }
+else:
+    NEW_VIEW_METHODS = {
+        u'Folder': ('contentpanels_display_view',),
+        'Plone Site': ('contentpanels_display_view',),
+    }
 
 STYLESHEETS = [
     {'id':'contentpanels.css'},
@@ -177,9 +198,9 @@ VIEWLETS = [
      'string:here/portlet_review/macros/portlet',
      '', 'View', 'GN:personal', 1),
 
-    ('portlet_calendar', _(u'Calendar'),
-     'string:here/portlet_calendar/macros/portlet',
-     '', 'View', 'GN:portal', 1),
+    #('portlet_calendar', _(u'Calendar'),
+    # 'string:here/portlet_calendar/macros/portlet',
+    # '', 'View', 'GN:portal', 1),
 
     ('viewlet_text', _(u'Simple text'),
      'string:here/viewlet_text/macros/portlet',

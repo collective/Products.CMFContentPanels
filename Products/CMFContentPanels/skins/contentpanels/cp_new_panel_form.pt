@@ -1,13 +1,19 @@
-<metal:page define-macro="master"><metal:doctype define-slot="doctype"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"></metal:doctype>
+<metal:page define-macro="master">
+<metal:doctype define-slot="doctype">
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+</metal:doctype>
 <metal:block define-slot="top_slot" />
-<metal:block use-macro="here/global_defines/macros/defines" />
 <html xmlns="http://www.w3.org/1999/xhtml"
       xml:lang="en"
       lang="en"
       tal:attributes="lang language|default;
                       xml:lang language|default;"
       i18n:domain="contentpanels"
-      tal:define="cpPath options/cpPath | request/cpPath | here/absolute_url;
+      tal:define="portal context/@@plone_portal_state/portal;
+	              site_properties context/portal_properties/site_properties;
+				  plone_view context/@@plone;
+				  view nocall:view | nocall: plone_view;
+	              cpPath options/cpPath | request/cpPath | here/absolute_url;
                   here1 python:request.has_key('cpPath') and here or here.isPrincipiaFolderish and here or here.aq_parent;
                   addPanel request/addPanel | string:edit;
                   pageIndex request/pageIndex;
@@ -46,7 +52,7 @@
     </metal:cache>
 
     <base href="" tal:attributes="href here/renderBase" />
-    <tal:head replace="structure here/plone3_htmlhead" />
+	<div tal:replace="structure provider:plone.htmlhead" />
 </head>
 
 <tal:v25 tal:condition="here/header/macros/html_header | nothing">

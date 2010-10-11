@@ -3,9 +3,12 @@
 
 <div metal:fill-slot="main"
      i18n:domain="contentpanels"
-     tal:define="t_contentpanels here/portal_contentpanels; 
-                 path python:utool.getRelativeContentURL(context);
-                 templateinfo python:t_contentpanels.getTemplateInfo(here)">
+     tal:define="t_contentpanels here/portal_contentpanels;
+	             getRelativeContentURL nocall:context/portal_url/getRelativeContentURL;
+                 path python:getRelativeContentURL(context);
+                 templateinfo python:t_contentpanels.getTemplateInfo(here);
+				 object_title template/Title;
+				 here_url context/@@plone_context_state/object_url;">
 
         <h1><span i18n:translate="heading_template_management">Template management</span>:
             <span tal:content="object_title" class="documentFirstHeading">

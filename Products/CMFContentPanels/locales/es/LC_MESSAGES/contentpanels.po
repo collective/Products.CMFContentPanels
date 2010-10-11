@@ -1,0 +1,582 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: CMFContentPanels 2.4\n"
+"POT-Creation-Date: 2010-10-08 13:10+0000\n"
+"PO-Revision-Date: 2006-10-18 08:00+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: es\n"
+"Language-Name: Spanish\n"
+"Preferred-Encodings: latin1 utf-8\n"
+"Domain: contentpanels\n"
+"X-Is-Fallback-For: es-es es-bo es-cl es-co es-cr es-do es-ec es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
+
+#: ../config.py:121
+msgid "Article content"
+msgstr "Contenido del artículo"
+
+#: ../config.py:193
+msgid "Calendar"
+msgstr "Calendario"
+
+#: ../skins/contentpanels/contentpanels_config_form.pt:119
+msgid "Column Width"
+msgstr "Ancho de la columna"
+
+#: ../skins/contentpanels/cp_new_panel_form.pt:122
+msgid "Content related"
+msgstr "Relativo al contenido"
+
+#: ../profiles/default/types/ContentPanels.xml
+msgid "ContentPanels"
+msgstr ""
+
+#: ../profiles/default/types/ContentPanels.xml
+msgid "ContentPanels is a portlet content to build composite page."
+msgstr ""
+
+#: ../config.py:167
+msgid "Discussion list"
+msgstr "Lista de noticias y documentos"
+
+#: ../config.py:97
+msgid "Document content"
+msgstr "Contenido del documento"
+
+#: ../config.py:133
+msgid "Editable Headline"
+msgstr ""
+
+################################
+# more viewlets names
+######################################
+#: ../config.py:159
+msgid "Folder changes"
+msgstr "Últimos cambios en la carpeta"
+
+#: ../config.py:147
+msgid "Folder listing"
+msgstr "Listado de la carpeta"
+
+#: ../skins/contentpanels/cp_new_panel_form.pt:125
+msgid "Folder related"
+msgstr "Relativo a la carpeta"
+
+#: ../config.py:163
+msgid "Image folder"
+msgstr "Galería de imágenes"
+
+#: ../config.py:171
+msgid "Image news"
+msgstr "Imágenes de noticias"
+
+#: ../config.py:205
+msgid "Inline frame"
+msgstr "Frame embebida"
+
+#: ../config.py:175
+msgid "Local navigation"
+msgstr "Navegación local"
+
+#: ../config.py:221
+msgid "Login"
+msgstr ""
+
+#: ../config.py:185
+msgid "My favorites"
+msgstr "Mis favoritos"
+
+#: ../config.py:181
+#: ../skins/cp_viewlets/portlet_mychanges.pt:17
+msgid "My recent changes"
+msgstr "Mis cambios recientes"
+
+#: ../config.py:213
+msgid "Navigation"
+msgstr ""
+
+#: ../config.py:109
+msgid "Nested contentpanels"
+msgstr "Paneles de Contenido Anidados"
+
+#: ../skins/contentpanels/cp_new_panel_form.pt:131
+msgid "Personal related"
+msgstr "Relativo al Usuario"
+
+#: ../config.py:129
+msgid "Plone Popoll"
+msgstr ""
+
+#: ../config.py:125
+msgid "Poll"
+msgstr ""
+
+#: ../config.py:201
+msgid "RSS"
+msgstr "RSS"
+
+#: ../config.py:151
+msgid "Recent changes"
+msgstr "Cambios recientes"
+
+#: ../config.py:155
+#: ../skins/cp_viewlets/viewlets_folder_recent.pt:149
+msgid "Recent comments"
+msgstr "Comentarios recientes"
+
+#: ../config.py:217
+msgid "Related"
+msgstr ""
+
+#: ../config.py:189
+msgid "Review list"
+msgstr "Lista en estado Revisión"
+
+#. <input class="sameline" i18n:attributes="value" name="save" type="submit" value="Save"/>
+#: ../skins/contentpanels/contentpanels_config_form.pt:91
+msgid "Save"
+msgstr "Guardar"
+
+# 2 new viewlets
+#: ../config.py:197
+msgid "Simple text"
+msgstr "Texto simple"
+
+#: ../skins/contentpanels/cp_new_panel_form.pt:128
+msgid "Site wide"
+msgstr "Relativo al Portal"
+
+#: ../config.py:143
+msgid "Title description"
+msgstr "Título y descripción"
+
+#: ../config.py:235
+msgid "Top hit countings"
+msgstr ""
+
+#: ../config.py:231
+msgid "Top ratings"
+msgstr ""
+
+#: ../config.py:101
+msgid "Topic result list"
+msgstr ""
+
+#: ../ContentPanels.py:337
+msgid "Untitled page"
+msgstr ""
+
+#: ../config.py:139
+msgid "ZPT macro"
+msgstr "Macro ZPT"
+
+#. Default: "Column width #${columnIndex}"
+#: ../skins/contentpanels/contentpanels_config_form.pt:117
+msgid "column_x_width"
+msgstr "Ancho de columna #${columnIndex}"
+
+# This contentpanels is already set as a site display template.
+#. Default: "This contentpanels is already set as a site display template."
+#: ../skins/contentpanels/contentpanels_templates_form.pt:16
+msgid "contenpanels_is_template"
+msgstr "Este panel de contenido ya se ha puesto como plantilla de visualización del portal."
+
+#: ../skins/contentpanels/contentpanels_config_form.pt:146
+msgid "delete column"
+msgstr "borrar columna"
+
+#: ../skins/contentpanels/contentpanels_config_form.pt:56
+msgid "delete this page"
+msgstr "borrar esta página"
+
+#: ../skins/contentpanels/contentpanels_config_form.pt:201
+msgid "delete this panel"
+msgstr "borrar este panel"
+
+# You can change the context content, viewlet and other settings of the panel there. You can preview the panel at the bottom of this page.
+#. Default: "You can change the context content, viewlet and other settings of the panel there. You can preview the panel at the bottom of this page."
+#: ../skins/contentpanels/cp_new_panel_form.pt:78
+msgid "desc_panel_configuration"
+msgstr "Puedes cambiar aquí el contenido del panel. En la parte inferior de la página hay una previsualización."
+
+#: ../config.py:117
+msgid "dynamic page"
+msgstr ""
+
+#. Default: "goto this contentpanels"
+#: ../skins/contentpanels/contentpanels_body.pt:52
+msgid "goto_this_contentpanels"
+msgstr "ir a este panel"
+
+# Panel configuration
+#. Default: "Panel configuration"
+#: ../skins/contentpanels/cp_new_panel_form.pt:77
+msgid "header_panel_configuration"
+msgstr "Configuración del panel"
+
+# page title
+#. Default: "${cpTitle} (Page ${pageIndex})"
+#: ../skins/contentpanels/contentpanels_config_form.pt:64
+msgid "heading_layout_form"
+msgstr "${cpTitle} (Página ${pageIndex})"
+
+#. Default: "Please select a content item"
+#: ../skins/contentpanels/nav_browser_popup.pt:64
+msgid "heading_select_item"
+msgstr ""
+
+# contentpanels_templates_form
+# Template management
+#. Default: "Template management"
+#: ../skins/contentpanels/contentpanels_templates_form.pt:10
+msgid "heading_template_management"
+msgstr "Gestión de la plantilla"
+
+# All the site contentpanels display templates are listed as following.
+# You can remove the selected items.
+#. Default: "All the site contentpanels display templates are listed as following. You can remove the selected items."
+#: ../skins/contentpanels/contentpanels_templates_form.pt:60
+msgid "help_available_templates"
+msgstr "A continuación se muestran todas las plantillas de visualización del portal correspondientes a paneles de contenido. Puedes borrar los elementos seleccionados."
+
+# The following layout tempaltes are set by the site administrator.
+# Each one is a ContentPanels content.
+#. Default: "The following layout tempaltes are set by the site administrator. Each one is a ContentPanels content."
+#: ../skins/contentpanels/contentpanels_display_view.pt:65
+msgid "help_choose_contentpanels_template"
+msgstr "Las siguientes plantillas se han configurado por el administrador del portal. Cada una es un panel de contenido."
+
+#. Default: "You can define custom CSS for this contentpanels here. Leave it blank if you don't know about CSS."
+#: ../ContentPanels.py:100
+msgid "help_custom_css"
+msgstr "Puedes definir una CSS específica para este panel aquí. En otro caso deja el campo en blanco."
+
+#. Default: "You can choose 'tile mode' or 'tab mode'. With'tile mode', all pages are shown directly as rows. It is useful for you to make very complex composite page. With 'tab mode', you can switch pages using the top-right tab links."
+#: ../ContentPanels.py:74
+msgid "help_page_layout_mode"
+msgstr "Puedes escoger entre 'modo pila' o 'modo pestaña'. Con 'modo pila', todas las páginas se muestran directamente como filas. Es útil para hacer páginas compuestas muy complejas. Con 'modo pestaña', puedes intercambiar las páginas utilizando los enlaces en la pestaña superior derecha."
+
+#. Default: "You can set this contentpanels as the left or right column of the template."
+#: ../ContentPanels.py:90
+msgid "help_portlet_pos"
+msgstr "Puedes poner este panel a la izquierda o derecha de la plantilla."
+
+# Fill this form to make the layout of this page as a site template, which can be used in folder display view.
+#. Default: "Fill this form to make the layout of this page as a site template, which can be used in folder display view."
+#: ../skins/contentpanels/contentpanels_templates_form.pt:28
+msgid "help_set_to_template"
+msgstr "Rellena este formulario para poner el lienzo de esta página como plantilla del portal, que puede usarse como visualización en carpetas."
+
+# Inline frame URL
+#. Default: "Inline frame URL"
+#: ../skins/cp_viewlets/viewlet_iframe.pt:23
+msgid "iframe_url"
+msgstr "URL del frame:"
+
+#: ../config.py:105
+msgid "image"
+msgstr ""
+
+# image news
+#. Default: "image news"
+#: ../skins/cp_viewlets/viewlet_news.pt:93
+msgid "image_news"
+msgstr " Imágenes de noticias "
+
+# subfolders
+#. Default: "search sub-folder"
+#: ../skins/cp_viewlets/content_list_macros.pt:73
+msgid "include_subfolder"
+msgstr "subcarpetas"
+
+# Column spacing:
+#. Default: "Column spacing:"
+#: ../skins/contentpanels/contentpanels_config_form.pt:86
+msgid "label_col_spacing"
+msgstr "Espaciado de columnas: "
+
+#. Default: "Custom CSS"
+#: ../ContentPanels.py:99
+msgid "label_custom_css"
+msgstr "CSS específica"
+
+#. Default: "depth"
+#: ../skins/cp_viewlets/viewlet_subportal_nav.pt:9
+msgid "label_depth"
+msgstr "Profundidad:"
+
+# Height
+#. Default: "Height"
+#: ../skins/cp_viewlets/viewlet_iframe.pt:15
+msgid "label_height"
+msgstr "Alto:"
+
+# images count
+#. Default: "images count"
+#: ../skins/cp_viewlets/viewlet_news.pt:55
+msgid "label_image_count"
+msgstr "Número de imágenes:"
+
+# image size
+#. Default: "image size"
+#: ../skins/cp_viewlets/viewlet_news.pt:62
+msgid "label_image_size"
+msgstr "Tamaño de la imagen:"
+
+#. Default: "max number to list:"
+#: ../skins/cp_viewlets/content_list_macros.pt:16
+#: ../skins/cp_viewlets/viewlet_rss.pt:20
+msgid "label_list_count"
+msgstr "Número máximo a listar:"
+
+#. Default: "Page layout mode"
+#: ../ContentPanels.py:73
+msgid "label_page_layout_mode"
+msgstr "Modo lienzo de página"
+
+#. <span i18n:translate="label_page_title">
+#. Title:
+#. </span>
+#. Default: "Page Title:"
+#: ../skins/contentpanels/contentpanels_config_form.pt:75
+msgid "label_page_title"
+msgstr "Título:"
+
+#. Default: "Set to left/right column"
+#: ../ContentPanels.py:89
+msgid "label_portlet_pos"
+msgstr "Poner como portlet a la derecha/izquierda"
+
+#. Default: "Preview"
+#: ../skins/contentpanels/cp_new_panel_form.pt:163
+msgid "label_preview"
+msgstr "Previsualización"
+
+# Row spacing:
+#. Default: "Row spacing:"
+#: ../skins/contentpanels/contentpanels_config_form.pt:82
+msgid "label_row_spacing"
+msgstr "Espaciado de filas: "
+
+#. Default: "RSS URL:"
+#: ../skins/cp_viewlets/viewlet_rss.pt:11
+msgid "label_rss_url"
+msgstr "URL RSS"
+
+# Add
+#. Default: "Add"
+#: ../skins/contentpanels/contentpanels_templates_form.pt:46
+msgid "label_set_as_template"
+msgstr "Añadir"
+
+# show rss link
+#. Default: "show rss link"
+#: ../skins/cp_viewlets/content_list_macros.pt:88
+msgid "label_show_rss"
+msgstr "mostrar enlace rss"
+
+#. Default: "Skins"
+#: ../skins/contentpanels/cp_new_panel_form.pt:145
+msgid "label_skin"
+msgstr "Tipos de marco:"
+
+#. Default: "text (HTML):"
+#: ../skins/cp_viewlets/viewlet_headline.pt:13
+#: ../skins/cp_viewlets/viewlet_popuptext.pt:41
+#: ../skins/cp_viewlets/viewlet_text.pt:13
+msgid "label_text"
+msgstr "texto (HTML):"
+
+# default: Viewlet
+#. Default: "Viewlet"
+#: ../skins/contentpanels/cp_new_panel_form.pt:120
+msgid "label_viewlet"
+msgstr ""
+
+# Viewlet settings
+#. Default: "Viewlet settings"
+#: ../skins/contentpanels/cp_new_panel_form.pt:141
+msgid "label_viewlet_settings"
+msgstr "Configuración del viewlet"
+
+# title (optional):
+#. Default: "title (optional):"
+#: ../skins/cp_viewlets/content_list_macros.pt:9
+#: ../skins/cp_viewlets/viewlet_rss.pt:3
+msgid "label_viewlet_title"
+msgstr "Título (opcional):"
+
+#. <span i18n:translate="label_width">
+#. Width:
+#. </span>
+#. Default: "Width"
+#: ../skins/cp_viewlets/viewlet_iframe.pt:7
+msgid "label_width"
+msgstr "Ancho:"
+
+# Available display templates
+#. Default: "Available display templates"
+#: ../skins/contentpanels/contentpanels_templates_form.pt:55
+msgid "legend_available_templates"
+msgstr "Plantillas de visualización disponibles"
+
+# choose a layout template for this view
+#. Default: "choose a layout template for this view"
+#: ../skins/contentpanels/contentpanels_display_view.pt:61
+msgid "legend_choose_contentpanels_template"
+msgstr "Escoge una plantilla para esta vista"
+
+# default: Page parameters
+#. Default: "Page parameters"
+#: ../skins/contentpanels/contentpanels_config_form.pt:71
+msgid "legend_page_params"
+msgstr "Parámetros de la página"
+
+# Set this contentpanels as a site display template
+#. Default: "Set this contentpanels as a site display template"
+#: ../skins/contentpanels/contentpanels_templates_form.pt:23
+msgid "legend_set_to_template"
+msgstr "Panel de contenido como plantilla de visualización del portal"
+
+# folder default view
+#. Default: "folder default view"
+#: ../skins/cp_viewlets/viewlets_folder_recent.pt:19
+msgid "link_folder_view"
+msgstr "vista por defecto carpeta"
+
+# link more to
+#. Default: "link more to"
+#: ../skins/cp_viewlets/viewlets_folder_recent.pt:14
+msgid "link_more_to"
+msgstr "relacionado apunta a"
+
+# search page
+#. Default: "search page"
+#: ../skins/cp_viewlets/viewlets_folder_recent.pt:24
+msgid "link_search_page"
+msgstr "página búsqueda"
+
+#: ../skins/contentpanels/contentpanels_config_form.pt:178
+msgid "move down"
+msgstr "mover abajo"
+
+#######################
+# panel operations
+########################
+#: ../skins/contentpanels/contentpanels_config_form.pt:44
+msgid "move left"
+msgstr "mover a la izquierda"
+
+#: ../skins/contentpanels/contentpanels_config_form.pt:50
+msgid "move right"
+msgstr "mover a la derecha"
+
+#: ../skins/contentpanels/contentpanels_config_form.pt:173
+msgid "move up"
+msgstr "mover arriba"
+
+#: ../skins/contentpanels/contentpanels_config_form.pt:142
+msgid "new column"
+msgstr "nueva columna"
+
+#: ../skins/contentpanels/contentpanels_config_form.pt:38
+msgid "new page"
+msgstr "Página nueva"
+
+#: ../skins/contentpanels/contentpanels_config_form.pt:128
+msgid "new panel"
+msgstr "nuevo panel"
+
+#. Default: "No templates avaible yet! Please contact site administrator to setup it."
+#: ../skins/contentpanels/contentpanels_display_view.pt:107
+msgid "no_contenpanels_templates"
+msgstr ""
+
+# contentpanles_display_view
+# This view doesn't have a layout template yet. You must select one at first.
+#. Default: "This view doesn't have a layout template yet. You must select one at first."
+#: ../skins/contentpanels/contentpanels_display_view.pt:28
+msgid "no_contentpanels_template"
+msgstr "Esta vista todavía no tiene una plantilla. Debes seleccionar una para empezar."
+
+# No items yet.
+#. Default: "No items yet."
+#: ../skins/cp_viewlets/viewlet_full_changes.pt:103
+#: ../skins/cp_viewlets/viewlet_image_folder.pt:52
+#: ../skins/cp_viewlets/viewlet_ratings.pt:81
+msgid "no_items_yet"
+msgstr "Todavía no hay elementos."
+
+#. Default: "No post."
+#: ../skins/cp_viewlets/viewlet_news.pt:45
+msgid "no_post"
+msgstr ""
+
+#: ../config.py:59
+msgid "none"
+msgstr ""
+
+# Preview
+#. Default: "Preview"
+#: ../skins/contentpanels/contentpanels_display_view.pt:84
+msgid "preview_template"
+msgstr "Previsualizar"
+
+#: ../config.py:113
+msgid "recent messages"
+msgstr ""
+
+#. Default: "select this panel"
+#: ../skins/contentpanels/cp_new_panel_form.pt:178
+msgid "select_this_panel"
+msgstr "selecciona este panel"
+
+#: ../config.py:60
+msgid "set to left"
+msgstr ""
+
+#: ../config.py:61
+msgid "set to right"
+msgstr ""
+
+#: ../config.py:55
+msgid "tab mode"
+msgstr ""
+
+# this template is broken
+#. Default: "this template is broken"
+#: ../skins/contentpanels/contentpanels_templates_form.pt:83
+msgid "template_is_broken"
+msgstr "esta plantilla está corrupta"
+
+# Layout
+#. Default: "Layout"
+#: ../skins/contentpanels/contentpanels_display_view.pt:88
+msgid "template_layout"
+msgstr "Lienzo"
+
+#: ../config.py:54
+msgid "tile mode"
+msgstr ""
+
+#########################
+# select viewlet
+########################
+#. Default: "Related Content"
+#: ../skins/contentpanels/cp_new_panel_form.pt:80
+msgid "viewlet_context"
+msgstr "Contexto del viewlet"
+
+# Zope Page template macro path
+#. Default: "Zope Page template macro path"
+#: ../skins/cp_viewlets/viewlet_macro_path.pt:7
+msgid "zpt_macro_path"
+msgstr "Ruta de la macro Zope Page Template:"
+

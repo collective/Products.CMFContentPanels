@@ -203,5 +203,29 @@ float:left;
 .documentActions,
 fieldset.cpEditFormFieldset {border-color: #cecece;}
 
+.documentActions {
+border-top:1px solid #8CACBB;
+margin:1em 0;
+padding:0;
+text-align:right;
+}
+.documentActions ul {
+display:block;
+list-style-image:none;
+list-style-type:none;
+margin:-0.9em 0 0;
+padding:0 0.5em;
+}
+.documentActions li {
+background-color:White;
+display:inline !important;
+font-size:90%;
+padding:0 0.25em;
+}
+.documentActions a {
+border:medium none !important;
+text-decoration:none;
+}
+
 
 /* </dtml-with> */

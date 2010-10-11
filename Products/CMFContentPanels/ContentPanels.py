@@ -20,12 +20,7 @@ from Acquisition import aq_base, aq_parent, aq_inner
 from Products.CMFCore import permissions
 from Products.CMFContentPanels import MessageFactory as _
 
-try:
-    from Products.CMFPlone.migrations import v3_0
-    del v3_0
-    HAS_PLONE_3 = True
-except ImportError:
-    HAS_PLONE_3 = False
+from Products.CMFContentPanels.config import PLONE_VERSION
 
 try:
     from Products.LinguaPlone.public import registerType, BaseContent
@@ -111,60 +106,12 @@ class ContentPanels(BaseContent):
 
     schema = ContentPanelsSchema
 
-    __implements__ = (getattr(BaseContent,'__implements__',()),)
     implements(IContentPanels)
     security = ClassSecurityInfo()
-    archetype_name            = 'ContentPanels'
-    meta_type                 = 'CMF Content Panels'
-    portal_type               = 'ContentPanels'
-    allowed_content_types     = []
-    filter_content_types      = 0
-    global_allow              = 1
-    allow_discussion          = 0
-    content_icon              = 'contentpanels_icon.gif'
-    immediate_view            = 'contentpanels_edit_form'
-    default_view              = 'contentpanels_view'
-    suppl_views               = ()
-
-    typeDescription           = "ContentPanels is a portlet content to build composite page."
-    typeDescMsgId             = 'description_edit_contentpanels'
+    archetype_name = 'ContentPanels'
+    meta_type      = 'CMF Content Panels'
 
     _at_rename_after_creation = True
-
-    actions = (
-        { 'id': 'view',
-          'name': 'View',
-          'action': 'string:${object_url}/contentpanels_view',
-          'permissions': (permissions.View,),
-        },
-        { 'id': 'layout',
-          'name': 'Layout',
-          'action': 'string:${object_url}/contentpanels_config_form',
-          'permissions': (permissions.ModifyPortalContent,),
-        },
-        { 'id': 'templates',
-          'name': 'Templates',
-          'action': 'string:${object_url}/contentpanels_templates_form',
-          'permissions': (permissions.ManagePortal,),
-        },
-    )
-
-    if not HAS_PLONE_3:
-        actions += (
-            { 'id': 'local_roles',
-              'name': 'Sharing',
-              'action': 'string:${folder_url}/folder_localrole_form',
-              'permissions': ('Manage properties',),
-            },
-        )
-
-    aliases = {
-        '(Default)': 'contentpanels_view',
-        'view': '(Default)',
-        'index.html': '(Default)',
-        'edit': 'base_edit',
-        'properties': 'base_metadata',
-    }
 
     def __init__(self, oid, **kw):
         BaseContent.__init__(self, oid, **kw)
