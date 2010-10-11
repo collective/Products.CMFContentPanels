@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.6a3 (2010-10-08)
+2.6a8 (2010-10-08)
 ------------------
 * Updated to run in Plone 4 [lepri]
 

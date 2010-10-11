@@ -22,3 +22,5 @@ CONTRIBUTORS:
   - Luciano Pacheco, lucmult@gmail.com
     * Improve translation structure and updated Brazilian translation
 
+  - Gustavo Lepri,
+    * Updated to run in Plone 4
