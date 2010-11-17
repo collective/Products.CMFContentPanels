@@ -27,7 +27,7 @@
                          rowspacing python: int(here.getPageInfo(pageIndex, 'pageCellPad'));
                          colspacing python: int(here.getPageInfo(pageIndex, 'pageCellSpace'));
                          columns python:here.getPageInfo(pageIndex, 'pageColumns');
-             page_titles here/getPageTitles;"
+			 page_titles here/getPageTitles;"
              tal:attributes="width python: here.getPageInfo(pageIndex, 'pageWidth');
                             class python: 'cp_%s' % page_titles[pageIndex];
 ">
