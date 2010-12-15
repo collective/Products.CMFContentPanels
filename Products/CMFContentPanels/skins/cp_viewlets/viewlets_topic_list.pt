@@ -16,7 +16,9 @@
 <dl metal:define-macro="base_portlet"
     class="portlet"
     tal:define="itemCount python:int(viewletOptions.get('itemCount', 5) );
-                results python:here.queryCatalog()[:itemCount];">
+                results python:here.queryCatalog()[:itemCount];
+                portal_state portal_state|context/@@plone_portal_state;
+                portal_url portal_url|portal_state/portal_url">
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
@@ -48,6 +50,7 @@
            <span class="portletItemDetails"
                  tal:define="modificationDate obj/ModificationDate;
                              creator obj/Creator;
+                             mtool mtool|context/portal_membership;
                              author python:mtool.getMemberInfo(creator);
                              authorName python:author and author['fullname'] or creator;
                              modificationDate python:here.toLocalizedTime(modificationDate)"
