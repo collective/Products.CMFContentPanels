@@ -30,7 +30,8 @@
     </dd>
 
     <dd class="portletFooter"
-        tal:condition="python:checkPermission('Modify portal content', here)">
+        tal:define="checkPermission nocall: context/portal_membership/checkPermission;"
+        tal:condition="python:checkPermission('Modify portal content', context)">
 
         <a class="tile"
            tal:attributes="href string:${here/absolute_url}/edit">
