@@ -1,6 +1,10 @@
 Changelog
 =========
 
+2.6a9 (2010-12-22)
+------------------
+* Fixed errors in profile import [lepri]
+
 2.6a8 (2010-10-08)
 ------------------
 * Updated to run in Plone 4 [lepri]
