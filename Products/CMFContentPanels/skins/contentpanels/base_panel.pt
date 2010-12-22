@@ -29,6 +29,8 @@
 
 <div metal:define-macro="viewlet" class="portlet-wrap"
      tal:define="panelTitle viewletOptions/viewlet_title | nothing;
+                 plone_view context/@@plone;
+                 normalizeString nocall:plone_view/normalizeString;
                  rowspacing rowspacing | python: 0;
                  colspacing  colspacing | python: 0;
                  isFirstColumn repeat/column/start | nothing;
