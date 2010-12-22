@@ -1,5 +1,5 @@
 v2.6a3
-2.6a9 (unreleased)
+2.6a9 (2010-12-22)
                   
 
 - Nothing changed yet.
