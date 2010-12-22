@@ -53,33 +53,35 @@ def resetContentPanelsPermissions(portal, out):
         portal_catalog.catalog_object(obj, None)
 
 def install(self, reinstall=False):
+    
+    out = StringIO()
+    out.write( 'CMFContentPanels installation tool\n')
+    
     portal = getToolByName(self, 'portal_url').getPortalObject()
-    setup_tool = getToolByName(self, 'portal_setup')
+    setup_tool = getToolByName(portal, 'portal_setup')
     if PLONE_VERSION >= 3:
         setup_tool.runAllImportStepsFromProfile(
                 "profile-Products.CMFContentPanels:default",
                 purge_old=False)
-    out = StringIO()
-    out.write( 'CMFContentPanels installation tool\n')
-
-    installTypes(self, out, listTypes(PROJECTNAME), PROJECTNAME)
-    install_subskin(self, out, GLOBALS)
-
-    if not hasattr(portal, 'portal_contentpanels'):
-        portal._setObject( 'portal_contentpanels', ContentPanelsTool() )
-        out.write('Added ConentPanels Tool\n')
+    else:
+        factory_tool = getToolByName(self,'portal_factory')
+        factory_types=[
+            "ContentPanels",
+            ] + factory_tool.getFactoryTypes().keys()
+        factory_tool.manage_setPortalFactoryTypes(listOfTypeIds=factory_types)
+    
+        installTypes(self, out, listTypes(PROJECTNAME), PROJECTNAME)
+        install_subskin(self, out, GLOBALS)
+    
+        if not hasattr(portal, 'portal_contentpanels'):
+            portal._setObject( 'portal_contentpanels', ContentPanelsTool() )
+            out.write('Added ConentPanels Tool\n')
 
     p_cp=getToolByName(self, 'portal_contentpanels')
     p_cp.manage_installAllViewlets()
 
     install_RSSCache(portal, out)
     install_default_page(portal, out)
-
-    factory_tool = getToolByName(self,'portal_factory')
-    factory_types=[
-        "ContentPanels",
-        ] + factory_tool.getFactoryTypes().keys()
-    factory_tool.manage_setPortalFactoryTypes(listOfTypeIds=factory_types)
 
     addViewMethods(portal, out)
 
