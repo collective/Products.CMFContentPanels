@@ -24,7 +24,6 @@ from Acquisition import aq_base, aq_parent, aq_inner
 
 from Products.CMFCore import permissions
 
-from Products.Archetypes import atapi
 from Products.ATContentTypes.content import base
 from Products.ATContentTypes.content import schemata
 
