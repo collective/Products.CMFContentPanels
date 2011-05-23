@@ -1,6 +1,9 @@
+"""Definition of the Content Panels content type."""
+
 ##############################################################################
 #
-# Copyright (c) 2002 ZopeChina Corporation (http://www.zopechina.com). All Rights Reserved.
+# Copyright (c) 2002 ZopeChina Corporation (http://www.zopechina.com).
+# All Rights Reserved.
 #
 # This software is subject to the provisions of the Zope Public License,
 # Version 2.0 (ZPL).  A copy of the ZPL should accompany this distribution.
@@ -11,34 +14,39 @@
 #
 ##############################################################################
 
-"""Implement the content panels content type."""
 import pprint
-from zope.interface import implements
 from copy import deepcopy
+
+from zope.interface import implements
+
 from AccessControl import ClassSecurityInfo
 from Acquisition import aq_base, aq_parent, aq_inner
-from Products.CMFCore import permissions
-from Products.CMFContentPanels import MessageFactory as _
 
+from Products.CMFCore import permissions
+
+from Products.Archetypes import atapi
+from Products.ATContentTypes.content import base
+from Products.ATContentTypes.content import schemata
+
+from Products.CMFContentPanels import MessageFactory as _
 from Products.CMFContentPanels.config import PLONE_VERSION
+from Products.CMFContentPanels.config import VOC_PAGE_LAYOUT, VOC_PORTLET_POS, PROJECTNAME
+from Products.CMFContentPanels.interfaces import IContentPanels
 
 try:
     from Products.LinguaPlone.public import registerType, BaseContent
-    from Products.LinguaPlone.public import BaseSchema, Schema
+    from Products.LinguaPlone.public import Schema
     from Products.LinguaPlone.public import StringField
     from Products.LinguaPlone.public import ReadOnlyStorage
     from Products.LinguaPlone.public import TextAreaWidget, SelectionWidget
 except ImportError:
-    from Products.Archetypes.public import registerType, BaseContent
-    from Products.Archetypes.public import BaseSchema, Schema
-    from Products.Archetypes.public import StringField
-    from Products.Archetypes.public import ReadOnlyStorage
-    from Products.Archetypes.public import TextAreaWidget, SelectionWidget
+    from Products.Archetypes.atapi import registerType, BaseContent
+    from Products.Archetypes.atapi import Schema
+    from Products.Archetypes.atapi import StringField
+    from Products.Archetypes.atapi import ReadOnlyStorage
+    from Products.Archetypes.atapi import TextAreaWidget, SelectionWidget
 
-from Products.CMFContentPanels.interfaces import IContentPanels
-from config import VOC_PAGE_LAYOUT, VOC_PORTLET_POS, PROJECTNAME
-
-ContentPanelsSchema = BaseSchema.copy() + Schema((
+ContentPanelsSchema = schemata.ATContentTypeSchema.copy() + Schema((
 
     StringField(
         name='description',
@@ -65,13 +73,14 @@ ContentPanelsSchema = BaseSchema.copy() + Schema((
         default='tile',
         vocabulary=VOC_PAGE_LAYOUT,
         widget=SelectionWidget(
-            label=_(u'label_page_layout_mode', u'Page layout mode'), #            label_msgid='label_page_layout_mode',
+            label=_(u'label_page_layout_mode', u'Page layout mode'),
+            #label_msgid='label_page_layout_mode',
             description=_(u"help_page_layout_mode", u"You can choose 'tile mode' or 'tab mode'. With"
-                         u"'tile mode', all pages are shown directly as rows. "
-                         u"It is useful for you to make very complex composite "
-                         u"page. With 'tab mode', you can switch pages using "
-                         u"the top-right tab links."),  #           description_msgid="help_page_layout_mode",
-            
+                          u"'tile mode', all pages are shown directly as rows. "
+                          u"It is useful for you to make very complex composite "
+                          u"page. With 'tab mode', you can switch pages using "
+                          u"the top-right tab links."),
+            #description_msgid="help_page_layout_mode",
         ),
     ),
 
@@ -81,9 +90,11 @@ ContentPanelsSchema = BaseSchema.copy() + Schema((
         edit_accessor='getPortletsPos',
         storage=ReadOnlyStorage(),
         widget=SelectionWidget(
-            label=_(u"label_portlet_pos", u'Set to left/right column'), #         label_msgid=u'label_portlet_pos',
+            label=_(u"label_portlet_pos", u'Set to left/right column'),
+            #label_msgid=u'label_portlet_pos',
             description=_(u"help_portlet_pos", u"You can set this contentpanels as the left or "
-                               u"right column of the template."), #           description_msgid="help_portlet_pos",
+                          u"right column of the template."),
+            #description_msgid="help_portlet_pos",
             i18n_domain='contentpanels',
         ),
     ),
@@ -91,26 +102,30 @@ ContentPanelsSchema = BaseSchema.copy() + Schema((
     StringField(
         name='customCSS',
         widget=TextAreaWidget(
-            label=_(u"label_custom_css", u'Custom CSS'), #             label_msgid='label_custom_css',
+            label=_(u"label_custom_css", u'Custom CSS'),
+            #label_msgid='label_custom_css',
             description=_(u"help_custom_css", u"You can define custom CSS for this contentpanels "
-                               u"here. Leave it blank if you don't know about CSS."), #            description_msgid='help_custom_css',
+                          u"here. Leave it blank if you don't know about CSS."),
+
+            #description_msgid='help_custom_css',
             i18n_domain='contentpanels',
         ),
     ),
 
 ))
 
+schemata.finalizeATCTSchema(ContentPanelsSchema, moveDiscussion=False)
 
-class ContentPanels(BaseContent):
+
+class ContentPanels(base.ATCTContent):
     """ContentPanels is a portlet content to build composite page."""
+    implements(IContentPanels)
 
     schema = ContentPanelsSchema
 
-    implements(IContentPanels)
-    security = ClassSecurityInfo()
     archetype_name = 'ContentPanels'
-    meta_type      = 'CMF Content Panels'
-
+    meta_type = 'CMF Content Panels'
+    security = ClassSecurityInfo()
     _at_rename_after_creation = True
 
     def __init__(self, oid, **kw):
@@ -431,4 +446,3 @@ class ContentPanels(BaseContent):
         self._p_changed = 1
 
 registerType(ContentPanels, PROJECTNAME)
-
