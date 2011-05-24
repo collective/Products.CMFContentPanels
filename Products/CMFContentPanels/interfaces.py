@@ -6,6 +6,9 @@ from Products.CMFContentPanels.config import MessageFactory as _
 class IContentPanelsTool(Interface):
     """Tool for ContentPanels."""
 
+class IContentPanels(Interface):
+    """ContentPanels."""
+
     description = schema.TextLine(
         title=_(u"label_description"),
         required=False,
@@ -31,6 +34,3 @@ class IContentPanelsTool(Interface):
         required=False,
         description=_(u"help_custom_css"),
     )
-
-class IContentPanels(Interface):
-    """ContentPanels."""
