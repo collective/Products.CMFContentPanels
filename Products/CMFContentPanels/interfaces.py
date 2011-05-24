@@ -1,5 +1,7 @@
 from zope.interface import Interface
+from zope import schema
 
+from Products.CMFContentPanels.config import MessageFactory as _
 
 class IContentPanelsTool(Interface):
     """Tool for ContentPanels."""
