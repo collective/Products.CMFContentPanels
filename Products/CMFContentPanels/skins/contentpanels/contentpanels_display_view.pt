@@ -4,26 +4,22 @@
 <div metal:fill-slot="main"
      i18n:domain="contentpanels"
      tal:define="contentpanels_template_id request/contentpanels_template_id | python:here.getProperty('contentpanels_template_id', '');
+                 is_editable context/@@plone_context_state/is_editable;
+                 object_title context/@@plone_context_state/object_title;
+                 here_url context/@@plone_context_state/object_url;
+                 template_id template/getId;
                  t_contentpanels here/portal_contentpanels;
                  contentpanels python:t_contentpanels.getTemplateById(contentpanels_template_id);
                  page request/pageIndex | python:'0';
+
                  pageIndex python:int(page);
                  choose_template request/choose_template | nothing;
                  description here/Description;">
 
-        <tal:block tal:define="dummy python:is_editable and actions['document_actions'].append(
-                                     {'url':'%s/%s?choose_template=1' % (here_url, template_id),
-                                      'id':'contentpanels',
-                                      'title':'Change layout template for this view',
-                                      'name':'Change layout template for this view'}) ">
-        <div metal:use-macro="here/document_actions/macros/document_actions">
-            Document actions (print, sendto etc)
-        </div>
-        </tal:block>
 
-        <h1 tal:content="object_title" class="documentFirstHeading">
-          Title or id
-        </h1>
+      <h1 tal:content="object_title" class="documentFirstHeading">
+        Title or id
+      </h1>
 
        <p tal:condition="python:contentpanels is None"
           i18n:translate="no_contentpanels_template"> This view doesn't have a layout template yet. You must select one at first.</p>

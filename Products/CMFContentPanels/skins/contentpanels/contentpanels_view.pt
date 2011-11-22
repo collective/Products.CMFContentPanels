@@ -1,43 +1,42 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
-      metal:use-macro="here/main_template/macros/master"
+      metal:use-macro="context/main_template/macros/master"
       i18n:domain="contentpanels">
 
-  <metal:block fill-slot="css_slot">
-        <style type="text/css"
-               tal:define="customCSS here/getCustomCSS"
-               tal:condition="customCSS"
-               tal:content="structure string:&lt;!-- $customCSS --&gt;">
-        </style>
-  </metal:block>
+<metal:block fill-slot="css_slot">
+  <style type="text/css"
+    tal:define="customCSS here/getCustomCSS"
+    tal:condition="customCSS"
+    tal:content="structure string:&lt;!-- $customCSS --&gt;">
+  </style>
+</metal:block>
+
 
 <body>
+<metal:content-core fill-slot="content-core">
+    <metal:content-core define-macro="content-core">
 
-<div metal:fill-slot="main"
-     tal:define="page request/pageIndex | python:'0';
+<div tal:define="page request/pageIndex | python:'0';
                  pageIndex python:int(page)" >
 
-    <tal:nothing condition="nothing">
-    <div metal:use-macro="here/document_actions/macros/document_actions">
-         Document actions (print, sendto etc)
-    </div>
-    </tal:nothing>
+  <h1 tal:define="title here/Title"
+      tal:content="title" 
+      tal:condition="title"
+      class="documentFirstHeading">
+      Title or id
+  </h1>
 
-    <h1 tal:define="title here/Title"
-        tal:content="title" 
-        tal:condition="title"
-        class="documentFirstHeading">
-        Title or id
-    </h1>
+  <div class="documentDescription"
+       tal:define="description here/Description"
+       tal:condition="description"
+       tal:content="description">
+     description
+  </div>
 
-    <div class="documentDescription"
-         tal:define="description here/Description"
-         tal:condition="description"
-         tal:content="description">
-       description
-    </div>
-
-    <div class="visualClear"><!-- --></div>
+  <div class="visualClear"><!-- --></div>
 
   <metal:body define-macro="body">
     <tal:block tal:condition="python: here.getPageLayoutMode() == 'tab'">
@@ -70,6 +69,9 @@
 
 </div>
 
-</body>
 
+    </metal:content-core>
+</metal:content-core>
+
+</body>
 </html>
