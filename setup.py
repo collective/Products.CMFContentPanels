@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '2.6b1'
+version = '2.6b2dev'
 
 setup(
     name='Products.CMFContentPanels',
