@@ -444,4 +444,10 @@ class ContentPanels(base.ATCTContent):
         self.panelsConfig[pageIndex]['pageColumns'][toColumn]['columnPanels'].insert(toPanel, panel)
         self._p_changed = 1
 
+    def getText(self):
+        """ return the whole ContentPanels content, one panel after
+            another, to add support for collective.portlet.content.
+        """
+        return self.restrictedTraverse('contentpanels_body').render()
+
 registerType(ContentPanels, PROJECTNAME)

@@ -23,7 +23,7 @@
         global member mtool/getAuthenticatedMember;
         global isAnon mtool/isAnonymousUser;
         global checkPermission nocall:mtool/checkPermission;
-        global Iterator python:modules['Products.CMFPlone'].IndexIterator;
+        global Iterator python:modules['Products.CMFPlone'].utils.RealIndexIterator;
         global tabindex python:Iterator(pos=80000);
         global normalizeString nocall:putils/normalizeString;
         global contentpanels_in python:here.aq_inner;
