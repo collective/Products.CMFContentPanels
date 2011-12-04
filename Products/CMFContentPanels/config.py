@@ -7,8 +7,8 @@ _ = MessageFactory = MessageFactory('contentpanels')
 try:
     # Plone 4 and higher 
     import plone.app.upgrade
-    PLONE_VERSION = 4 
-except ImportError: 
+    PLONE_VERSION = 4
+except ImportError:
     PLONE_VERSION = 3
 
 if PLONE_VERSION == 3:
@@ -18,7 +18,7 @@ if PLONE_VERSION == 3:
         PLONE_VERSION = 3
     except ImportError:
         PLONE_VERSION = 2
-       
+
 ADD_CONTENT_PERMISSION = AddPortalContent
 PROJECTNAME = 'CMFContentPanels'
 SKINS_DIR = 'skins'
