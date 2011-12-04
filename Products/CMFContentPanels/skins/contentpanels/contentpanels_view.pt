@@ -22,22 +22,6 @@
 <div tal:define="page request/pageIndex | python:'0';
                  pageIndex python:int(page)" >
 
-  <h1 tal:define="title here/Title"
-      tal:content="title" 
-      tal:condition="title"
-      class="documentFirstHeading">
-      Title or id
-  </h1>
-
-  <div class="documentDescription"
-       tal:define="description here/Description"
-       tal:condition="description"
-       tal:content="description">
-     description
-  </div>
-
-  <div class="visualClear"><!-- --></div>
-
   <metal:body define-macro="body">
     <tal:block tal:condition="python: here.getPageLayoutMode() == 'tab'">
        <div class="tabber">
