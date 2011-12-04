@@ -29,7 +29,7 @@ from Products.ATContentTypes.content import schemata
 
 from Products.CMFContentPanels import MessageFactory as _
 from Products.CMFContentPanels.config import PLONE_VERSION
-from Products.CMFContentPanels.config import VOC_PAGE_LAYOUT, VOC_PORTLET_POS, PROJECTNAME
+from Products.CMFContentPanels.config import VOC_PAGE_LAYOUT, PROJECTNAME
 from Products.CMFContentPanels.interfaces import IContentPanels
 
 try:
@@ -84,21 +84,6 @@ ContentPanelsSchema = schemata.ATContentTypeSchema.copy() + Schema((
     ),
 
     StringField(
-        name='portletsPos',
-        vocabulary=VOC_PORTLET_POS,
-        edit_accessor='getPortletsPos',
-        storage=ReadOnlyStorage(),
-        widget=SelectionWidget(
-            label=_(u"label_portlet_pos", u'Set to left/right column'),
-            #label_msgid=u'label_portlet_pos',
-            description=_(u"help_portlet_pos", u"You can set this contentpanels as the left or "
-                          u"right column of the template."),
-            #description_msgid="help_portlet_pos",
-            i18n_domain='contentpanels',
-        ),
-    ),
-
-    StringField(
         name='customCSS',
         widget=TextAreaWidget(
             label=_(u"label_custom_css", u'Custom CSS'),
@@ -117,7 +102,7 @@ schemata.finalizeATCTSchema(ContentPanelsSchema, moveDiscussion=False)
 
 
 class ContentPanels(base.ATCTContent):
-    """ContentPanels is a portlet content to build composite page."""
+    """ContentPanels is a composite page build system."""
     implements(IContentPanels)
 
     schema = ContentPanelsSchema
@@ -151,66 +136,6 @@ class ContentPanels(base.ATCTContent):
             return
         value = value.replace('\n', ' ').replace('\r', '')
         self.panelsConfig = eval(value)
-
-    def getPortletsPos(self):
-        """ get portlet pos of the container """
-        portlet_name = 'here/%s/contentpanels_body' % self.getId()
-        container = aq_parent(self)
-        for slot_name in ['left_slots', 'right_slots']:
-            if hasattr(aq_base(container), slot_name):
-                if portlet_name in getattr(container, slot_name):
-                    return slot_name
-        return 'none'
-
-    def setPortletsPos(self, value, **kw):
-        self.cleanPortletPos()
-        if value == 'none':
-            return
-
-        if value not in ('left_slots', 'right_slots'):
-            return
-
-        portlet_path = 'here/%s/contentpanels_body' % self.getId()
-
-        folder = aq_parent(aq_inner(self))
-        if not folder.hasProperty(value):
-            folder.manage_addProperty(value, [portlet_path], 'lines')
-        else:
-            portlets = folder.getProperty(value)
-            new_portlets = list(portlets) + [portlet_path]
-            folder.manage_changeProperties({value:new_portlets})
-
-    def cleanPortletPos(self):
-        """ cleanup left/right_slots"""
-        portlet_path = 'here/%s/contentpanels_body' % self.getId()
-        folder = aq_parent(aq_inner(self))
-        for slot_name in ('left_slots', 'right_slots'):
-            portlets = folder.getProperty(slot_name, ())
-
-            if portlet_path not in portlets:
-                continue
-
-            if tuple(portlets) == (portlet_path, ):
-                folder.manage_delProperties([slot_name])
-            else:
-                new_portlets = [portlet for portlet in portlets \
-                                if portlet != portlet_path]
-                folder.manage_changeProperties({slot_name:new_portlets})
-
-    def manage_beforeDelete(self, item, container):
-        """ cleanup left/right slots when delete or rename """
-        # delete myself
-        if item is self:
-            self._v_pos_before_delete = self.getPortletsPos()
-            self.cleanPortletPos()
-        BaseContent.manage_beforeDelete(self, item, container)
-
-    def manage_afterAdd(self, item, container):
-        if item is self:
-            last_pos = getattr(self, '_v_pos_before_delete', 'none')
-            if last_pos != 'none':
-                self.setPortletsPos(last_pos)
-        BaseContent.manage_afterAdd(self, item, container)
 
     def clearPanels(self):
         self.panelsConfig = []

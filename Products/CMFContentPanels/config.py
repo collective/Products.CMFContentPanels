@@ -63,11 +63,6 @@ VOC_PAGE_LAYOUT = DisplayList( (
      ('tab', _(u'tab mode'), 'page_layout_tab'),
 ))
 
-VOC_PORTLET_POS = DisplayList((
-     ('none', _(u'none'), 'portlet_pos_none'),
-     ('left_slots',_(u'set to left'),'portlet_pos_left'),
-     ('right_slots', _(u'set to right'), 'portlet_pos_right'),
-))
 
 # DEFAULT VIEWLETS TABLE
 #

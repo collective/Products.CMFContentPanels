@@ -5,20 +5,18 @@ Products.CMFContentPanels
 Overview
 =========
 
-  Products.CMFContentPanels is a repackaging of CMFContentPanels
-  a Plone portlets product to build manageable composite pages.
+  Products.CMFContentPanels is a Plone product to build manageable composite pages.
   
   You can create new content object which is composed of other contents as
   configurable 'content panels'. You can change the layout, the panel
-  skin and the content viewlet through the web.
+  skin and the content viewlet through the web. 
+  There is no need to use special content objects, you can just use the standard plone content and compose them
   
-  This repackaging is intended to support projects migrating from earlier 
-  versions of Plone (2.x) to newer ones (3.1.x).
 
 Requirements
 ============
 
-  * Plone 3.1.x (http://plone.org/products/plone)
+  * Plone 4.x (http://plone.org/products/plone)
 
 Features
 =========
@@ -34,8 +32,7 @@ Features
   * each viewlet is configurable. it is quite easy to add new viewlets.
     You can add a RSS viewlet or a simplet text viewlet.
 
-  * contentpanels content can be a plone portlet and show on the
-    left/right column.
+  * contentpanels content can be used as a portle thru collective.portlet.content.
 
   * support multi-rows: use 'tile' page layout mode, and each page
     becomes a new row!
