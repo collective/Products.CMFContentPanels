@@ -109,6 +109,10 @@ VIEWLETS = [
     ('view_viewlet', _(u'Topic result list'),
      'string: here/viewlets_topic_list/macros/base_portlet',
      '', 'View', 'PT:Topic', 1),
+     
+    ('viewlets_master_list.pt', _(u'Advanced Topic Result list'),
+     'string: here/viewlets_master_list/macros/base_portlet',
+     '', 'View', 'PT:Topic', 1),
 
     ('image_view',_(u'image'),
      'string:here/viewlet_image_body/macros/portlet',

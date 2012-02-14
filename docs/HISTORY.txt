@@ -1,6 +1,10 @@
 Changelog
 =========
 
+2.6a10 (2011-02-14)
+------------------
+* Added the Advanced topic result List panelet [tamosauskas]
+
 2.6a9 (2010-12-22)
 ------------------
 * Fixed errors in profile import [lepri]
