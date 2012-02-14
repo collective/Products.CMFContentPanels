@@ -4,6 +4,7 @@ Changelog
 2.6a10 (2011-02-14)
 ------------------
 * Added the Advanced topic result List panelet [tamosauskas]
+* Added the new panelet for Banners [tamosauskas]
 
 2.6a9 (2010-12-22)
 ------------------

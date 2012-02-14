@@ -1,0 +1,59 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+<body>
+
+    <div metal:define-macro="viewlet_viewletconf">
+
+        <div class="field">
+            <label i18n:domain="plone">Link</label>
+            <input size=30 name="link" tal:attributes="value viewletOptions/link|string:${context/portal_url}"/>
+        </div>
+
+
+         <label i18n:domain="plone">Size</label>
+     <select name="ImagemSize"
+         tal:define="ImagemSize viewletOptions/ImagemSize | string:;
+                     sizes python:{'image':'Original',
+                                   'image_large':'Large',
+                                   'image_preview':'Preview',
+                                   'image_mini':'Mini',
+                                   'image_thumb':'Thumb', }"
+
+
+
+>
+       <option value=""
+           tal:repeat="v python:['image','image_large','image_preview','image_mini','image_thumb']"
+           tal:content="python:sizes[v]"
+           tal:attributes="value v;
+                           selected python:v==ImagemSize">original</option>
+     </select>
+
+<br>
+        
+         </div> 
+
+
+
+    <div metal:define-macro="title_only_viewletconf">
+         <div metal:use-macro="here/content_list_macros/macros/content_list_viewletconf" />
+    </div>
+
+
+<div metal:define-macro="viewlet" class="portlet" id="panelet-master" 
+    tal:define="link viewletOptions/link|string:${context/portal_url};
+                ImagemSize viewletOptions/ImagemSize|string:image;
+">
+
+<div class="banner">
+ <a href="#" tal:attributes="href link">   
+             <img tal:attributes="src string:${here/absolute_url}/${ImagemSize}" /></a>
+   </div>
+
+<div class="visualClear"></div>
+
+</div>
+
+</body>
+</html>
