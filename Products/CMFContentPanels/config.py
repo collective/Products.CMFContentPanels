@@ -114,6 +114,10 @@ VIEWLETS = [
      'string: here/viewlets_master_list/macros/base_portlet',
      '', 'View', 'PT:Topic', 1),
 
+    ('viewlets_banners',_(u'Banner'),
+     'string:here/viewlets_banners/macros/viewlet',
+     '', 'View', 'PT:Image', 1),
+
     ('image_view',_(u'image'),
      'string:here/viewlet_image_body/macros/portlet',
      '', 'View', 'PT:Image', 1),
