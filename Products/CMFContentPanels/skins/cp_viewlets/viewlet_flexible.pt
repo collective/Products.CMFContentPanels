@@ -1,0 +1,109 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+<body>
+
+    <div metal:define-macro="portlet_viewletconf">
+
+        <div class="field">
+            <label i18n:domain="plone">Section</label>
+            <input size=30 name="section" tal:attributes="value viewletOptions/section | here/aq_parent/Title| nothing"/>
+        </div>
+
+        <div class="field">
+            <label i18n:domain="plone">Title</label>
+            <input size=50 name="title" tal:attributes="value viewletOptions/title | here/title_or_id| nothing"/>
+         </div>
+  
+        <div class="field">
+            <label i18n:domain="plone">Description</label>
+            <textarea rows="5" cols="50" name="description" tal:attributes="value viewletOptions/description | here/Description| nothing" tal:content="viewletOptions/description | here/Description| nothing"> </textarea>
+         </div>
+
+        <div class="field" tal:condition="here/image_mini|nothing">
+<input name="exibeImagens" type="checkbox" tal:attributes="checked python:viewletOptions.get('exibeImagens',False) and 'checked' or '';" /> Show Image
+           
+| 
+
+Size
+      <select name="ImagemSize"
+         tal:define="ImagemSize viewletOptions/ImagemSize | string:;
+                     sizes python:{'':'---',
+                                   'image_large':'Large',
+                                   'image_preview':'Preview',
+                                   'image_mini':'Mini',
+                                   'image_thumb':'Thumb',
+                                   'image_tile':'Tile',
+                                   'image_icon':'Icon',
+                                   'image_listing':'Listing', }">
+       <option value=""
+           tal:repeat="v python:['','image_large','image_preview','image_mini','image_thumb','image_tile','image_icon','image_listing']"
+           tal:content="python:sizes[v]"
+           tal:attributes="value v;
+                           selected python:v==ImagemSize">original</option>
+     </select>
+
+
+      Align
+       <select name="Imagem"
+         tal:define="Imagem viewletOptions/Imagem | string:;
+                     sizes python:{'':'---',
+                                   'image-inline':'Top',
+                                   'image-right':'Right',
+                                   'image-left':'Left', }">
+       <option value=""
+           tal:repeat="v python:['','image-inline','image-right','image-left']"
+           tal:content="python:sizes[v]"
+           tal:attributes="value v;
+                           selected python:v==Imagem">original</option>
+     </select>
+
+        
+         </div>
+
+    </div>
+
+    <div metal:define-macro="title_only_viewletconf">
+         <div metal:use-macro="here/content_list_macros/macros/content_list_viewletconf" />
+    </div>
+
+
+<dl metal:define-macro="portlet" class="portlet" id="panelet-master"
+    tal:define="section viewletOptions/section|here/aq_parent/Title|nothing;
+                titulo viewletOptions/title|here/title_or_id|nothing;
+                description viewletOptions/description|here/Description|nothing;
+                Imagem viewletOptions/Imagem|nothing;
+                ImagemSize viewletOptions/ImagemSize|string:image_preview;
+                comImagem viewletOptions/exibeImagens|nothing;
+
+">
+
+<div id="imagem" tal:attributes="class string:${Imagem} ${ImagemSize}" tal:condition="python:comImagem">
+<a href="#" tal:attributes="href here/absolute_url">  
+             <img tal:attributes="src string:${here/absolute_url}/${ImagemSize}" /></a>
+             <div class="legenda" tal:condition="here/getImageCaption|nothing"  tal:content="here/getImageCaption">
+              Image Caption
+            </div>
+   </div>
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+         <span class="chapeu" tal:content="section">Tecnologia</span>
+        <a class="titulo" href="#"   
+           tal:attributes="href here/absolute_url" tal:content="titulo">title</a>
+        <span class="portletTopRight"></span>
+<hr>
+    </dt>
+
+    <dd class="portletItem lastItem">
+
+       <span class="description" tal:content="structure description">description</span>
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+    </dd>
+<div class="visualClear"></div>
+
+</dl>
+
+</body>
+</html>

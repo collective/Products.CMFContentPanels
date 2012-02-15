@@ -152,6 +152,10 @@ VIEWLETS = [
 
     # GL: global viewlets
 
+    ('viewlet_flexible', _(u'Flexible'),
+     'string:here/viewlet_flexible/macros/portlet',
+     '', 'View', 'GL:all', 1),
+    
     ('macro_viewlet', _(u'ZPT macro'),
      'string:here/viewlet_macro_path/macros/viewlet',
      '', 'View', 'GL:all', 1),
