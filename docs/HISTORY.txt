@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.6a10 (2011-02-14)
+2.6b2 (2012-02-16)
 ------------------
 * Added the Advanced topic result List cpviewlet [tamosauskas]
 * Added the new cpviewlet for Banners [tamosauskas]
