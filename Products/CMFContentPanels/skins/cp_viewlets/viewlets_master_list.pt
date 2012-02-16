@@ -1,0 +1,204 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+
+<body>
+
+<div metal:define-macro="base_portlet_viewletconf">
+    <div class="field">
+         <label i18n:domain="plone">Title</label>
+         <input size=50 name="title" tal:attributes="value viewletOptions/title | here/title_or_id| nothing"/>
+    </div>
+    <div class="field">
+         <label i18n:domain="plone">Items</label>
+         <input size=50 name="nitens" tal:attributes="value viewletOptions/nitens | string:5"/>
+    </div>
+    <div class="field">
+         <label i18n:domain="plone">Footer</label> <input size=30 name="footer" tal:attributes="value viewletOptions/footer | string:${here/Title};"/>
+    </div>
+      <div class="field">
+         <input name="exibeSecao" type="checkbox" tal:attributes="checked python:viewletOptions.get('exibeSecao',False) and 'checked' or '';" />
+         <span i18n:domain="plone"> Section</span><br />
+         <input name="exibeDescricao" type="checkbox" tal:attributes="checked python:viewletOptions.get('exibeDescricao',False) and 'checked' or '';" />
+         <span i18n:domain="plone"> Description</span><br />
+         <input name="exibeData" type="checkbox" tal:attributes="checked python:viewletOptions.get('exibeData',False) and 'checked' or '';" />
+         <span i18n:domain="plone"> Date</span><br />
+         <input name="exibeCriador" type="checkbox" tal:attributes="checked python:viewletOptions.get('exibeCriador',False) and 'checked' or '';" />
+         <span i18n:domain="plone"> Creator</span><br />
+         <input name="exibeTags" type="checkbox" tal:attributes="checked python:viewletOptions.get('exibeTags',False) and 'checked' or '';" />
+         <span i18n:domain="plone"> Tags</span><br />
+    </div>
+    <div class="field">
+      <input name="exibeImagens" type="checkbox" tal:attributes="checked python:viewletOptions.get('exibeImagens',False) and 'checked' or '';" /> Show Image |
+
+     Size
+     <select name="ImagemSize"
+         tal:define="ImagemSize viewletOptions/ImagemSize | string:;
+                     sizes python:{'':'---',
+                                   'image_large':'Large',
+                                   'image_preview':'Preview',
+                                   'image_mini':'Mini',
+                                   'image_thumb':'Thumb',
+                                   'image_tile':'Tile',
+                                   'image_icon':'Icon',
+                                   'image_listing':'Listing', }">
+       <option value=""
+           tal:repeat="v python:['','image_large','image_preview','image_mini','image_thumb','image_tile','image_icon','image_listing']"
+           tal:content="python:sizes[v]"
+           tal:attributes="value v;
+                           selected python:v==ImagemSize">original</option>
+     </select>
+
+
+      Align
+       <select name="Imagem"
+         tal:define="Imagem viewletOptions/Imagem | string:;
+                     sizes python:{'':'---',
+                                   'image-inline':'Top',
+                                   'image-right':'Right',
+                                   'image-left':'Left', }">
+       <option value=""
+           tal:repeat="v python:['','image-inline','image-right','image-left']"
+           tal:content="python:sizes[v]"
+           tal:attributes="value v;
+                           selected python:v==Imagem">original</option>
+     </select>
+
+
+     </div>
+
+
+</div>
+
+<div metal:define-macro="title_only_viewletconf">
+     <div metal:use-macro="here/content_list_macros/macros/content_list_viewletconf" />
+  
+</div>
+
+<dl metal:define-macro="base_portlet"
+    class="portlet list"
+    tal:define="itemCount python:int(viewletOptions.get('itemCount', 5) );
+                results python:here.queryCatalog()[:itemCount];
+                portal_state portal_state|context/@@plone_portal_state;
+                portal_url portal_url|portal_state/portal_url;
+                footer viewletOptions/footer|string: Mais ${here/Title|nothing};
+                titulo viewletOptions/title|here/title_or_id|nothing;
+                exibeDescricao viewletOptions/exibeDescricao|nothing;
+                exibeSecao viewletOptions/exibeSecao|nothing;
+                exibeTags viewletOptions/exibeTags|nothing;
+                exibeData viewletOptions/exibeData|nothing;
+                exibeCriador viewletOptions/exibeCriador|nothing;
+                Imagem viewletOptions/Imagem|nothing;
+                ImagemSize viewletOptions/ImagemSize|string:image_preview;
+                comImagem viewletOptions/exibeImagens|nothing;
+">
+
+    <dt class="portletHeader">
+        <a href="#"   
+           tal:attributes="href here/absolute_url"
+           tal:content="titulo" >Topic title</a>
+    </dt>
+
+    <tal:items tal:repeat="obj results">
+    <dd tal:attributes="class string:portletItem number-${repeat/obj/number}">
+
+
+<span tal:define="item_object obj/getObject" tal:condition="item_object/image_tile|nothing">
+
+<div class="image-list" tal:attributes="class string:${Imagem} ${ImagemSize}" tal:condition="python:comImagem">
+
+
+<a href="#" tal:attributes="href obj/getURL" >  
+             <img tal:attributes="src string:${obj/getURL}/${ImagemSize}" />
+</a>
+        
+
+</div>
+</span>      
+
+
+
+<div class="portletItemSection" tal:condition="python:exibeSecao"
+                                         tal:content="python:obj.getObject().aq_parent.Title()">Section</div>
+
+<h2 class="portletItemTitle">
+    <a class="tile"
+           tal:attributes="href string:${obj/getURL}/view">
+        <tal:title tal:content="obj/pretty_title_or_id">title</tal:title>
+    </a>
+</h2>
+
+<p class="portletItemDescription">
+    <a class="tile"
+           tal:attributes="href string:${obj/getURL}/view"
+           tal:content="obj/Description" tal:condition="python:exibeDescricao">Description</a>
+</p>
+          
+            <span  class="portletItemCreator" tal:condition="python:exibeCriador" tal:define="creator obj/Creator;
+                  mtool mtool|context/portal_membership;
+                  author python:mtool.getMemberInfo(creator);
+                  authorName python:author and author['fullname'] or creator;" tal:content="string:${authorName}">
+                      creator
+           </span>
+            <span class="portletItemDate" tal:condition="python:exibeData"
+                 tal:define="modificationDate obj/ModificationDate;
+                             modificationDate python:here.toLocalizedTime(modificationDate)"
+                 tal:content="string: - $modificationDate">
+                  08/19/2001 03:01 AM
+           </span>
+<div class="portletItemTags" tal:condition="python:exibeTags">
+<span tal:define="categories obj/Subject|nothing;"
+                                    tal:condition="categories">
+<span tal:repeat="category categories">
+<span tal:replace="string:${category}" /><tal:separator condition="not: repeat/category/end">,</tal:separator>
+</span>
+</span>
+</div>
+<div class="clear"> </div>
+
+    </dd>
+    </tal:items>
+
+    <dd class="portletItem"
+        i18n:domain="contentpanels"
+        tal:condition="not: results"
+        i18n:translate="no_items_yet">
+          No items yet.
+    </dd>
+
+    <dd class="portletFooter even">
+        <a href="#"
+           class="title"
+           tal:content="footer"
+           tal:attributes="href here/absolute_url"
+           >More...</a>
+    </dd>
+</dl>
+
+<div metal:define-macro="inline_description">
+    <metal:block use-macro="here/viewlets_topic_list/macros/base_portlet">
+        <metal:block metal:fill-slot="body">
+            <metal:block metal:use-macro="here/content_list_macros/macros/inline_description"/>
+        </metal:block>
+    </metal:block>
+</div>
+
+<div metal:define-macro="separate_line_description">
+    <metal:block use-macro="here/viewlets_topic_list/macros/base_portlet">
+        <metal:block metal:fill-slot="body">
+            <metal:block metal:use-macro="here/content_list_macros/macros/separate_line_description"/>
+        </metal:block>
+    </metal:block>
+</div>
+
+<div metal:define-macro="title_only">
+    <metal:block use-macro="here/viewlets_topic_list/macros/base_portlet">
+        <metal:block metal:fill-slot="body">
+            <metal:block metal:use-macro="here/content_list_macros/macros/title_only"/>
+        </metal:block>
+    </metal:block>
+</div>
+
+</body>
+
+</html>

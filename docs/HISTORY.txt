@@ -1,6 +1,12 @@
 Changelog
 =========
 
+2.6a10 (2011-02-14)
+------------------
+* Added the Advanced topic result List cpviewlet [tamosauskas]
+* Added the new cpviewlet for Banners [tamosauskas]
+* Added the new Flexible cpviewlet [tamosauskas]
+
 2.6a9 (2010-12-22)
 ------------------
 * Fixed errors in profile import [lepri]

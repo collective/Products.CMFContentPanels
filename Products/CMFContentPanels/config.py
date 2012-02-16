@@ -104,6 +104,14 @@ VIEWLETS = [
     ('view_viewlet', _(u'Topic result list'),
      'string: here/viewlets_topic_list/macros/base_portlet',
      '', 'View', 'PT:Topic', 1),
+     
+    ('viewlets_master_list.pt', _(u'Advanced Topic Result list'),
+     'string: here/viewlets_master_list/macros/base_portlet',
+     '', 'View', 'PT:Topic', 1),
+
+    ('viewlets_banners',_(u'Banner'),
+     'string:here/viewlets_banners/macros/viewlet',
+     '', 'View', 'PT:Image', 1),
 
     ('image_view',_(u'image'),
      'string:here/viewlet_image_body/macros/portlet',
@@ -139,6 +147,10 @@ VIEWLETS = [
 
     # GL: global viewlets
 
+    ('viewlet_flexible', _(u'Flexible'),
+     'string:here/viewlet_flexible/macros/portlet',
+     '', 'View', 'GL:all', 1),
+    
     ('macro_viewlet', _(u'ZPT macro'),
      'string:here/viewlet_macro_path/macros/viewlet',
      '', 'View', 'GL:all', 1),
