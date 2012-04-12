@@ -84,7 +84,7 @@ New viewlets
       registerViewlets(you_viewlets)
 
      With this way, if you reinstall CMFContentPanels, your viewlets
-     configuration will not lost.
+     configuration will not be lost.
 
 How to make viewlets configurable
 ---------------------------------
