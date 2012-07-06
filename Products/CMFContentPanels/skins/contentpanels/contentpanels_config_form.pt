@@ -117,7 +117,7 @@ columns
                 <span i18n:translate="column_x_width">Column width 
                      #<span i18n:name="columnIndex" 
                           tal:content="python:repeat['column'].index+1"/></span>
-                <input type="text" i18:attributes="title" title="Column Width"
+                <input type="text" i18n:attributes="title" title="Column Width"
                        name="columnInfos.columnWidth:records" size="4" value=""
                        i18n:attributes="title"
                        tal:attributes="value column/columnWidth"/>
