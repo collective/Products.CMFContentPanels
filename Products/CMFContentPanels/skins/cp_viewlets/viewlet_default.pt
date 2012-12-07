@@ -3,6 +3,21 @@
       i18n:domain="plone">
 <body>
 
+<tal:block metal:define-macro="portlet_viewletconf">
+  <div class="field">
+     <input type="hidden" name="showMoreLink:int:default"
+            value="0"/>
+     <input type="checkbox" name="showMoreLink:boolean"
+            id="show_more_link"
+            tal:define="showMoreLink viewletOptions/showMoreLink | python:1"
+            tal:attributes="checked showMoreLink"
+            checked="checked"/>
+     <label for="show_more_link"
+            i18n:domain="contentpanels"
+            i18n:translate="label_show_more_link">Show More Link</label>
+  </div>
+</tal:block>
+
 <dl metal:define-macro="portlet"
     class="portlet">
 
@@ -23,9 +38,15 @@
         <span class="portletBottomLeft"></span>
         <span class="portletBottomRight"></span>
     </dd>
-
+    <dd class="portletFooter odd"
+        tal:condition="viewletOptions/showMoreLink | python: 1">
+        <a href="#"
+           class="subarticleMoreLink"
+           i18n:translate="box_morelink"
+           tal:attributes="href here/absolute_url"
+                   >More...</a>
+    </dd>
 </dl>
-
 </body>
 </html>
 

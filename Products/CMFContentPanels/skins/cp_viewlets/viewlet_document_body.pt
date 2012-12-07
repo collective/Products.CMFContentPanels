@@ -35,7 +35,7 @@
 
         <a class="tile"
            tal:attributes="href string:${here/absolute_url}/edit">
-           <img tal:replace="structure here/edit.gif"/>
+		<img tal:attributes="src string:${portal_url}/edit.png" />
            <span i18n:translate=""
                  i18n:domain="plone">Edit</span>
         </a>
