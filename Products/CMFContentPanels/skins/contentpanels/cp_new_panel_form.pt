@@ -3,6 +3,7 @@
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 </metal:doctype>
 <metal:block define-slot="top_slot" />
+<metal:block use-macro="here/global_defines/macros/defines" />
 <html xmlns="http://www.w3.org/1999/xhtml"
       xml:lang="en"
       lang="en"
@@ -51,7 +52,7 @@
         Get the global cache headers located in global_cache_settings.
     </metal:cache>
 
-    <base href="" tal:attributes="href here/renderBase" />
+    <base href="" tal:attributes="href context/@@plone/renderBase" />
 	<div tal:replace="structure provider:plone.htmlhead" />
 </head>
 
@@ -60,7 +61,7 @@
 
     <metal:fillbase fill-slot="base">
       <metal:baseslot define-slot="base">
-        <base href="" tal:attributes="href here/renderBase" />
+        <base href="" tal:attributes="href context/@@plone/renderBase" />
       </metal:baseslot>
     </metal:fillbase>
 
