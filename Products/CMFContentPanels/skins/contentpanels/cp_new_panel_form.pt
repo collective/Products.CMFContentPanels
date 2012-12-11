@@ -51,7 +51,7 @@
         Get the global cache headers located in global_cache_settings.
     </metal:cache>
 
-    <base href="" tal:attributes="href here/renderBase" />
+    <base href="" tal:attributes="href context/@@plone/renderBase" />
 	<div tal:replace="structure provider:plone.htmlhead" />
 </head>
 
@@ -60,7 +60,7 @@
 
     <metal:fillbase fill-slot="base">
       <metal:baseslot define-slot="base">
-        <base href="" tal:attributes="href here/renderBase" />
+        <base href="" tal:attributes="href context/@@plone/renderBase" />
       </metal:baseslot>
     </metal:fillbase>
 

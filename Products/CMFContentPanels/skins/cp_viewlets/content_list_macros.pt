@@ -39,7 +39,7 @@
                          types viewletOptions/portal_type | python:['Document', 'Link', 'File', 'Image', 'News Item'];
                          portal_types portal/portal_types;">
         <option i18n:translate=""
-                tal:repeat="ptype putils/getUserFriendlyTypes"
+                tal:repeat="ptype plone_utils/getUserFriendlyTypes"
                 tal:attributes="value ptype;
                                 selected python:ptype in types"
                 tal:content="python:portal_types.getTypeInfo(ptype).Title()">type</option>

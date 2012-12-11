@@ -78,7 +78,7 @@
      class="portlet"
      i18n:domain="contentpanels"
      tal:define="folderPath python:'/'.join(here.getPhysicalPath());
-                 query python:{'portal_type':['News Item'],
+                 query python:{'portal_type':['News Item', 'Document'],
                                'sort_on':'Date',
                                'sort_order':'reverse',
                                'path':folderPath};
@@ -123,7 +123,7 @@
         <a href="" class="tile"
            tal:define="mq python:modules['ZTUtils'].make_query;
                        params python:mq(query);"
-           tal:attributes="href string:${here/portal_url}/search?$params"
+           tal:attributes="href string:${context/portal_url}/search?$params"
            i18n:translate="box_morelink"
            i18n:domain="plone" >
                    More...
