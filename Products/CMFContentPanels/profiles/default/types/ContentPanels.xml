@@ -10,6 +10,7 @@
  <property name="product">CMFContentPanels</property>
  <property name="factory">addContentPanels</property>
  <property name="immediate_view">contentpanels_edit_form</property>
+ <property name="default_view">contentpanels_view</property>
  <property name="global_allow">True</property>
  <property name="filter_content_types">False</property>
  <property name="allowed_content_types"/>
