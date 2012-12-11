@@ -5,7 +5,7 @@ from zope.i18nmessageid import MessageFactory
 _ = MessageFactory = MessageFactory('contentpanels')
 
 try:
-    # Plone 4 and higher 
+    # Plone 4 and higher
     import plone.app.upgrade
     PLONE_VERSION = 4
 except ImportError:
@@ -104,7 +104,7 @@ VIEWLETS = [
     ('view_viewlet', _(u'Topic result list'),
      'string: here/viewlets_topic_list/macros/base_portlet',
      '', 'View', 'PT:Topic', 1),
-     
+
     ('viewlets_master_list.pt', _(u'Advanced Topic Result list'),
      'string: here/viewlets_master_list/macros/base_portlet',
      '', 'View', 'PT:Topic', 1),
@@ -150,7 +150,7 @@ VIEWLETS = [
     ('viewlet_flexible', _(u'Flexible'),
      'string:here/viewlet_flexible/macros/portlet',
      '', 'View', 'GL:all', 1),
-    
+
     ('macro_viewlet', _(u'ZPT macro'),
      'string:here/viewlet_macro_path/macros/viewlet',
      '', 'View', 'GL:all', 1),
@@ -197,9 +197,9 @@ VIEWLETS = [
      'string:here/portlet_mychanges/macros/portlet',
      '', 'View', 'GN:personal', 1),
 
-    ('portlet_favorites', _(u'My favorites'),
-     'string:here/portlet_favorites/macros/portlet',
-     '', 'View', 'GN:personal', 1),
+    #('portlet_favorites', _(u'My favorites'),
+    # 'string:here/portlet_favorites/macros/portlet',
+    # '', 'View', 'GN:personal', 1),
 
     ('portlet_review', _(u'Review list'),
      'string:here/portlet_review/macros/portlet',
