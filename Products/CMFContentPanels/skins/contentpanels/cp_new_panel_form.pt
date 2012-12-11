@@ -91,8 +91,12 @@
                                 parents python:[portal.restrictedTraverse('/'.join(rpaths[:i+1])) for i in range(len(rpaths))];
                                 parents python:[portal] + parents">
                 <tal:crums tal:repeat="parent parents">
-                    <img tal:condition="repeat/parent/start"
-                         tal:attributes="src string:${here/portal_url}/logoIcon.gif"/>
+                    <tal:icon condition="repeat/parent/start">
+                      <img tal:condition="python:here.restrictedTraverse('logoIcon.png')"
+                           tal:attributes="src string:${here/portal_url}/logoIcon.png"/>
+                      <img tal:condition="python:here.restrictedTraverse('logoIcon.gif', None)"
+                           tal:attributes="src string:${here/portal_url}/logoIcon.gif"/>
+                    </tal:icon>
                     <tal:path>
                         <a tal:attributes="href python:parent.absolute_url() + '/' + template.getId() + '?' + paramString+'&amp;panelSkin='+panelSkin" >
                             <span tal:content="string: ${parent/pretty_title_or_id}"

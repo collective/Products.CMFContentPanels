@@ -165,7 +165,7 @@ columns
                                     cpPath python:'/'.join(here.getPhysicalPath());">
                       <div>
                         <div class="cpPanelsHeadingInput">
-                          <img tal:attributes="src string:${here/portal_url}/${panelContent/getIcon}" />
+                          <img tal:attributes="src string:${here/portal_url}/${panelContent/getIcon}" tal:omit-tag="not:panelContent/getIcon" />
                           <a tal:attributes="href panelContent/absolute_url" tal:content="panelContent/title_or_id"/>
                         </div>
 

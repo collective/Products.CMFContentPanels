@@ -28,7 +28,8 @@
 
                  <a href=""
                     tal:attributes="href obj/getURL title obj/Description">
-                     <tal:block replace="structure here/event_icon.gif"/>
+                     <tal:block replace="structure here/event_icon.gif" 
+                          condition="python:here.restrictedTraverse('event_icon.gif')" />
                      <span tal:replace="python:test(obj.Title, obj.Title, obj.getId)"> Event </span>
                  </a>
 
