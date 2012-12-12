@@ -1,13 +1,22 @@
     <configure
     xmlns="http://namespaces.zope.org/zope"
-    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:gs="http://namespaces.zope.org/genericsetup"
     i18n_domain="contentpanels">
 
-  <genericsetup:registerProfile
+  <gs:registerProfile
       name="default"
       title="Products.CMFContentPanels"
       directory="profiles/default"
       description="Extension profile"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
+
+  <gs:upgradeStep
+      title="Run types import step"
+      description="Apply our own types.xml file."
+      source="2.6a9"
+      destination="2.6b3"
+      handler="Products.CMFContentPanels.migration.run_types_step"
+      profile="Products.CMFContentPanels:default" />
+
 </configure>
