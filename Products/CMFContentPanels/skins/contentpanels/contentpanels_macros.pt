@@ -30,7 +30,7 @@
 			 page_titles here/getPageTitles;"
              tal:attributes="class python: 'cp_%s' % page_titles[pageIndex];">
 
-<div tal:repeat="column columns">
+<div tal:repeat="column columns" tal:omit-tag="">
 
            <div class="cpttableless"
               tal:define="largura column/columnWidth;"
@@ -39,7 +39,7 @@
                                    isEmptyColumn python: len(column['columnPanels']) == 0;">
               <tal:panels tal:repeat="panel panels">
 
-                     <div tal:omit-tag="" 
+                     <div tal:omit-tag=""
                           tal:on-error="string:">
                           <div metal:use-macro="here/base_panel/macros/panel" />
                      </div>
